@@ -1,5 +1,5 @@
-# Fullstack Javascript Architecture
-Opinionated project architecture for fullstack Javascript applications. _(work in progress)_
+# Fullstack JavaScript Architecture
+Opinionated project architecture for fullstack JavaScript applications. _(work in progress)_
 
 ## Backend
 
