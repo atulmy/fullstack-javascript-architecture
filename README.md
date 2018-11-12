@@ -35,7 +35,7 @@ Opinionated project architecture for Full-Stack JavaScript Applications. _(work 
       ├── deployment
       │   > Docker Compose
       │
-      ├── frontent
+      ├── frontend
       │   ├── app
       │   │   ├── mobile
       │   │   │   > React Native
