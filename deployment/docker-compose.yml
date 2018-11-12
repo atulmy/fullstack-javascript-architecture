@@ -1,0 +1,61 @@
+version: '3'
+
+services:
+  database:
+    image: database
+    build: ../backend/database
+    volumes:
+      - ../backend/database/data:/data/db
+    restart: always
+    networks:
+      - back
+
+  api:
+    image: api
+    build: ../backend/api
+    volumes:
+      - ../backend/api/public:/app/public
+    restart: always
+    depends_on:
+      - database
+    networks:
+      - front
+      - back
+
+  proxy:
+    image: nginx
+    volumes:
+      - ../backend/proxy/nginx.conf:/etc/nginx/conf.d/proxy.conf
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - database
+      - api
+    networks:
+      - front
+      - docker-network
+
+  web:
+    image: web
+    build: ../frontend/app/web
+    restart: always
+    depends_on:
+      - api
+    networks:
+      - front
+
+  landing:
+    image: landing
+    build: ../frontend/landing
+    networks:
+      - front
+
+networks:
+  front:
+    driver: bridge
+  back:
+    driver: bridge
+  docker-network:
+    driver: bridge

@@ -1,0 +1,29 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "API application",
+  "main": "index.js",
+  "scripts": {
+    "seed": "babel-node src/setup/server/seeder.js",
+    "setup": "npm install && npm run seed",
+    "start": "nodemon src/index.js --exec babel-node",
+    "start:prod": "npm run build:prod && npm run start:server",
+    "build:prod": "babel src -s -D -d build",
+    "start:server": "node build/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.16.4",
+    "mongoose": "5.3.9"
+  },
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-plugin-transform-runtime": "6.23.0",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-react": "6.24.1",
+    "babel-preset-stage-2": "6.24.1",
+    "nodemon": "1.18.5"
+  }
+}

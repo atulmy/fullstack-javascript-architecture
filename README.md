@@ -1,10 +1,17 @@
-# Fullstack JavaScript Architecture
-Opinionated project architecture for fullstack JavaScript applications. _(work in progress)_
+# Full-Stack JavaScript Architecture (FSJA)
+Opinionated project architecture for Full-Stack JavaScript Applications. _(work in progress)_
 
 ## Backend
+- API
+- Database
+- Proxy
 
 ## Frontend
-- WEB
-- MOBILE
+- Landing
+- Web
+- Mobile
+  - iOS
+  - Android
 
 ## Deployment
+- Docker
