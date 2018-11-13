@@ -1,4 +1,4 @@
-# Full-Stack JavaScript Architecture (FSJA)
+# Full-Stack JavaScript Architecture
 Opinionated project architecture for Full-Stack JavaScript Applications. _(work in progress)_
 
 ## Backend
@@ -22,12 +22,12 @@ Opinionated project architecture for Full-Stack JavaScript Applications. _(work 
       │   ├── api
       │   │   > NodeJS
       │   │   > PORT 8000
-      │   │   > api.fsja.io
+      │   │   > api.example.com
       │   │
       │   ├── database
       │   │   > MongoDB
       │   │   > PORT 27017
-      │   │   > api.fsja.io
+      │   │   > api.example.com
       │   │
       │   └── proxy
       │       > NGINX
@@ -45,11 +45,11 @@ Opinionated project architecture for Full-Stack JavaScript Applications. _(work 
       │   │   └── web
       │   │       > React
       │   │       > PORT 5000
-      │   │       > app.fsja.io
+      │   │       > app.example.com
       │   │
       │   └── landing
       │       > Static HTML
       │       > PORT 3000
-      │       > fsja.io
+      │       > example.com
       │
       └── README.md (you are here)
