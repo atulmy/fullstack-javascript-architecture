@@ -1,0 +1,55 @@
+{
+  "site": {
+    "version": 0.1,
+    "name": "Example",
+    "domain": "example.com",
+
+    "emails": {
+      "help": {
+        "name": "example",
+        "email": "help@example.com"
+      }
+    }
+  },
+
+  "endpoint": {
+    "url": "/",
+    "uploads": "/uploads"
+  },
+
+  "folder": {
+    "uploads": "uploads"
+  },
+
+  "common": {
+    "language": {
+      "default": "en-US"
+    }
+  },
+
+  "user": {
+    "roles": {
+      "admin": {
+        "key": "admin",
+        "title": "Admin"
+      },
+
+      "user": {
+        "key": "user",
+        "title": "User"
+      }
+    },
+
+    "rules": {
+      "nameMinLength": 3,
+      "passwordMinLength": 6
+    },
+
+    "image": {
+      "folder": "/images/user",
+      "default": "default.jpg",
+      "width": 300,
+      "height": 300
+    }
+  }
+}

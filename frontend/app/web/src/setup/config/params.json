@@ -1,0 +1,46 @@
+{
+  "site": {
+    "name": "Example"
+  },
+
+  "folders": {
+    "public": "public/"
+  },
+
+  "user": {
+    "roles": {
+      "admin": {
+        "key": "admin",
+        "title": "Admin"
+      },
+      "user": {
+        "key": "user",
+        "title": "User"
+      }
+    },
+    "uploads": {
+      "path": "images/user"
+    }
+  },
+
+  "import": {
+    "uploads": {
+      "path": "import"
+    }
+  },
+
+  "image": {
+    "default": "default.jpg"
+  },
+
+  "date": {
+    "format": {
+      "date": "YYYY-MM-DD",
+      "time": "HH:mm",
+      "nice": {
+        "date": "Do MMM",
+        "time": "h:mm A"
+      }
+    }
+  }
+}

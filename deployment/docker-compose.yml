@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+  # Backend / Database
   database:
     image: database
     build: ../backend/database
@@ -10,6 +11,7 @@ services:
     networks:
       - back
 
+  # Backend / API
   api:
     image: api
     build: ../backend/api
@@ -22,6 +24,7 @@ services:
       - front
       - back
 
+  # Backend / Proxy
   proxy:
     image: nginx
     volumes:
@@ -37,6 +40,7 @@ services:
       - front
       - docker-network
 
+  # Frontend / App / Web
   web:
     image: web
     build: ../frontend/app/web
@@ -46,6 +50,7 @@ services:
     networks:
       - front
 
+  # Frontend / Landing
   landing:
     image: landing
     build: ../frontend/landing

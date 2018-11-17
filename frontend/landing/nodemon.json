@@ -1,0 +1,11 @@
+{
+  "delay": 3000,
+  "events": {
+    "restart": "npm run build:client"
+  },
+  "ignore": [
+    "build/*",
+    "node_modules/**/node_modules",
+    "public/*"
+  ]
+}

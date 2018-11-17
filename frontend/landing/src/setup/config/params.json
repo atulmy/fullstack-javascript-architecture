@@ -1,0 +1,21 @@
+{
+  "site": {
+    "version": 0.1,
+    "name": "Example",
+    "domain": "example.com",
+    "url": {
+      "store": {
+        "ios": "https://itunes.apple.com/us/app/google-maps-transit-food/id585027354",
+        "android": "https://play.google.com/store/apps/details?id=com.google.android.apps.maps"
+      }
+    },
+    "title": "Example - A sample website for fullstack JavaScript architecture.",
+    "description": "A sample website for fullstack JavaScript architecture.",
+    "keywords": "example, fullstack, javascript, architecture",
+    "author": "Example",
+    "copyright": "Example",
+    "applicationName": "Example",
+    "copyright_year": 2018,
+    "image": "logo.png"
+  }
+}

@@ -1,9 +1,27 @@
 // Imports
 import express from 'express'
 
-const app = express()
-const port = 8000
+// App Imports
+import database from './setup/server/database'
+import middlewares from './setup/server/middlewares'
+import upload from './setup/server/upload'
+import endpoint from './setup/server/endpoint'
+import start from './setup/server/start'
 
-app.get('/', (req, res) => res.send('<h3>Example / Backend / API</h3>'))
+// Create express server
+const server = express()
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+// Connect database
+database()
+
+// Setup middlewares
+middlewares(server)
+
+// Setup uploads
+upload(server)
+
+// Setup endpoint
+endpoint(server)
+
+// Start server
+start(server)

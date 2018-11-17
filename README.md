@@ -39,16 +39,18 @@ Opinionated project architecture for Full-Stack JavaScript Applications. _(work 
       │   ├── app
       │   │   ├── mobile
       │   │   │   > React Native
-      │   │   │   > iOS
-      │   │   │   > Android
+      │   │   │   > iOS (Apple App Store)
+      │   │   │   > Android (Google Play Store)
       │   │   │
       │   │   └── web
       │   │       > React
+      │   │       > Single page application
       │   │       > PORT 5000
       │   │       > app.example.com
       │   │
       │   └── landing
-      │       > Static HTML
+      │       > React
+      │       > Server side rendered
       │       > PORT 3000
       │       > example.com
       │
