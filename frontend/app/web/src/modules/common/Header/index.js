@@ -55,7 +55,7 @@ class Header extends Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="static" elevation={2}>
           <Toolbar>
             <Typography variant="h6" color="inherit" className={classes.flex}>
               <Link to={this.homeLink()}>{ params.site.name.toUpperCase() }</Link>
@@ -85,7 +85,7 @@ class Header extends Component {
 
         {
           isAuthenticated &&
-          <AppBar position="static" color="default">
+          <AppBar position="static" color="default" elevation={2}>
             <Toolbar>
               {
                 details.role === params.user.roles.admin.key

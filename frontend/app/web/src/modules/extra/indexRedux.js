@@ -4,14 +4,17 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 // UI Imports
+import Toolbar from '@material-ui/core/Toolbar/Toolbar'
+import Typography from '@material-ui/core/Typography/Typography'
 import { withStyles } from '@material-ui/core/styles'
 import styles from './styles'
 
 // App Imports
 // import { someAction } from './api/actions'
+import Section from '../common/Section'
 
 // Component
-class IndexRedux extends PureComponent {
+class DummyComponentRedux extends PureComponent {
 
   constructor(props) {
     super(props)
@@ -28,14 +31,22 @@ class IndexRedux extends PureComponent {
 
     return (
       <div>
-        <h1>Dummy Component Redux</h1>
+        <Toolbar>
+          <Typography variant="h6" color="inherit" className={classes.grow}>
+            DummyComponentRedux
+          </Typography>
+        </Toolbar>
+
+        <Section>
+          Dummy section
+        </Section>
       </div>
     )
   }
 }
 
 // Component Properties
-IndexRedux.propTypes = {
+DummyComponentRedux.propTypes = {
   classes: PropTypes.object.isRequired,
   dummyId: PropTypes.number.isRequired,
   // someAction: PropTypes.func.isRequired,
@@ -48,4 +59,4 @@ function dummyComponentReduxState(state) {
   }
 }
 
-export default connect(dummyComponentReduxState, { /* someAction */ })(withStyles(styles)(IndexRedux))
+export default connect(dummyComponentReduxState, { /* someAction */ })(withStyles(styles)(DummyComponentRedux))

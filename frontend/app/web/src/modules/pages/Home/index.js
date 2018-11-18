@@ -1,32 +1,48 @@
 // Imports
 import React from 'react'
-import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 // UI Imports
-import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
+import Toolbar from '@material-ui/core/Toolbar/Toolbar'
+import Typography from '@material-ui/core/Typography/Typography'
+import { withStyles } from '@material-ui/core/styles/index'
+import styles from './styles'
 
 // App Imports
-import routes from '../../../setup/routes'
 import Section from '../../common/Section'
+import { Link } from 'react-router-dom'
+import routes from '../../../setup/routes'
+import Button from '@material-ui/core/Button/Button'
 
 // Component
-const Home = () =>  (
-  <Section>
-    <Typography variant="h4">Home</Typography>
+const Home = ({ classes }) => (
+  <div>
+    <Toolbar>
+      <Typography variant="h6" color="inherit" className={classes.grow}>
+        Home
+      </Typography>
+    </Toolbar>
 
-    <p>Cum bromium potus, omnes urbses imperium talis, regius particulaes.</p>
+    <Section>
+      <Typography paragraph>Bromium potus, omnes urbses imperium talis, regius particulaes.</Typography>
 
-    <p>
-      <Link to={routes.userSignup.path}>
-        <Button variant="contained" color="primary">Signup</Button>
-      </Link>
+      <Typography>
+        <Link to={routes.userSignup.path}>
+          <Button variant="contained" color="primary">Signup</Button>
+        </Link>
 
-      <Link to={routes.userLogin.path}>
-        <Button variant="outlined" color="primary" style={{ marginLeft: 10 }}>Login</Button>
-      </Link>
-    </p>
-  </Section>
+        <Link to={routes.userLogin.path}>
+          <Button variant="outlined" color="primary" style={{ marginLeft: 10 }}>Login</Button>
+        </Link>
+      </Typography>
+    </Section>
+  </div>
 )
 
-export default Home
+// Component Properties
+Home.propTypes = {
+  classes: PropTypes.object.isRequired
+}
+
+export default withStyles(styles)(Home)
+

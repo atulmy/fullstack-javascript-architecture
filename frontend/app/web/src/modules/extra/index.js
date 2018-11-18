@@ -3,10 +3,13 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 // UI Imports
+import Toolbar from '@material-ui/core/Toolbar/Toolbar'
+import Typography from '@material-ui/core/Typography/Typography'
 import { withStyles } from '@material-ui/core/styles'
 import styles from './styles'
 
 // App Imports
+import Section from '../common/Section'
 
 // Component
 class DummyComponent extends PureComponent {
@@ -20,12 +23,19 @@ class DummyComponent extends PureComponent {
   render() {
     return (
       <div>
-        <h1>Dummy Component</h1>
+        <Toolbar>
+          <Typography variant="h6" color="inherit" className={classes.grow}>
+            Dummy
+          </Typography>
+        </Toolbar>
+
+        <Section>
+          Dummy section
+        </Section>
       </div>
     )
   }
 }
-
 
 // Component Properties
 DummyComponent.propTypes = {

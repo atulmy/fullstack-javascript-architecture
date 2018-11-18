@@ -49,7 +49,7 @@ class Signup extends PureComponent {
         history.push(routesUser.userLogin.path)
       }
     } catch (error) {
-      messageShow('Some error occurred.')
+      messageShow('Some error occurred. Please try again.')
     }
   }
 

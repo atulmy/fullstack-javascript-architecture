@@ -1,28 +1,38 @@
 // Imports
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 // UI Imports
-import Typography from '@material-ui/core/Typography'
+import Toolbar from '@material-ui/core/Toolbar/Toolbar'
+import Typography from '@material-ui/core/Typography/Typography'
+import { withStyles } from '@material-ui/core/styles/index'
+import styles from './styles'
 
 // App Imports
 import Section from '../../common/Section'
 
 // Component
-class Profile extends PureComponent {
-  render() {
-    const { auth: { details } } = this.props
+const Profile = ({ auth: { details }, classes }) => (
+  <div>
+    <Toolbar>
+      <Typography variant="h6" color="inherit" className={classes.grow}>
+        Profile
+      </Typography>
+    </Toolbar>
 
-    return (
-      <Section>
-        <Typography variant="h4">Profile</Typography>
+    <Section>
+      <Typography paragraph>Sunt consiliumes convertam nobilis, neuter cobaltumes.</Typography>
 
-        <p>Name: { details.name }</p>
-        <p>Email: { details.email }</p>
-      </Section>
-    )
-  }
+      <Typography>Name: { details.name }</Typography>
+      <Typography>Email: { details.email }</Typography>
+    </Section>
+  </div>
+)
+
+// Component Properties
+Profile.propTypes = {
+  classes: PropTypes.object.isRequired
 }
 
 // Component Properties
@@ -36,4 +46,5 @@ function profileState(state) {
     auth: state.auth
   }
 }
-export default connect(profileState, {})(Profile)
+
+export default connect(profileState, {})(withStyles(styles)(Profile))

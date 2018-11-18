@@ -1,7 +1,9 @@
 // Component Styles
 const styles = theme => ({
   root: {
-    marginTop: '10%'
+    marginTop: '10%',
+    marginLeft: theme.spacing.unit * 3,
+    marginRight: theme.spacing.unit * 3
   },
 
   container: {

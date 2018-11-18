@@ -6,13 +6,12 @@ import { API_URL } from '../../../../setup/config/env'
 
 // Actions
 
-// Create or Edit
-export function createOrEdit({ _id, note }) {
+// Create
+export function create({ note }) {
   return dispatch => {
     return axios.post(API_URL, {
-      operation: 'noteCreateOrEdit',
-      params: { _id, note },
-      fields: ['_id']
+      operation: 'noteCreate',
+      params: { note }
     })
   }
 }

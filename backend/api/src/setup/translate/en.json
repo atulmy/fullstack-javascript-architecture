@@ -3,7 +3,8 @@
     "messages": {
       "error": {
         "default": "Unable to perform this operation. Please try again.",
-        "server": "Server error occurred. Please try again."
+        "server": "Server error occurred. Please try again.",
+        "unauthorized": "You are not authorized to perform this action."
       },
 
       "success": {
@@ -63,6 +64,22 @@
           "wrongUser": "We do not have any registered user with this email address.",
           "wrongCredentials": "Email or password is incorrect."
         }
+      }
+    }
+  },
+
+  "note": {
+    "messages": {
+      "fields": {
+        "note": "Note cannot be empty."
+      },
+
+      "create": {
+        "success": "Note created successfully."
+      },
+      "remove": {
+        "success": "Note removed successfully.",
+        "error": "Invalid note."
       }
     }
   }
