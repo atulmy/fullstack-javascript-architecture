@@ -33,7 +33,7 @@ class Header extends Component {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" color="inherit" className={classes.flex}>
-              <Link to={routes.pagesHome.path}>{ params.site.name }</Link>
+              <Link to={routes.pagesHome.path}>{ params.site.name.toUpperCase() }</Link>
             </Typography>
 
             <>

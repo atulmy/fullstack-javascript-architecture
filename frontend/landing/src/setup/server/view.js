@@ -33,7 +33,7 @@ const view = (env = { NODE_ENV: '', LANDING_URL: '', GA_TRACKING_ID: '' }, param
     }
     body {
       margin: 0;
-      background-color: #fff;
+      background-color: #ffffff;
     }
     a {
       color: inherit;

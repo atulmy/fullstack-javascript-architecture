@@ -8,6 +8,7 @@ import { withStyles } from '@material-ui/core/styles'
 import styles from './styles'
 
 // App Imports
+import Section from '../../common/Section'
 
 // Component
 class List extends PureComponent {
@@ -15,11 +16,11 @@ class List extends PureComponent {
     const { classes } = this.props
 
     return (
-      <div className={classes.root}>
+      <Section>
         <Typography variant="h4">Notes List</Typography>
 
         <p>Cum bromium potus, omnes urbses imperium talis, regius particulaes.</p>
-      </div>
+      </Section>
     )
   }
 }

@@ -1,33 +1,32 @@
 // Imports
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 // UI Imports
 import Typography from '@material-ui/core/Typography'
-import { withStyles } from '@material-ui/core/styles'
-import styles from './styles'
+import Button from '@material-ui/core/Button'
 
 // App Imports
+import routes from '../../../setup/routes'
+import Section from '../../common/Section'
 
 // Component
-class Home extends PureComponent {
-  render() {
-    const { classes } = this.props
+const Home = () =>  (
+  <Section>
+    <Typography variant="h4">Home</Typography>
 
-    return (
-      <div className={classes.root}>
-        <Typography variant="h4">Home</Typography>
+    <p>Cum bromium potus, omnes urbses imperium talis, regius particulaes.</p>
 
-        <p>Cum bromium potus, omnes urbses imperium talis, regius particulaes.</p>
-      </div>
-    )
-  }
-}
+    <p>
+      <Link to={routes.userSignup.path}>
+        <Button variant="contained" color="primary">Signup</Button>
+      </Link>
 
+      <Link to={routes.userLogin.path}>
+        <Button variant="outlined" color="primary" style={{ marginLeft: 10 }}>Login</Button>
+      </Link>
+    </p>
+  </Section>
+)
 
-// Component Properties
-Home.propTypes = {
-  classes: PropTypes.object.isRequired
-}
-
-export default withStyles(styles)(Home)
+export default Home

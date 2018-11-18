@@ -50,7 +50,7 @@ ReactDOM.render(
                   />
               ))
             }
-            
+
             <Route component={Redirector} />
           </Switch>
         </Layout>

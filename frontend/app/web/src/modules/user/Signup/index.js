@@ -60,7 +60,7 @@ class Signup extends PureComponent {
   }
 
   render() {
-    const { classes, user: { isLoading } } = this.props
+    const { classes, auth: { isLoading } } = this.props
     const { name, email, password, passwordRepeat } = this.state
 
     return (
@@ -162,15 +162,16 @@ class Signup extends PureComponent {
 
 // Component Properties
 Signup.propTypes = {
-  classes: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
   signup: PropTypes.func.isRequired,
   messageShow: PropTypes.func.isRequired,
+  classes: PropTypes.object.isRequired
 }
 
 // Component State
 function signupState(state) {
   return {
-    user: state.user
+    auth: state.auth
   }
 }
 

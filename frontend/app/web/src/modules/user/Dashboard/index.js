@@ -1,6 +1,5 @@
 // Imports
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 
 // UI Imports
 import Typography from '@material-ui/core/Typography'
@@ -9,16 +8,12 @@ import Typography from '@material-ui/core/Typography'
 import Section from '../../common/Section'
 
 // Component
-class Dashboard extends PureComponent {
-  render() {
-    return (
-      <Section>
-        <Typography variant="h4">Dashboard</Typography>
+const Dashboard = () => (
+  <Section>
+    <Typography variant="h4">Dashboard</Typography>
 
-        <p>Please select an item from menu.</p>
-      </Section>
-    )
-  }
-}
+    <p>Please select an item from menu.</p>
+  </Section>
+)
 
 export default Dashboard
