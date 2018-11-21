@@ -54,24 +54,43 @@ export async function userLogin({ params: { email, password }, translate }) {
   throw new Error(translate.t('user.login.error.wrongCredentials'))
 }
 
-// Profile
-export async function userProfile({ auth, fields, translate }) {
-  if (authCheck(auth)) {
+// Get all (Admin)
+export async function userList({ auth, translate }) {
+  if(authCheckAdmin(auth)) {
     try {
-      const user = await User.findById(auth.user._id).select(fields)
+      const fields = ['_id', 'email', 'name', 'createdAt']
 
-      if(user) {
-        return {
-          data: user,
-          message: translate.t('common.success.default')
-        }
+      const data = await User
+        .find({ role: { $ne: params.user.roles.admin.key }, isDeleted: false })
+        .select(fields)
+        .sort({ createdAt: -1 })
+
+      return {
+        data
       }
     } catch (error) {
-      throw new Error(translate.t('common.error.server'))
+      throw new Error(translate.t('common.messages.error.server'))
     }
   }
 
-  throw new Error(translate.t('common.error.default'))
+  throw new Error(translate.t('common.messages.error.unauthorized'))
+}
+
+// Count (Admin)
+export async function userCount({ auth, translate }) {
+  if(authCheckAdmin(auth)) {
+    try {
+      const data = await User.count({ role: { $ne: params.user.roles.admin.key }, isDeleted: false })
+
+      return {
+        data
+      }
+    } catch (error) {
+      throw new Error(translate.t('common.messages.error.server'))
+    }
+  }
+
+  throw new Error(translate.t('common.messages.error.unauthorized'))
 }
 
 // Auth Response (token and user info)

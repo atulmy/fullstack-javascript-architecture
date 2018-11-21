@@ -21,6 +21,8 @@ class DummyComponent extends PureComponent {
   }
 
   render() {
+    const { classes } = this.props
+
     return (
       <div>
         <Toolbar>

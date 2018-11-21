@@ -26,7 +26,7 @@ export default function (server) {
 
         // Execute operation
         // operationName({ params, fields, auth })
-        const { data, message = translate.t('common.success.default') } = await modules[request.body.operation]({
+        const { data, message = translate.t('common.messages.success.default') } = await modules[request.body.operation]({
           params: request.body.params || {},
           fields: request.body.fields || {},
           auth: request.auth,

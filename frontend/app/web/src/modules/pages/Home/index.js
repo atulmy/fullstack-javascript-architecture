@@ -1,18 +1,19 @@
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 // UI Imports
 import Toolbar from '@material-ui/core/Toolbar/Toolbar'
+import Button from '@material-ui/core/Button/Button'
 import Typography from '@material-ui/core/Typography/Typography'
 import { withStyles } from '@material-ui/core/styles/index'
 import styles from './styles'
 
 // App Imports
-import Section from '../../common/Section'
-import { Link } from 'react-router-dom'
 import routes from '../../../setup/routes'
-import Button from '@material-ui/core/Button/Button'
+import AuthCheck from '../../auth/AuthCheck'
+import Section from '../../common/Section'
 
 // Component
 const Home = ({ classes }) => (
@@ -36,6 +37,9 @@ const Home = ({ classes }) => (
         </Link>
       </Typography>
     </Section>
+
+    {/* Auth Check */}
+    <AuthCheck />
   </div>
 )
 

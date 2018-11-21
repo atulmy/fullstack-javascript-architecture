@@ -8,15 +8,6 @@ import { LOGIN_REQUEST, LOGIN_RESPONSE, SET_USER, LOGOUT } from './types'
 
 // Actions
 
-// Get list
-export function getList() {
-  return dispatch => {
-    return axios.post(API_URL, {
-      operation: 'users'
-    })
-  }
-}
-
 // Login a user using credentials
 export function login({ email, password }, isLoading = true) {
   return async dispatch => {
@@ -93,6 +84,24 @@ export function setUser(token, user) {
   }
 }
 
+// Get list
+export function getList() {
+  return dispatch => {
+    return axios.post(API_URL, {
+      operation: 'userList'
+    })
+  }
+}
+
+// Get count
+export function getCount() {
+  return dispatch => {
+    return axios.post(API_URL, {
+      operation: 'userCount'
+    })
+  }
+}
+
 // Set user token and info locally (AsyncStorage)
 export function setUserLocally(token, user) {
   // Set token
@@ -105,4 +114,11 @@ export function unsetUserLocally() {
   // Remove token
   window.localStorage.removeItem('token')
   window.localStorage.removeItem('user')
+
+  // Remove cached data
+  for(let item of Object.keys({...window.localStorage})) {
+    if(item.indexOf('CACHE.KEY.') !== -1) {
+      window.localStorage.removeItem(item)
+    }
+  }
 }

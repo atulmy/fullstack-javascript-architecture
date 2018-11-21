@@ -57,7 +57,8 @@ export async function userSignup({ params: { name, email, password, passwordRepe
         name,
         email,
         password: passwordHashed,
-        role: params.user.roles.user.key
+        role: params.user.roles.user.key,
+        isDeleted: false
       })
 
       if(user) {

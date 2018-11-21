@@ -32,6 +32,12 @@ const schema = new Schema({
 
   image: {
     type: String
+  },
+
+  isDeleted: {
+    type: Boolean,
+    required: true,
+    default: false
   }
 }, { timestamps: true })
 

@@ -16,7 +16,8 @@ export default async function() {
       password: '123456',
       role: params.user.roles.admin.key,
       name: 'Admin',
-      image: 'default.jpg'
+      image: 'default.jpg',
+      isDeleted: false
     },
 
     {
@@ -24,7 +25,8 @@ export default async function() {
       password: '123456',
       role: params.user.roles.user.key,
       name: 'User',
-      image: 'default.jpg'
+      image: 'default.jpg',
+      isDeleted: false
     }
   ]
 
