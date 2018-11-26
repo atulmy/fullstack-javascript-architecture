@@ -17,6 +17,9 @@ Opinionated project architecture for Full-Stack JavaScript Applications. _(work 
 - Docker
 
 ## Screenshots
+
+View all screenshots [here](https://github.com/atulmy/atulmy.github.io/tree/master/images/fullstack-javascript-architecture).
+
 <table>
   <tbody>
     <tr>
