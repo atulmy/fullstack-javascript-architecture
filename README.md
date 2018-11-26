@@ -63,7 +63,6 @@ Opinionated project architecture for Full-Stack JavaScript Applications. _(work 
       │   ├── database
       │   │   > MongoDB
       │   │   > PORT 27017
-      │   │   > api.example.com
       │   │
       │   └── proxy
       │       > NGINX
