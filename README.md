@@ -28,6 +28,8 @@ Opinionated project architecture for Full-Stack JavaScript Applications. _(work 
         Web
         <img src="https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/fullstack-javascript-architecture/web/Screenshot%202018-11-26%20at%208.43.29%20PM.png" />
       </td>
+    </tr>
+    <tr>
       <td>
         Mobile
         <img src="https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/fullstack-javascript-architecture/mobile/Screenshot%202018-11-26%20at%208.47.31%20PM.png" />
