@@ -1,0 +1,56 @@
+{
+  "user": {
+    "fields": {
+      "name": "Name",
+      "namePlaceholder": "Enter your name",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "password": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "passwordRetype": "Retype Password",
+      "passwordRetypePlaceholder": "Retype your password"
+    },
+
+    "start": {
+      "title": "Simple note taking application!",
+
+      "button": {
+        "email": "Start with email",
+        "terms": "By signing up, you agree to accept the terms of use."
+      }
+    },
+
+    "signup": {
+      "title": "Signup",
+
+      "button": {
+        "login": "Already have an account? Login"
+      }
+    },
+
+    "login": {
+      "title": "Login",
+
+      "button": {
+        "signup": "Don't have an account? Signup"
+      }
+    },
+
+    "profile": {
+      "title": "Profile",
+      "subTitle": "Your information",
+
+      "prompts": {
+        "logout": "Are you sure you want to logout?"
+      },
+
+      "messages": {
+        "logout": "You have logged out successfully."
+      },
+
+      "button": {
+        "submit": "Save"
+      }
+    }
+  }
+}

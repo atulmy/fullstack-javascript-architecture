@@ -1,0 +1,24 @@
+{
+  "note": {
+    "fields": {
+      "note": "Note",
+      "notePlaceholder": "Enter your note.."
+    },
+
+    "list": {
+      "title": "Notes",
+      "subTitle": "Start taking some notes!",
+      "empty": "You have not added any notes yet."
+    },
+
+    "create": {
+      "title": "Create Note",
+      "subTitle": "What's happening?"
+    },
+
+    "detail": {
+      "title": "Note",
+      "subTitle": "Taken on {{date}}"
+    }
+  }
+}

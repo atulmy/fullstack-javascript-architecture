@@ -1,0 +1,34 @@
+{
+  "pages": {
+    "help": {
+      "title": "Help",
+      "subTitle": "Support and more info",
+
+      "content": {
+        "about": "This is a simple note taking application made with JavaScript.",
+
+        "feature1": {
+          "title": "Feature number one",
+          "points": {
+            "p1": "Ignigenas ortum in asopus!",
+            "p2": "Est fatalis uria, cesaris.",
+            "p3": "Heu, secundus acipenser!",
+            "p4": "Abaculuss trabem in lentia!",
+            "p5": "Domina bi-color orexis est."
+          }
+        },
+
+        "feature2": {
+          "title": "Feature number two",
+          "points": {
+            "p1": "Ignigenas ortum in asopus!",
+            "p2": "Est fatalis uria, cesaris.",
+            "p3": "Heu, secundus acipenser!",
+            "p4": "Abaculuss trabem in lentia!",
+            "p5": "Domina bi-color orexis est."
+          }
+        }
+      }
+    }
+  }
+}

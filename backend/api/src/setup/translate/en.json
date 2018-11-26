@@ -65,6 +65,12 @@
           "wrongCredentials": "Email or password is incorrect."
         }
       }
+    },
+
+    "profile": {
+      "messages": {
+        "success": "Profile has been updated successfully."
+      }
     }
   },
 

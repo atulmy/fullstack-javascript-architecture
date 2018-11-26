@@ -18,6 +18,7 @@ export const PORT = process.env.PORT
 export const MONGO_URL = process.env.MONGO_URL
 
 // URL
+export const LANDING_URL = process.env.LANDING_URL
 export const WEB_URL = process.env.WEB_URL
 export const API_URL = process.env.API_URL
 

@@ -94,9 +94,9 @@ export async function userCount({ auth, translate }) {
 }
 
 // Auth Response (token and user info)
-export function userAuthResponse({ _id, name, email, role }) {
+export function userAuthResponse({ _id, name, email, role, image }) {
   return {
-    token: jwt.sign({ id: _id, email, role }, SECURITY_SECRET),
-    user: { name, email, role }
+    token: jwt.sign({ id: _id }, SECURITY_SECRET),
+    user: { name, email, role, image }
   }
 }

@@ -25,7 +25,7 @@ const Home = ({ classes }) => (
     </Toolbar>
 
     <Section>
-      <Typography paragraph>Bromium potus, omnes urbses imperium talis, regius particulaes.</Typography>
+      <Typography paragraph>Simple note taking application!</Typography>
 
       <Typography>
         <Link to={routes.userSignup.path}>

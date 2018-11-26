@@ -1,0 +1,24 @@
+{
+  "common": {
+    "loading": "Please wait...",
+    "error": {
+      "default": "There was some error. Please try again."
+    },
+    "success": {
+      "default": "Success."
+    },
+    "button": {
+      "submit": "Submit",
+      "back": "Back",
+      "save": "Save",
+      "logout": "Logout",
+      "create": "Create",
+      "delete": "Delete",
+      "close": "Close",
+      "okay": "OK",
+      "cancel": "Cancel",
+      "help": "Help",
+      "contact": "Contact Us"
+    }
+  }
+}

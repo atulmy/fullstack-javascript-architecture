@@ -18,7 +18,6 @@ const view = (env = { NODE_ENV: '', LANDING_URL: '', GA_TRACKING_ID: '' }, param
   
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,600" />
   
   <!-- CSS - Reset -->
   <style type="text/css">

@@ -12,7 +12,7 @@ import { withStyles } from '@material-ui/core/styles'
 import styles from './styles'
 
 // App Imports
-import { APP_URL } from '../../../setup/config/env'
+import { WEB_URL } from '../../../setup/config/env'
 import params from '../../../setup/config/params'
 
 // Component
@@ -54,7 +54,7 @@ class Home extends PureComponent {
               </Grid>
 
               <Grid item>
-                <a href={ APP_URL } target="_blank" rel="noopener noreferrer">
+                <a href={ WEB_URL } target="_blank" rel="noopener noreferrer">
                   <Button variant="outlined" color="primary">
                     Open Web App
 

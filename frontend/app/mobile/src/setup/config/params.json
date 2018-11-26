@@ -1,0 +1,50 @@
+{
+  "site": {
+    "name": "Example",
+    "url": {
+      "contact": "contact",
+      "terms": "terms-of-use"
+    },
+    "emails": {
+      "help": {
+        "name": "Example",
+        "email": "help@example.com"
+      }
+    }
+  },
+
+  "endpoint": {
+    "uploads": "/uploads"
+  },
+
+  "message": {
+    "timers": {
+      "short": 2000,
+      "default": 4000,
+      "long": 6000
+    }
+  },
+
+  "folders": {
+    "public": "public/",
+    "user": {
+      "image": "/images/user"
+    }
+  },
+
+  "common": {
+    "formats": {
+      "time": "HH:mm",
+      "dateTime": "ddd MMM Do, hh:mm a"
+    }
+  },
+
+  "user": {
+    "password": {
+      "minLength": 6
+    },
+    "image": {
+      "default": "default.jpg"
+    }
+  }
+}

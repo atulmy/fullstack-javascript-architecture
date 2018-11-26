@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet'
 import { withRouter } from 'react-router-dom'
 
 // App Imports
-import { APP_URL } from '../../../setup/config/env'
+import { WEB_URL } from '../../../setup/config/env'
 import params from '../../../setup/config/params'
 import Header from '../Header'
 
@@ -27,7 +27,7 @@ class Layout extends PureComponent {
           <meta name={'og:title'} content={params.site.title} />
           <meta name={'og:description'} content={params.site.description} />
           <meta name={'og:url'} content={params.site.url} />
-          <meta name={'og:image'} content={`${ APP_URL }/images/${ params.site.image }`} />
+          <meta name={'og:image'} content={`${ WEB_URL }/images/${ params.site.image }`} />
           <meta name={'og:site_name'} content={params.site.applicationName} />
           <meta name={'og:type'} content={'website'} />
         </Helmet>

@@ -9,7 +9,7 @@ export const NODE_ENV = process.env.NODE_ENV
 
 // URL
 export const LANDING_URL = process.env.LANDING_URL
-export const APP_URL = process.env.APP_URL
+export const WEB_URL = process.env.WEB_URL
 export const API_URL = process.env.API_URL
 
 // Port
