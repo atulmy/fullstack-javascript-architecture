@@ -93,3 +93,18 @@ View all screenshots [here](https://github.com/atulmy/atulmy.github.io/tree/mast
       │       > example.com
       │
       └── README.md (you are here)
+
+
+## Authors
+- Atul Yadav - [GitHub](https://github.com/atulmy) · [Twitter](https://twitter.com/atulmy)
+- [YOUR NAME HERE] - Feel free to contribute to the codebase by resolving any open issues, refactoring, adding new features, writing test cases or any other way to make the project better and helpful to the community. Feel free to fork and send pull requests.
+
+
+## Hire me
+Looking for a developer to build your next idea or need a developer to work remotely? Get in touch: [atul.12788@gmail.com](mailto:atul.12788@gmail.com)
+
+
+## License
+Copyright (c) 2018 Atul Yadav http://github.com/atulmy
+
+The MIT License (http://www.opensource.org/licenses/mit-license.php)
