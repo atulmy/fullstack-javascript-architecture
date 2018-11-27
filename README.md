@@ -2,11 +2,8 @@
   <img src="https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/fullstack-javascript-architecture/architecture.png" alt="Full-Stack JavaScript Architecture" />
 </p>
 
-<h1 align="center">HIRE SMART</h1>
-<p align="center">An application for human resource team / recruitment consultancies to streamline hiring process, scheduling interviews and tracking candidates. This project is currently <i><strong>work in progress</strong></i>.</p>
-
-# Full-Stack JavaScript Architecture
-Opinionated project architecture for Full-Stack JavaScript Applications. _(work in progress)_
+<h1 align="center">Full-Stack JavaScript Architecture</h1>
+<p align="center">Opinionated project architecture for Full-Stack JavaScript Applications. <i><strong>(work in progress)</strong></i></p>
 
 ## Backend
 - API
