@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/fullstack-javascript-architecture/architecture.png" alt="Full-Stack JavaScript Architecture" />
+  <img src="https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/fullstack-javascript-architecture/architecture.png?v=0.1" alt="Full-Stack JavaScript Architecture" />
 </p>
 
 <h1 align="center">Full-Stack JavaScript Architecture</h1>
