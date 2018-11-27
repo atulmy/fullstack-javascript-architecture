@@ -1,9 +1,5 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/fullstack-javascript-architecture/architecture.png?v=0.2" alt="Full-Stack JavaScript Architecture" />
-</p>
-
-<h1 align="center">Full-Stack JavaScript Architecture</h1>
-<p align="center">Opinionated project architecture for Full-Stack JavaScript Applications. <i><strong>(work in progress)</strong></i></p>
+# Full-Stack JavaScript Architecture
+Opinionated project architecture for Full-Stack JavaScript Applications. _(work in progress)_
 
 ## Backend
 - API
@@ -19,6 +15,10 @@
 
 ## Deployment
 - Docker
+
+
+## Architecture Diagram
+<img src="https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/fullstack-javascript-architecture/architecture.png?v=0.2" alt="Full-Stack JavaScript Architecture" />
 
 ## Screenshots
 
