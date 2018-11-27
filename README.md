@@ -1,10 +1,12 @@
 # Full-Stack JavaScript Architecture
 Opinionated project architecture for Full-Stack JavaScript Applications. _(work in progress)_
 
+
 ## Backend
 - API
 - Database
 - Proxy
+
 
 ## Frontend
 - Landing
@@ -13,12 +15,50 @@ Opinionated project architecture for Full-Stack JavaScript Applications. _(work 
   - iOS
   - Android
 
+
 ## Deployment
 - Docker
 
 
-## Architecture Diagram
-<img src="https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/fullstack-javascript-architecture/architecture.png?v=0.2" alt="Full-Stack JavaScript Architecture" />
+## Core Structure
+    fsja
+      ├── backend
+      │   ├── api
+      │   │   > NodeJS
+      │   │   > PORT 8000
+      │   │   > api.example.com
+      │   │
+      │   ├── database
+      │   │   > MongoDB
+      │   │   > PORT 27017
+      │   │
+      │   └── proxy
+      │       > NGINX
+      │
+      ├── deployment
+      │   > Docker Compose
+      │
+      ├── frontend
+      │   ├── app
+      │   │   ├── mobile
+      │   │   │   > React Native
+      │   │   │   > iOS (Apple App Store)
+      │   │   │   > Android (Google Play Store)
+      │   │   │
+      │   │   └── web
+      │   │       > React
+      │   │       > Single page application
+      │   │       > PORT 5000
+      │   │       > app.example.com
+      │   │
+      │   └── landing
+      │       > React
+      │       > Server side rendered
+      │       > PORT 3000
+      │       > example.com
+      │
+      └── README.md (you are here)
+
 
 ## Screenshots
 
@@ -58,45 +98,10 @@ View all screenshots [here](https://github.com/atulmy/atulmy.github.io/tree/mast
     </tr>
   </tbody>
 </table>
+
  
-## Core Structure
-    fsja
-      ├── backend
-      │   ├── api
-      │   │   > NodeJS
-      │   │   > PORT 8000
-      │   │   > api.example.com
-      │   │
-      │   ├── database
-      │   │   > MongoDB
-      │   │   > PORT 27017
-      │   │
-      │   └── proxy
-      │       > NGINX
-      │
-      ├── deployment
-      │   > Docker Compose
-      │
-      ├── frontend
-      │   ├── app
-      │   │   ├── mobile
-      │   │   │   > React Native
-      │   │   │   > iOS (Apple App Store)
-      │   │   │   > Android (Google Play Store)
-      │   │   │
-      │   │   └── web
-      │   │       > React
-      │   │       > Single page application
-      │   │       > PORT 5000
-      │   │       > app.example.com
-      │   │
-      │   └── landing
-      │       > React
-      │       > Server side rendered
-      │       > PORT 3000
-      │       > example.com
-      │
-      └── README.md (you are here)
+## Architecture Diagram
+<img src="https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/fullstack-javascript-architecture/architecture.png?v=0.2" alt="Full-Stack JavaScript Architecture" />
 
 
 ## Authors
