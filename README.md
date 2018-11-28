@@ -94,8 +94,6 @@ Using JavaScript for full-stack has always been a challenge especially with arch
 
 
 ## Setup and Running
-- Legend
-    - * represents default values
 - Clone repo git clone git@github.com:atulmy/fullstack-javascript-architecture.git fullstack
 - Landing
     - Switch to `landing` directory `cd frontend/landing`
@@ -103,16 +101,11 @@ Using JavaScript for full-stack has always been a challenge especially with arch
         - Configuration
             - Create local environment file `cp .env.dev.example .env`
             - Modify `.env` for
-                - PORT
-                    - 3000*
-                - NODE_ENV 
-                    - `development`* | `production`
-                - LANDING_URL
-                    - http://localhost:3000*
-                - WEB_URL
-                    - http://localhost:5000*
-                - API_URL
-                    - http://localhost:8000*
+                - PORT 3000
+                - NODE_ENV `development` | `production`
+                - LANDING_URL (http://localhost:3000)
+                - WEB_URL (http://localhost:5000)
+                - API_URL (http://localhost:8000)
                 - CONTACT_PHONE, CONTACT_EMAIL, CONTACT_ADDRESS
                 - GA_TRACKING_ID (Google analytics tracking ID)
         - Setup
