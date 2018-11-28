@@ -1,3 +1,6 @@
+<img src="https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/fullstack-javascript-architecture/architecture.png?v=1.0" alt="Full-Stack JavaScript Architecture" />
+
+
 # Full-Stack JavaScript Architecture
 Opinionated project architecture for Full-Stack JavaScript Applications. _(work in progress)_
 
@@ -98,10 +101,6 @@ View all screenshots [here](https://github.com/atulmy/atulmy.github.io/tree/mast
     </tr>
   </tbody>
 </table>
-
- 
-## Architecture Diagram
-<img src="https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/fullstack-javascript-architecture/architecture.png?v=0.2" alt="Full-Stack JavaScript Architecture" />
 
 
 ## Authors
