@@ -91,22 +91,36 @@ View all screenshots [here](https://github.com/atulmy/atulmy.github.io/tree/mast
   </tbody>
 </table>
 
+## Stack
 
-## Backend
+### Backend
 - API
+    - Technologies
+        - NodeJS
+        - Express
 - Database
+    - Technologies
+        - MongoDB
 - Proxy
+    - Technologies
+        - NGINX
 
-
-## Frontend
+### Frontend
 - Landing
+    - Technologies
+        - NodeJS
+        - Express
+        - React
 - Web
-- Mobile
-  - iOS
-  - Android
+    - Technologies
+        - React
+        - Redux
+- Mobile (iOS, Android)
+    - Technologies
+        - React Native
+        - Redux
 
-
-## Deployment
+### Deployment
 - Containerize
 
 
