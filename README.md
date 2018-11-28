@@ -5,6 +5,10 @@
 Opinionated project architecture for Full-Stack JavaScript Applications. _(work in progress)_
 
 
+## About
+Using JavaScript for full-stack has always been a challenge especially with architecting various pieces of the application, choosing the technologies and managing devOps. This project provides a base for typical project consisting a Landing Website, Web and Mobile Applications, API service and easy deployment.
+
+
 ## Backend
 - API
 - Database
