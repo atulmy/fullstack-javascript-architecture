@@ -6,25 +6,7 @@ Opinionated project architecture for Full-Stack JavaScript Applications. _(work 
 
 
 ## About
-Using JavaScript for full-stack has always been a challenge especially with architecting various pieces of the application, choosing the technologies and managing devOps. This project provides a base for typical project consisting a Landing Website, Web and Mobile Applications, API service and easy deployment.
-
-
-## Backend
-- API
-- Database
-- Proxy
-
-
-## Frontend
-- Landing
-- Web
-- Mobile
-  - iOS
-  - Android
-
-
-## Deployment
-- Docker
+Using JavaScript for full-stack has always been a challenge especially with architecting various pieces of the application, choosing technologies and managing devOps. This project provides a base for typical project consisting a Landing Website, Web and Mobile Applications, API service and easy deployment of various services. This project uses a microserice architecture where all individual project runs as a service (container). Testing and code linting is not in the scope of this project at the moment.
 
 
 ## Core Structure
@@ -105,6 +87,24 @@ View all screenshots [here](https://github.com/atulmy/atulmy.github.io/tree/mast
     </tr>
   </tbody>
 </table>
+
+
+## Backend
+- API
+- Database
+- Proxy
+
+
+## Frontend
+- Landing
+- Web
+- Mobile
+  - iOS
+  - Android
+
+
+## Deployment
+- Containerize
 
 
 ## Authors
