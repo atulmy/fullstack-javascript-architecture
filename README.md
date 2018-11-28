@@ -101,11 +101,11 @@ Using JavaScript for full-stack has always been a challenge especially with arch
         - Configuration
             - Create local environment file `cp .env.dev.example .env`
             - Modify `.env` for
-                - PORT 3000
+                - PORT `3000`
                 - NODE_ENV `development` | `production`
-                - LANDING_URL (http://localhost:3000)
-                - WEB_URL (http://localhost:5000)
-                - API_URL (http://localhost:8000)
+                - LANDING_URL `http://localhost:3000`
+                - WEB_URL `http://localhost:5000`
+                - API_URL `http://localhost:8000`
                 - CONTACT_PHONE, CONTACT_EMAIL, CONTACT_ADDRESS
                 - GA_TRACKING_ID (Google analytics tracking ID)
         - Setup
