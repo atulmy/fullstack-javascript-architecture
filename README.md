@@ -6,7 +6,7 @@ Opinionated project architecture for Full-Stack JavaScript Applications. _(work 
 
 
 ## About
-Using JavaScript for full-stack has always been a challenge especially with architecting various pieces of the application, choosing technologies and managing devOps. This project provides a base for typical project consisting a Landing Website, Web and Mobile Applications, API service and easy deployment of various services. This project uses a microserice architecture where all individual project runs as a service (container).
+Using JavaScript for full-stack has always been a challenge especially with architecting various pieces of the application, choosing technologies and managing devOps. This project provides a base for typical project consisting a Landing Website, Web and Mobile Applications, API service and easy deployment of various services. This project uses a microservice architecture where all individual project runs as a service (container).
 
 
 ## Core Structure
@@ -88,11 +88,37 @@ Using JavaScript for full-stack has always been a challenge especially with arch
         - React Navigation
 
 ### Deployment
-- Containerize
-    - Technologies
-        - Docker
-        - Docker compose
+- Technologies
+    - Docker
+    - Docker compose
 
+
+## Setup and Running
+- Legend
+    - * represents default values
+- Clone repo git clone git@github.com:atulmy/fullstack-javascript-architecture.git fullstack
+- Landing
+    - Switch to `landing` directory `cd frontend/landing`
+    - Dev
+        - Configuration
+            - Create local environment file `cp .env.dev.example .env`
+            - Modify `.env` for
+                - PORT
+                    - 3000*
+                - NODE_ENV 
+                    - `development`* | `production`
+                - LANDING_URL
+                    - http://localhost:3000*
+                - WEB_URL
+                    - http://localhost:5000*
+                - API_URL
+                    - http://localhost:8000*
+                - CONTACT_PHONE, CONTACT_EMAIL, CONTACT_ADDRESS
+                - GA_TRACKING_ID (Google analytics tracking ID)
+        - Setup
+            - Install dependencies: `npm install`
+        - Run
+            - Start Landing server: `npm start`, browse at http://localhost:3000*
 
 ## Screenshots
 
