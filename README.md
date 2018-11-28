@@ -111,17 +111,29 @@ View all screenshots [here](https://github.com/atulmy/atulmy.github.io/tree/mast
         - NodeJS
         - Express
         - React
+        - React Router
+        - Server Side Rendering
+        - Material UI
+
 - Web
     - Technologies
         - React
         - Redux
+        - React Router
+        - Server Side Rendering
+        - Material UI
+        
 - Mobile (iOS, Android)
     - Technologies
         - React Native
         - Redux
+        - React Navigation
 
 ### Deployment
 - Containerize
+    - Technologies
+        - Docker
+        - Docker compose
 
 
 ## Authors
