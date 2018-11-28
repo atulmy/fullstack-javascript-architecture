@@ -56,32 +56,35 @@ View all screenshots [here](https://github.com/atulmy/atulmy.github.io/tree/mast
 <table>
   <tbody>
     <tr>
+      <td colspan="2">Landing</td>
+    </tr>
+    <tr>
       <td>
-        Landing
         <img alt="Landing" src="https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/fullstack-javascript-architecture/landing/Screenshot%202018-11-26%20at%208.42.33%20PM.png" />
       </td>
       <td>
-        Landing
         <img alt="Landing" src="https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/fullstack-javascript-architecture/landing/Screenshot%202018-11-26%20at%208.42.44%20PM.png" />
       </td>
     </tr>
     <tr>
+      <td colspan="2">Web</td>
+    </tr>
+    <tr>
       <td>
-        Web
         <img alt="Web" src="https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/fullstack-javascript-architecture/web/Screenshot%202018-11-26%20at%208.43.29%20PM.png" />
       </td>
       <td>
-        Web
         <img alt="Web" src="https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/fullstack-javascript-architecture/web/Screenshot%202018-11-26%20at%208.44.25%20PM.png" />
       </td>
     </tr>
     <tr>
+      <td colspan="2">Mobile</td>
+    </tr>
+    <tr>
       <td>
-        Mobile
         <img alt="Mobile" src="https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/fullstack-javascript-architecture/mobile/Screenshot%202018-11-26%20at%208.47.31%20PM.png" />
       </td>
       <td>
-        Mobile
         <img alt="Mobile" src="https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/fullstack-javascript-architecture/mobile/Screenshot%202018-11-26%20at%208.48.07%20PM.png" />
       </td>
     </tr>
