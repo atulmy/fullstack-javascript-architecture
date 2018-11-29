@@ -183,13 +183,16 @@ A typical product (SaaS, etc.) usually consists of following services:
         - Start Web server: `npm start`, browse at http://localhost:5000
 
 - **Deployment**
-    - Switch to `deployment` directory `cd deployment`
-    - Get the latest code `git pull`
-    - Build containers `docker-compose up --build -d`
-        - `up` = Builds, (re)creates, starts, and attaches to containers for a service.
-        - `--build` = Build images before starting containers
-        - `-d` = Detached mode: Run containers in the background, print new container names
-
+    - Deploy code
+        1. Login to the server (SSH)
+        2. Switch to `deployment` directory `cd deployment`
+        3. Pull latest code `git pull`
+        4. Build containers `docker-compose up --build -d`
+            - `up` = Builds, (re)creates, starts, and attaches to containers for a service.
+            - `--build` = Build images before starting containers
+            - `-d` = Detached mode: Run containers in the background, print new container names
+    - Resources
+           - [Set Up Free SSL Certificates from Let's Encrypt using Docker and Nginx](https://humankode.com/ssl/how-to-set-up-free-ssl-certificates-from-lets-encrypt-using-docker-and-nginx)
 
 - **Mobile**
     - Switch to `mobile` directory `cd frontend/app/mobile`
@@ -216,6 +219,12 @@ A typical product (SaaS, etc.) usually consists of following services:
         - iOS
             - Build: Open `frontend/app/mobile/ios/example.xcodeproj` in Xcode -> Choose Generic iOS Device (top left) -> Product (top menu) -> Archive.
             - Upload using Archiver (will open automatically once Arhive is complete)
+    - Resources
+        - [From react-native init to app stores real quick](https://blog.elao.com/en/dev/from-react-native-init-to-app-stores-real-quick/)
+        - iOS App icon and splashscreen generator [appicon](https://www.appicon.build/)
+        - Icon generator [makeappicon](https://makeappicon.com/)
+        - Icons and splashscreen generator [imagegorilla](https://apetools.webprofusion.com/app/#/tools/imagegorilla)
+    
     
 ## Screenshots
 
