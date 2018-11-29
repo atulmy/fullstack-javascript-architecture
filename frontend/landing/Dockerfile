@@ -1,9 +1,9 @@
 FROM node:10
-RUN mkdir -p /app
-COPY . /app
-WORKDIR /app
+RUN mkdir -p /user/src/app
+WORKDIR /user/src/app
+COPY ./package*.json ./
 RUN npm install --quiet
-RUN npm run setup
+COPY . ./
 RUN npm run build:prod
 EXPOSE 3000
 ENTRYPOINT ["node", "build/index.js"]
