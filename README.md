@@ -167,6 +167,7 @@ A typical product (SaaS, etc.) usually consists of following services:
         - Start Landing server: `npm start`, browse at http://localhost:3000
     - Resources
         - Use [getterms.io](https://getterms.io) to generate Privacy Policy / Terms of Use
+        - Favicon generator [realfavicongenerator](https://realfavicongenerator.net)
 
 - **Web**
     - Switch to `web` directory `cd frontend/app/web`
