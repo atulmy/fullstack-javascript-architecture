@@ -133,17 +133,17 @@ A typical product (SaaS, etc.) usually consists of following services:
     - Configuration
         - Create local environment file `cp .env.dev.example .env`
         - Modify `.env` for
-            - PORT `8000`
-            - NODE_ENV `development` | `production`
-            - SECURITY_SECRET (Use [passwordsgenerator](https://passwordsgenerator.net))
-            - SECURITY_SALT_ROUNDS `10`
-            - MONGO_URL `mongodb://localhost:27017/example`
-            - LANDING_URL `http://localhost:3000`
-            - WEB_URL `http://localhost:5000`
-            - API_URL `http://localhost:8000`
-            - EMAIL_ON `0` | `1` (in development, you can toggle to send emails or not)
-            - EMAIL_TEST (send test emails to this address)
-            - EMAIL_HOST, EMAIL_USER, EMAIL_PASSWORD (use any email servive, eg. [mailgun.com](https://www.mailgun.com/) and get info to start sending emails
+            - `PORT` (`8000`)
+            - `NODE_ENV` (`development` | `production`)
+            - `SECURITY_SECRET` (Use [passwordsgenerator](https://passwordsgenerator.net))
+            - `SECURITY_SALT_ROUNDS` (`10`)
+            - `MONGO_URL` (`mongodb://localhost:27017/example`)
+            - `LANDING_URL` (`http://localhost:3000`)
+            - `WEB_URL` (`http://localhost:5000`)
+            - `API_URL` (`http://localhost:8000`)
+            - `EMAIL_ON` (`0` | `1` (in development, you can toggle to send emails or not))
+            - `EMAIL_TEST` (send test emails to this address)
+            - `EMAIL_HOST`, `EMAIL_USER`, `EMAIL_PASSWORD` (use any email servive, eg. [mailgun.com](https://www.mailgun.com/) and get info to start sending emails
     - Setup
         - Install packages and seed database `npm run setup`
     - Run
@@ -154,13 +154,13 @@ A typical product (SaaS, etc.) usually consists of following services:
     - Configuration
         - Create local environment file `cp .env.dev.example .env`
         - Modify `.env` for
-            - PORT `3000`
-            - NODE_ENV `development` | `production`
-            - LANDING_URL `http://localhost:3000`
-            - WEB_URL `http://localhost:5000`
-            - API_URL `http://localhost:8000`
-            - CONTACT_PHONE, CONTACT_EMAIL, CONTACT_ADDRESS
-            - GA_TRACKING_ID (Google analytics tracking ID)
+            - `PORT` (`3000`)
+            - `NODE_ENV` (`development` | `production`)
+            - `LANDING_URL1 (`http://localhost:3000`)
+            - `WEB_URL` (`http://localhost:5000`)
+            - `API_URL` (`http://localhost:8000`)
+            - `CONTACT_PHONE`, `CONTACT_EMAIL`, `CONTACT_ADDRESS` (your contact information)
+            - `GA_TRACKING_ID` (Google analytics tracking ID)
     - Setup
         - Install dependencies: `npm install`
     - Run
@@ -171,10 +171,10 @@ A typical product (SaaS, etc.) usually consists of following services:
     - Configuration
         - Create local environment file `cp .env.dev.example .env`
         - Modify `.env` for
-            - PORT `5000`
-            - REACT_APP_LANDING_URL `http://localhost:3000`
-            - REACT_APP_WEB_URL `http://localhost:5000`
-            - REACT_APP_API_URL `http://localhost:8000`
+            - `PORT` (`5000`)
+            - `REACT_APP_LANDING_URL` (`http://localhost:3000`)
+            - `REACT_APP_WEB_URL` (`http://localhost:5000`)
+            - `REACT_APP_API_URL` (`http://localhost:8000`)
     - Setup
         - Install dependencies: `npm install`
     - Run
@@ -194,13 +194,13 @@ A typical product (SaaS, etc.) usually consists of following services:
     - Configuration
         - Create local environment file `cp .env.dev.example .env`
         - Modify `.env` for
-            - APP_ID `com.example` (your app bundle ID)
-            - APP_VERSION `0.0.1` (increment this for each publish on App or Play Store)
-            - APP_BUILD `1` (increment this for each publish on App or Play Store)
-            - APP_ENV `development` | `production`
-            - LANDING_URL `http://<your local network IP>:3000`
-            - WEB_URL `http://<your local network IP>:5000`
-            - API_URL `http://<your local network IP>:8000`
+            - `APP_ID` (`com.example` (your app bundle ID))
+            - `APP_VERSION` (`0.0.1` (increment this for each publish on App or Play Store))
+            - `APP_BUILD` (`1` (increment this for each publish on App or Play Store))
+            - `APP_ENV` (`development` | `production`)
+            - `LANDING_URL` (`http://<your local network IP>:3000`)
+            - `WEB_URL` (`http://<your local network IP>:5000`)
+            - `API_URL` (`http://<your local network IP>:8000`)
             - Tip: use `ifconfig` on macOS or Linux to get your local IP address
     - Setup
         - Install dependencies: `npm install`
