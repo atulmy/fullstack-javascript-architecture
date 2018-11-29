@@ -114,7 +114,7 @@ A typical product (SaaS, etc.) usually consists of following services:
 
 
 ## Setup and Running
-- Clone repo git clone git@github.com:atulmy/fullstack-javascript-architecture.git fullstack
+- Clone repo `git clone git@github.com:atulmy/fullstack-javascript-architecture.git fullstack`
 
 - **API**
     - Info
@@ -172,6 +172,14 @@ A typical product (SaaS, etc.) usually consists of following services:
         - Install dependencies: `npm install`
     - Run
         - Start Web server: `npm start`, browse at http://localhost:5000
+
+- **Deployment**
+    - Switch to `deployment` directory `cd deployment`
+    - Get the latest code `git pull`
+    - Build containers `docker-compose up --build -d`
+        - `up` = Builds, (re)creates, starts, and attaches to containers for a service.
+        - `--build` = Build images before starting containers
+        - `-d` = Detached mode: Run containers in the background, print new container names
 
 
 ## Screenshots
