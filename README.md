@@ -165,6 +165,8 @@ A typical product (SaaS, etc.) usually consists of following services:
         - Install dependencies: `npm install`
     - Run
         - Start Landing server: `npm start`, browse at http://localhost:3000
+    - Resources
+        - Use [getterms.io](https://getterms.io) to generate Privacy Policy / Terms of Use
 
 - **Web**
     - Switch to `web` directory `cd frontend/app/web`
@@ -205,7 +207,15 @@ A typical product (SaaS, etc.) usually consists of following services:
     - Setup
         - Install dependencies: `npm install`
     - Run
-        - Start Landing server: `npm start`, browse at http://localhost:3000
+        - iOS `ENVFILE=.env react-native run-ios --simulator='iPhone 8'`
+        - Android `ENVFILE=.env react-native run-android` (connect your Android phone via USB or use already created simulator with name `Mobile_-_5` by running `cd ~/Library/Android/sdk/tools && ./emulator -avd Mobile_-_5`)
+    - Publish
+        - Android
+            - Build: `. ./.env.production && cd android && ./gradlew assembleRelease && cd ..`. 
+            - Upload `frontend/app/mobile/android/app/build/outputs/apk/release/app-release.apk` to Play Store.
+        - iOS
+            - Build: Open `frontend/app/mobile/ios/example.xcodeproj` in Xcode -> Choose Generic iOS Device (top left) -> Product (top menu) -> Archive.
+            - Upload using Archiver (will open automatically once Arhive is complete)
     
 ## Screenshots
 
