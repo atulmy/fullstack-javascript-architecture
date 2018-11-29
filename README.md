@@ -115,6 +115,33 @@ A typical product (SaaS, etc.) usually consists of following services:
 
 ## Setup and Running
 - Clone repo git clone git@github.com:atulmy/fullstack-javascript-architecture.git fullstack
+
+- **API**
+    - Info
+      - Authentication strategy: [JWT](https://jwt.io/introduction/) (JSON Web Token)
+      - Uses [RPC](https://www.jsonrpc.org/) (Remote Procedure Call) for API endpoints (one endpoint URL, multiple operations)
+      - Resources
+        - [Lightweight RPC API pattern](https://github.com/atulmy/wispy)
+    - Switch to `api` directory `cd backend/api`
+    - Configuration
+        - Create local environment file `cp .env.dev.example .env`
+        - Modify `.env` for
+            - PORT `8000`
+            - NODE_ENV `development` | `production`
+            - SECURITY_SECRET (Use [passwordsgenerator](https://passwordsgenerator.net))
+            - SECURITY_SALT_ROUNDS `10`
+            - MONGO_URL `mongodb://localhost:27017/example`
+            - LANDING_URL `http://localhost:3000`
+            - WEB_URL `http://localhost:5000`
+            - API_URL `http://localhost:8000`
+            - EMAIL_ON `0` | `1` (in development, you can toggle to send emails or not)
+            - EMAIL_TEST (send test emails to this address)
+            - EMAIL_HOST, EMAIL_USER, EMAIL_PASSWORD (use any email servive, eg. [mailgun.com](https://www.mailgun.com/) and get info to start sending emails
+    - Setup
+        - Install packages and seed database `npm run setup`
+    - Run
+        - Start API server: `npm start` (http://localhost:8000)
+
 - **Landing**
     - Switch to `landing` directory `cd frontend/landing`
     - Configuration
@@ -130,11 +157,22 @@ A typical product (SaaS, etc.) usually consists of following services:
     - Setup
         - Install dependencies: `npm install`
     - Run
-        - Start Landing server: `npm start`, browse at http://localhost:3000*
-    - Code
-        - Modular code base
-        - 
-            
+        - Start Landing server: `npm start`, browse at http://localhost:3000
+
+- **Web**
+    - Switch to `web` directory `cd frontend/app/web`
+    - Configuration
+        - Create local environment file `cp .env.dev.example .env`
+        - Modify `.env` for
+            - PORT `5000`
+            - REACT_APP_LANDING_URL `http://localhost:3000`
+            - REACT_APP_WEB_URL `http://localhost:5000`
+            - REACT_APP_API_URL `http://localhost:8000`
+    - Setup
+        - Install dependencies: `npm install`
+    - Run
+        - Start Web server: `npm start`, browse at http://localhost:5000
+
 
 ## Screenshots
 
