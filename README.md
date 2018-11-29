@@ -114,6 +114,13 @@ A typical product (SaaS, etc.) usually consists of following services:
 
 
 ## Setup and Running
+- Prerequisites
+    - Node (`v10.x`)
+    - MongoDB (`v4.x`)
+    - Xcode (for iOS) (latest)
+    - Android Studio (for Android) (latest)
+    - Follow [React Native Guide](https://facebook.github.io/react-native/docs/getting-started) to setup your local machine
+
 - Clone repo `git clone git@github.com:atulmy/fullstack-javascript-architecture.git fullstack`
 
 - **API**
@@ -182,6 +189,24 @@ A typical product (SaaS, etc.) usually consists of following services:
         - `-d` = Detached mode: Run containers in the background, print new container names
 
 
+- **Mobile**
+    - Switch to `mobile` directory `cd frontend/app/mobile`
+    - Configuration
+        - Create local environment file `cp .env.dev.example .env`
+        - Modify `.env` for
+            - APP_ID `com.example` (your app bundle ID)
+            - APP_VERSION `0.0.1` (increment this for each publish on App or Play Store)
+            - APP_BUILD `1` (increment this for each publish on App or Play Store)
+            - APP_ENV `development` | `production`
+            - LANDING_URL `http://<your local network IP>:3000`
+            - WEB_URL `http://<your local network IP>:5000`
+            - API_URL `http://<your local network IP>:8000`
+            - Tip: use `ifconfig` on macOS or Linux to get your local IP address
+    - Setup
+        - Install dependencies: `npm install`
+    - Run
+        - Start Landing server: `npm start`, browse at http://localhost:3000
+    
 ## Screenshots
 
 View all screenshots [here](https://github.com/atulmy/atulmy.github.io/tree/master/images/fullstack-javascript-architecture).
