@@ -2,7 +2,7 @@
 
 
 # Full-Stack JavaScript Architecture
-Opinionated project architecture for Full-Stack JavaScript Applications. _(work in progress)_
+Opinionated project architecture for Full-Stack JavaScript Applications.
 
 
 ## About
