@@ -16,7 +16,7 @@ services:
     image: api
     build: ../backend/api
     volumes:
-      - ../backend/api/public:/app/public
+      - ../backend/api/public:/user/src/app/public
     restart: always
     depends_on:
       - database
