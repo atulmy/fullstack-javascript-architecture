@@ -98,7 +98,6 @@ A typical product (SaaS, etc.) usually consists of following services:
         - React
         - Redux
         - React Router
-        - Server Side Rendering
         - Material UI
         
 - Mobile (iOS, Android)
