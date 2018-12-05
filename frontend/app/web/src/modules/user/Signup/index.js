@@ -34,7 +34,7 @@ class Signup extends PureComponent {
     }
   }
 
-  login = async event => {
+  signup = async event => {
     event.preventDefault()
 
     const { signup, messageShow, history } = this.props
@@ -74,7 +74,7 @@ class Signup extends PureComponent {
             Don't have an account? Please signup:
           </Typography>
 
-          <form onSubmit={this.login}>
+          <form onSubmit={this.signup}>
             {/* Input - name */}
             <Grid item xs={12}>
               <TextField

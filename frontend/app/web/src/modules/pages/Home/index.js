@@ -27,15 +27,13 @@ const Home = ({ classes }) => (
     <Section>
       <Typography paragraph>Simple note taking application!</Typography>
 
-      <Typography>
-        <Link to={routes.userSignup.path}>
-          <Button variant="contained" color="primary">Signup</Button>
-        </Link>
+      <Link to={routes.userSignup.path}>
+        <Button variant="contained" color="primary">Signup</Button>
+      </Link>
 
-        <Link to={routes.userLogin.path}>
-          <Button variant="outlined" color="primary" style={{ marginLeft: 10 }}>Login</Button>
-        </Link>
-      </Typography>
+      <Link to={routes.userLogin.path}>
+        <Button variant="outlined" color="primary" style={{ marginLeft: 10 }}>Login</Button>
+      </Link>
     </Section>
 
     {/* Auth Check */}

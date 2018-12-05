@@ -30,8 +30,6 @@ export function login({ email, password }, isLoading = true) {
       let message = ''
 
       if(data.success) {
-        console.log(data.data.token)
-        console.log(data.data.user)
         dispatch(setUser(data.data.token, data.data.user))
 
         setUserLocally(data.data.token, data.data.user)
