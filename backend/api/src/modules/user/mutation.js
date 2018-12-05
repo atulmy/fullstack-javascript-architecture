@@ -15,7 +15,7 @@ import { send as sendEmail } from '../email/send'
 import Signup from './email/Signup'
 
 // Create
-export async function userSignup({ params: { name, email, password, passwordRetype }, translate }) {
+export async function userSignup({ params: { name, email, password, passwordRepeat }, translate }) {
   // Validation rules
   const rules = [
     {
@@ -34,7 +34,7 @@ export async function userSignup({ params: { name, email, password, passwordRety
       message: translate.t('user.messages.fields.passwordMinLength', { length: params.user.rules.nameMinLength })
     },
     {
-      data: { value1: password, value2: passwordRetype },
+      data: { value1: password, value2: passwordRepeat },
       check: 'equal',
       message: translate.t('user.messages.fields.passwordEqual')
     }
