@@ -4,13 +4,13 @@ import { LIST_DONE, LIST_REQUEST, LIST_RESET, LIST_RESPONSE } from '../actions/t
 // List
 
 // Initial State
-const locationsInitialState = {
+const notesInitialState = {
   isLoading: false,
   list: []
 }
 
 // State
-export default (state = locationsInitialState, action) => {
+export default (state = notesInitialState, action) => {
   switch (action.type) {
     case LIST_REQUEST:
       return {
@@ -31,7 +31,7 @@ export default (state = locationsInitialState, action) => {
       }
 
     case LIST_RESET:
-      return { ...locationsInitialState }
+      return { ...notesInitialState }
 
     default:
       return state

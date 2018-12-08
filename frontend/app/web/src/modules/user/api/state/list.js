@@ -1,16 +1,16 @@
 // App Imports
 import { LIST_DONE, LIST_FILTER, LIST_REQUEST, LIST_RESET, LIST_RESPONSE } from '../actions/types'
 
-// User list (players)
+// User list (users)
 
 // Initial State
-const playersInitialState = {
+const usersInitialState = {
   isLoading: false,
   list: []
 }
 
 // State
-export default (state = playersInitialState, action) => {
+export default (state = usersInitialState, action) => {
   switch (action.type) {
     case LIST_REQUEST:
       return {
@@ -31,7 +31,7 @@ export default (state = playersInitialState, action) => {
       }
 
     case LIST_RESET:
-      return { ...playersInitialState }
+      return { ...usersInitialState }
 
     case LIST_FILTER:
       return {
