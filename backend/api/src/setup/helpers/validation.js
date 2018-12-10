@@ -10,6 +10,10 @@ function isEmpty({ value }) {
   return !value
 }
 
+function isNotEmpty({ value }) {
+  return !!value
+}
+
 // Equal
 export function isEqual({ value1, value2 }) {
   return value1 === value2
@@ -35,6 +39,7 @@ export default function validate(validations = []) {
   const checks = {
     email: isEmail,
     empty: isEmpty,
+    notEmpty: isNotEmpty,
     equal: isEqual,
     length: isLength,
     lengthMin: isLengthMin,

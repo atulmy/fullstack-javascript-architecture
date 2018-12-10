@@ -7,11 +7,11 @@ import { API_URL } from '../../../../setup/config/env'
 // Actions
 
 // Signup
-export function signup({ name, email, password, passwordRetype }) {
+export function signup({ name, email, password, passwordRepeat }) {
   return dispatch => {
     return axios.post(API_URL, {
       operation: 'userSignup',
-      params: { name, email, password, passwordRetype }
+      params: { name, email, password, passwordRepeat }
     })
   }
 }

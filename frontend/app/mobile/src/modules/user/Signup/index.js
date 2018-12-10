@@ -30,17 +30,17 @@ class Signup extends PureComponent {
     name: '',
     email: '',
     password: '',
-    passwordRetype: ''
+    passwordRepeat: ''
   }
 
   onSubmit = async () => {
     const { signup, setUser, messageShow } = this.props
-    const { name, email, password, passwordRetype } = this.state
+    const { name, email, password, passwordRepeat } = this.state
 
     this.isSubmittingToggle(true)
 
     try {
-      const { data } = await signup({ name, email, password, passwordRetype })
+      const { data } = await signup({ name, email, password, passwordRepeat })
 
       this.isSubmittingToggle(false)
 
@@ -75,7 +75,7 @@ class Signup extends PureComponent {
   }
 
   render() {
-    const { isSubmitting, name, email, password, passwordRetype } = this.state
+    const { isSubmitting, name, email, password, passwordRepeat } = this.state
 
     return (
       <Body fullscreen={true}>
@@ -136,12 +136,12 @@ class Signup extends PureComponent {
                 {/* Retype password */}
                 <InputText
                   inputRef={input => this.inputPasswordRetype = input}
-                  placeholder={translate.t('user.fields.passwordRetype').toUpperCase()}
+                  placeholder={translate.t('user.fields.passwordRepeat').toUpperCase()}
                   secureTextEntry={true}
                   autoCapitalize={'none'}
                   returnKeyType={'next'}
-                  value={passwordRetype}
-                  onChangeText={passwordRetype => this.setState({ passwordRetype })}
+                  value={passwordRepeat}
+                  onChangeText={passwordRepeat => this.setState({ passwordRepeat })}
                   blurOnSubmit={false}
                   onSubmitEditing={this.onSubmit}
                 />

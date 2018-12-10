@@ -7,8 +7,8 @@
       "emailPlaceholder": "Enter your email",
       "password": "Password",
       "passwordPlaceholder": "Enter your password",
-      "passwordRetype": "Retype Password",
-      "passwordRetypePlaceholder": "Retype your password"
+      "passwordRepeat": "Retype Password",
+      "passwordRepeatPlaceholder": "Retype your password"
     },
 
     "start": {
