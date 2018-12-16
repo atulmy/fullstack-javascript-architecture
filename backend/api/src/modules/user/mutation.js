@@ -31,7 +31,7 @@ export async function userSignup({ params: { name, email, password, passwordRepe
     {
       data: { value: password, length: params.user.rules.passwordMinLength },
       check: 'lengthMin',
-      message: translate.t('user.messages.fields.passwordMinLength', { length: params.user.rules.nameMinLength })
+      message: translate.t('user.messages.fields.passwordMinLength', { length: params.user.rules.passwordMinLength })
     },
     {
       data: { value1: password, value2: passwordRepeat },
