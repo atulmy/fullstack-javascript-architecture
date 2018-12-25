@@ -120,7 +120,7 @@ A typical product (SaaS, etc.) usually consists of following services:
     - Android Studio (for Android) (latest)
     - Follow [React Native Guide](https://facebook.github.io/react-native/docs/getting-started) to setup your local machine
 
-- Clone repo `git clone git@github.com:atulmy/fullstack-javascript-architecture.git fullstack`
+- Clone repository `git clone git@github.com:atulmy/fullstack-javascript-architecture.git fullstack`
 
 - **API**
     - Info
@@ -142,7 +142,7 @@ A typical product (SaaS, etc.) usually consists of following services:
             - `API_URL` (`http://localhost:8000`)
             - `EMAIL_ON` (`0` | `1` (in development, you can toggle to send emails or not))
             - `EMAIL_TEST` (send test emails to this address)
-            - `EMAIL_HOST`, `EMAIL_USER`, `EMAIL_PASSWORD` (use any email servive, eg. [mailgun.com](https://www.mailgun.com/) and get info to start sending emails
+            - `EMAIL_HOST`, `EMAIL_USER`, `EMAIL_PASSWORD` (use any email service, eg. [mailgun.com](https://www.mailgun.com/) and get credentials to start sending emails
     - Setup
         - Install packages and seed database `npm run setup`
     - Run
@@ -185,14 +185,19 @@ A typical product (SaaS, etc.) usually consists of following services:
 - **Deployment**
     - Deploy code
         1. Login to the server (SSH)
-        2. Switch to `deployment` directory `cd deployment`
-        3. Pull latest code `git pull`
-        4. Build containers `docker-compose up --build -d`
+        2. Create a new directory on server: `mkdir /var/www/fullstack` and switch to the directory `cd /var/www/fullstack`
+        3. Clone repository `git clone git@github.com:atulmy/fullstack-javascript-architecture.git .`
+        4. Switch to `deployment` directory `cd deployment`
+        5. Build containers `docker-compose up --build -d`
             - `up` = Builds, (re)creates, starts, and attaches to containers for a service.
             - `--build` = Build images before starting containers
             - `-d` = Detached mode: Run containers in the background, print new container names
     - Resources
            - [Set Up Free SSL Certificates from Let's Encrypt using Docker and Nginx](https://humankode.com/ssl/how-to-set-up-free-ssl-certificates-from-lets-encrypt-using-docker-and-nginx)
+        6. Re-deploy with following steps:
+            - Change directory `cd /var/www/fullstack`
+            - Pull latest code `git pull`
+            - Rebuild containers: `docker-compose up --build -d`
 
 - **Mobile**
     - Switch to `mobile` directory `cd frontend/app/mobile`
