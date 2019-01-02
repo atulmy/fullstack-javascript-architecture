@@ -51,7 +51,7 @@ export async function userLogin({ params: { email, password }, translate }) {
     throw new Error(translate.t('common.messages.error.server'))
   }
 
-  throw new Error(translate.t('user.login.error.wrongCredentials'))
+  throw new Error(translate.t('user.login.messages.error.wrongCredentials'))
 }
 
 // Get all (Admin)
