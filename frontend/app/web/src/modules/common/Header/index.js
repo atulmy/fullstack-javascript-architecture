@@ -64,20 +64,14 @@ class Header extends Component {
             {
               isAuthenticated
                 ? <>
-                    <Link to={routes.userProfile.path}>
-                      <Button color="inherit" style={this.isActiveRoute(routes.userProfile.path)}>Profile</Button>
-                    </Link>
+                    <Button component={Link} to={routes.userProfile.path} color="inherit" style={this.isActiveRoute(routes.userProfile.path)}>Profile</Button>
 
                     <Button color="inherit" onClick={this.onClickLogout}>Logout</Button>
                   </>
                 : <>
-                    <Link to={routes.userLogin.path}>
-                      <Button color="inherit" style={this.isActiveRoute(routes.userLogin.path)}>Login</Button>
-                    </Link>
+                    <Button component={Link} to={routes.userLogin.path} color="inherit" style={this.isActiveRoute(routes.userLogin.path)}>Login</Button>
 
-                    <Link to={routes.userSignup.path}>
-                      <Button color="inherit" style={this.isActiveRoute(routes.userSignup.path)}>Signup</Button>
-                    </Link>
+                    <Button component={Link} to={routes.userSignup.path} color="inherit" style={this.isActiveRoute(routes.userSignup.path)}>Signup</Button>
                   </>
             }
           </Toolbar>
@@ -90,22 +84,14 @@ class Header extends Component {
               {
                 details.role === params.user.roles.admin.key
                   ? <>
-                      <Link to={routes.adminDashboard.path}>
-                        <Button color="inherit" style={this.isActiveRoute(routes.adminDashboard.path, 'secondary')}>Dashboard</Button>
-                      </Link>
+                      <Button component={Link} to={routes.adminDashboard.path}  color="inherit" style={this.isActiveRoute(routes.adminDashboard.path, 'secondary')}>Dashboard</Button>
 
-                      <Link to={routes.adminUserList.path}>
-                        <Button color="inherit" style={this.isActiveRoute(routes.adminUserList.path, 'secondary')}>Users</Button>
-                      </Link>
+                      <Button component={Link} to={routes.adminUserList.path}  color="inherit" style={this.isActiveRoute(routes.adminUserList.path, 'secondary')}>Users</Button>
                     </>
                   : <>
-                      <Link to={routes.userDashboard.path}>
-                        <Button color="inherit" style={this.isActiveRoute(routes.userDashboard.path, 'secondary')}>Dashboard</Button>
-                      </Link>
+                      <Button component={Link} to={routes.userDashboard.path}  color="inherit" style={this.isActiveRoute(routes.userDashboard.path, 'secondary')}>Dashboard</Button>
 
-                      <Link to={routes.noteList.path}>
-                        <Button color="inherit" style={this.isActiveRoute(routes.noteList.path, 'secondary')}>Notes</Button>
-                      </Link>
+                      <Button component={Link} to={routes.noteList.path}  color="inherit" style={this.isActiveRoute(routes.noteList.path, 'secondary')}>Notes</Button>
                     </>
               }
             </Toolbar>

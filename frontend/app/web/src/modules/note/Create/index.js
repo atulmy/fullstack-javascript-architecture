@@ -37,7 +37,7 @@ class Create extends PureComponent {
     }
   }
 
-  login = async event => {
+  save = async event => {
     event.preventDefault()
 
     const { create, messageShow, history } = this.props
@@ -95,7 +95,7 @@ class Create extends PureComponent {
 
         <Section>
           <Paper className={classes.container}>
-            <form onSubmit={this.login}>
+            <form onSubmit={this.save}>
               {/* Input - email */}
               <Grid item xs={12}>
                 <TextField
