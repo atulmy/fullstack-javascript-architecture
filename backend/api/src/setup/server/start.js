@@ -24,8 +24,6 @@ export default function (server) {
 
   // Stop Server
   for(let signal of ['SIGINT', 'SIGTERM']) {
-    console.log(signal)
-
     process.on(signal, function () {
       console.info('INFO - Shutting down server..')
 
