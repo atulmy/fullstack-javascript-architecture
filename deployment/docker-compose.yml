@@ -31,8 +31,8 @@ services:
       - ../backend/proxy/nginx.conf:/etc/nginx/conf.d/proxy.conf
     restart: always
     ports:
-      - 80:80
-      - 443:443
+      - "80:80"
+      - "443:443"
     depends_on:
       - database
       - api
