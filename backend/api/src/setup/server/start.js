@@ -11,7 +11,7 @@ export default function (server) {
   console.info('SETUP - Starting server..')
 
   // Start Server
-  server.listen(PORT, (error) => {
+  const serverProcess = server.listen(PORT, (error) => {
     if (error) {
       console.error('ERROR - Unable to start server.')
     } else {
