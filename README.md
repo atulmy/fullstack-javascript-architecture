@@ -43,6 +43,7 @@ A typical product (SaaS, etc.) usually consists of following services:
       │   │
       │   └── proxy
       │       > NGINX
+      │       > PORT 80 / 443
       │
       ├── deployment
       │   > Docker Compose
@@ -73,38 +74,32 @@ A typical product (SaaS, etc.) usually consists of following services:
 
 ### Backend
 - API
-    - Technologies
-        - NodeJS
-        - Express
+    - NodeJS
+    - Express
 - Database
-    - Technologies
-        - MongoDB
+    - MongoDB
 - Proxy
-    - Technologies
-        - NGINX
+    - NGINX
 
 ### Frontend
 - Landing
-    - Technologies
-        - NodeJS
-        - Express
-        - React
-        - React Router
-        - Server Side Rendering
-        - Material UI
+    - NodeJS
+    - Express
+    - React
+    - React Router
+    - Server Side Rendering
+    - Material UI
 
 - Web
-    - Technologies
-        - React
-        - Redux
-        - React Router
-        - Material UI
+    - React
+    - Redux
+    - React Router
+    - Material UI
         
 - Mobile (iOS, Android)
-    - Technologies
-        - React Native
-        - Redux
-        - React Navigation
+    - React Native
+    - Redux
+    - React Navigation
 
 ### Deployment
 - Technologies
@@ -155,7 +150,7 @@ A typical product (SaaS, etc.) usually consists of following services:
         - Modify `.env` for
             - `PORT` (`3000`)
             - `NODE_ENV` (`development` | `production`)
-            - `LANDING_URL1 (`http://localhost:3000`)
+            - `LANDING_URL` (`http://localhost:3000`)
             - `WEB_URL` (`http://localhost:5000`)
             - `API_URL` (`http://localhost:8000`)
             - `CONTACT_PHONE`, `CONTACT_EMAIL`, `CONTACT_ADDRESS` (your contact information)
@@ -277,6 +272,13 @@ View all screenshots [here](https://github.com/atulmy/atulmy.github.io/tree/mast
 ## Authors
 - Atul Yadav - [GitHub](https://github.com/atulmy) · [Twitter](https://twitter.com/atulmy)
 - [YOUR NAME HERE] - Feel free to contribute to the codebase by resolving any open issues, refactoring, adding new features, writing test cases or any other way to make the project better and helpful to the community. Feel free to fork and send pull requests.
+
+
+## Resources and Inspirations
+- 💁‍♂️ Hand picked collection of packages, tutorials and more for React Native - [GitHub](https://github.com/atulmy/react-native-curated)
+- 🌱 Lightweight (remote procedure call) API pattern - [GitHub](https://github.com/atulmy/wispy)
+- 🌐 Universal react application with server side rendering - [GitHub](https://github.com/atulmy/universal-react)
+- 📦 A sample web and mobile application built with Node, Express, React, React Native and Redux - [GitHub](https://github.com/atulmy/crate)
 
 
 ## Hire me
