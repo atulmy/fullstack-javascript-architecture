@@ -285,6 +285,13 @@ View all screenshots [here](https://github.com/atulmy/atulmy.github.io/tree/mast
 Looking for a developer to build your next idea or need a developer to work remotely? Get in touch: [atul.12788@gmail.com](mailto:atul.12788@gmail.com)
 
 
+## Donate
+If you liked this project, you can donate to support it ❤️
+
+[![Donate via PayPal](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/mix/paypal-me-small.png)](http://paypal.me/atulmy)
+
+
+
 ## License
 Copyright (c) 2018 Atul Yadav http://github.com/atulmy
 
