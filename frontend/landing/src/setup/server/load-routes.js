@@ -8,7 +8,7 @@ import { Helmet } from 'react-helmet'
 // UI Imports
 import { createGenerateClassName } from '@material-ui/core/styles'
 import { SheetsRegistry } from 'jss'
-import JssProvider from 'react-jss'
+import { JssProvider } from 'react-jss'
 
 // App Imports
 import { LANDING_URL, NODE_ENV, GA_TRACKING_ID } from '../config/env'
