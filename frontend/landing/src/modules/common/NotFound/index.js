@@ -16,11 +16,11 @@ import Section from '../Section'
 // Component
 const NotFound = (props) => (
   <Section>
-    <Typography variant={'headline'} gutterBottom>
+    <Typography variant={'h5'} gutterBottom>
       Its a 404
     </Typography>
 
-    <Typography variant={'subheading'} gutterBottom>
+    <Typography variant={'subtitle1'} gutterBottom>
       The page you are looking for does not exists or has been removed.
     </Typography>
 

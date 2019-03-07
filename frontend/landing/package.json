@@ -28,25 +28,25 @@
     "ip": "1.1.5",
     "jss": "9.8.7",
     "prop-types": "15.7.2",
-    "react": "16.8.2",
-    "react-dom": "16.8.2",
+    "react": "16.8.4",
+    "react-dom": "16.8.4",
     "react-helmet": "5.2.0",
     "react-jss": "10.0.0-alpha.6",
     "react-router-dom": "4.3.1"
   },
   "devDependencies": {
     "@babel/cli": "7.2.3",
-    "@babel/core": "7.3.3",
+    "@babel/core": "7.3.4",
     "@babel/node": "7.2.2",
-    "@babel/plugin-proposal-class-properties": "7.3.3",
-    "@babel/plugin-transform-runtime": "7.2.0",
-    "@babel/preset-env": "7.3.1",
+    "@babel/plugin-proposal-class-properties": "7.3.4",
+    "@babel/plugin-transform-runtime": "7.3.4",
+    "@babel/preset-env": "7.3.4",
     "@babel/preset-react": "7.0.0",
-    "@babel/runtime": "7.3.1",
+    "@babel/runtime": "7.3.4",
     "babel-loader": "8.0.5",
     "dotenv-webpack": "1.7.0",
     "nodemon": "1.18.10",
-    "webpack": "4.29.4",
+    "webpack": "4.29.6",
     "webpack-cli": "3.2.3"
   }
 }
