@@ -3,7 +3,8 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { View, AsyncStorage, Linking } from 'react-native'
+import { View, Linking } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
 import RNLanguages from 'react-native-languages'
 
 // UI Imports

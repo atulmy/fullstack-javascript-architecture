@@ -1,6 +1,6 @@
 // Imports
 import axios from 'axios'
-import { AsyncStorage } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
 
 // App Imports
 import { API_URL } from '../../../../setup/config/env'

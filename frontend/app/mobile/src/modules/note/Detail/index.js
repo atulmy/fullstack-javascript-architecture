@@ -2,7 +2,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { View, ScrollView, RefreshControl, AsyncStorage } from 'react-native'
+import { View, ScrollView, RefreshControl } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
 import format from 'date-fns/format'
 
 // UI Imports
