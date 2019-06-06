@@ -1,6 +1,5 @@
 // Imports
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -33,42 +32,42 @@ class Signup extends PureComponent {
     passwordRepeat: ''
   }
 
-  onSubmit = async () => {
-    const { signup, setUser, messageShow } = this.props
+  #onSubmit = async () => {
+    const { dispatch } = this.props
     const { name, email, password, passwordRepeat } = this.state
 
-    this.isSubmittingToggle(true)
+    this.#isSubmittingToggle(true)
 
     try {
-      const { data } = await signup({ name, email, password, passwordRepeat })
+      const { data } = await dispatch(signup({ name, email, password, passwordRepeat }))
 
-      this.isSubmittingToggle(false)
+      this.#isSubmittingToggle(false)
 
-      messageShow({ success: data.success, message: data.message })
+      dispatch(messageShow({ success: data.success, message: data.message }))
 
       if(data.success) {
-        setUser(data.data.token, data.data.user)
+        dispatch(setUser(data.data.token, data.data.user))
 
-        this.navigateTo(routeNames.postLoginStack)
+        this.#navigateTo(routeNames.postLoginStack)
       }
     } catch(error) {
-      this.isSubmittingToggle(false)
+      this.#isSubmittingToggle(false)
 
-      messageShow({ success: false, message: translate.t('common.error.default') })
+      dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
     }
   }
 
-  isSubmittingToggle = isSubmitting => {
+  #isSubmittingToggle = isSubmitting => {
     this.setState({
       isSubmitting
     })
   }
 
-  onPressLogin = () => {
-    this.navigateTo(routesPreLogin.login.name)
+  #onPressLogin = () => {
+    this.#navigateTo(routesPreLogin.login.name)
   }
 
-  navigateTo = (screen) => {
+  #navigateTo = (screen) => {
     const { navigation } = this.props
 
     navigation.navigate(screen)
@@ -143,13 +142,13 @@ class Signup extends PureComponent {
                   value={passwordRepeat}
                   onChangeText={passwordRepeat => this.setState({ passwordRepeat })}
                   blurOnSubmit={false}
-                  onSubmitEditing={this.onSubmit}
+                  onSubmitEditing={this.#onSubmit}
                 />
               </View>
 
               {/* Submit */}
               <Button
-                onPress={this.onSubmit}
+                onPress={this.#onSubmit}
                 title={ translate.t('common.button.submit').toUpperCase() }
                 theme={'primary'}
                 disabled={isSubmitting}
@@ -160,7 +159,7 @@ class Signup extends PureComponent {
             <View style={styles.bottomCta}>
               <Button
                 title={ translate.t('user.signup.button.login').toUpperCase() }
-                onPress={this.onPressLogin}
+                onPress={this.#onPressLogin}
               />
             </View>
           </View>
@@ -170,11 +169,4 @@ class Signup extends PureComponent {
   }
 }
 
-// Component Properties
-Signup.propTypes = {
-  signup: PropTypes.func.isRequired,
-  setUser: PropTypes.func.isRequired,
-  messageShow: PropTypes.func.isRequired
-}
-
-export default connect(null, { signup, setUser, messageShow })(Signup)
+export default connect()(Signup)

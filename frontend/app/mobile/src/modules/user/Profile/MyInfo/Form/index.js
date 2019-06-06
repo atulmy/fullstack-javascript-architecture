@@ -29,32 +29,32 @@ class Form extends PureComponent {
     }
   }
 
-  onSubmit = async () => {
-    const { profileUpdate, setUser, messageShow } = this.props
+  #onSubmit = async () => {
+    const { dispatch } = this.props
     const { name } = this.state
 
-    this.isSubmittingToggle(true)
+    this.#isSubmittingToggle(true)
 
     try {
-      const { data } = await profileUpdate({ name })
+      const { data } = await dispatch(profileUpdate({ name }))
 
-      this.isSubmittingToggle(false)
+      this.#isSubmittingToggle(false)
 
-      messageShow({ success: data.success, message: data.message })
+      dispatch(messageShow({ success: data.success, message: data.message }))
 
       if(data.success) {
-        setUser(data.data.token, data.data.user)
+        dispatch(setUser(data.data.token, data.data.user))
       } else {
-        messageShow({ success: data.success, message: data.message })
+        dispatch(messageShow({ success: data.success, message: data.message }))
       }
     } catch(error) {
-      this.isSubmittingToggle(false)
+      this.#isSubmittingToggle(false)
 
-      messageShow({ success: false, message: translate.t('common.error.default') })
+      dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
     }
   }
 
-  isSubmittingToggle = isSubmitting => {
+  #isSubmittingToggle = isSubmitting => {
     this.setState({
       isSubmitting
     })
@@ -74,7 +74,7 @@ class Form extends PureComponent {
             returnKeyType={'next'}
             autoCapitalize={'none'}
             onChangeText={name => this.setState({ name })}
-            onSubmitEditing={this.onSubmit}
+            onSubmitEditing={this.#onSubmit}
           />
         </View>
 
@@ -84,7 +84,7 @@ class Form extends PureComponent {
           <Button
             title={ translate.t('user.profile.button.submit').toUpperCase() }
             theme={'primary'}
-            onPress={this.onSubmit}
+            onPress={this.#onSubmit}
             disabled={isSubmitting}
             fullWidth
           />
@@ -96,11 +96,7 @@ class Form extends PureComponent {
 
 // Component Properties
 Form.propTypes = {
-  auth: PropTypes.object.isRequired,
-  profileUpdate: PropTypes.func.isRequired,
-  setUser: PropTypes.func.isRequired,
-  profile: PropTypes.func.isRequired,
-  messageShow: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
 }
 
 // Component State
@@ -110,4 +106,4 @@ function formState(state) {
   }
 }
 
-export default connect(formState, { profileUpdate, setUser, profile, messageShow })(Form)
+export default connect(formState)(Form)

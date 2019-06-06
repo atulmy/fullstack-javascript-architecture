@@ -22,14 +22,15 @@ import Item from '../Item'
 
 // Component
 class List extends PureComponent {
+
   componentDidMount() {
     this.#refresh()
   }
 
-  #refresh = async () => {
-    const { list } = this.props
+  #refresh = () => {
+    const { dispatch } = this.props
 
-    list()
+    dispatch(list())
   }
 
   onClickCreate = () => {
@@ -94,8 +95,7 @@ class List extends PureComponent {
 
 // Component Properties
 List.propTypes = {
-  notes: PropTypes.object.isRequired,
-  list: PropTypes.func.isRequired,
+  notes: PropTypes.object.isRequired
 }
 
 // Component State
@@ -105,4 +105,4 @@ function listState(state) {
   }
 }
 
-export default connect(listState, { list })(List)
+export default connect(listState)(List)

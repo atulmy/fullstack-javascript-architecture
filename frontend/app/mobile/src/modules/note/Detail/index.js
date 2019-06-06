@@ -1,6 +1,5 @@
 // Imports
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { View, ScrollView, RefreshControl } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
@@ -8,10 +7,11 @@ import format from 'date-fns/format'
 
 // UI Imports
 import Typography from '../../../ui/Typography'
-import { grey2, grey5 } from '../../../ui/common/colors'
+import { grey5 } from '../../../ui/common/colors'
 import styles from './styles'
 
 // App Imports
+import params from '../../../setup/config/params'
 import { routesNote } from '../../../setup/routes/postLogin/note'
 import translate from '../../../setup/translate'
 import { messageShow } from '../../common/api/actions'
@@ -22,7 +22,6 @@ import NavigationTopInner from '../../common/NavigationTopInner'
 import ActionBack from '../../common/NavigationTop/ActionBack'
 import Button from '../../../ui/button/Button'
 import Body from '../../common/Body'
-import params from '../../../setup/config/params'
 
 // Component
 class Detail extends PureComponent {
@@ -34,12 +33,12 @@ class Detail extends PureComponent {
     isDeleting: false
   }
 
-  componentDidMount() {
-    this.refresh()
+  async componentDidMount() {
+    await this.#refresh()
   }
 
-  refresh = async (isLoading = true) => {
-    const { detail, navigation, messageShow } = this.props
+  #refresh = async (isLoading = true) => {
+    const { navigation, dispatch } = this.props
 
     const noteId = navigation.getParam('noteId')
 
@@ -53,11 +52,11 @@ class Detail extends PureComponent {
           detail: note
         })
       } else {
-        this.isLoadingToggle(isLoading)
+        this.#isLoadingToggle(isLoading)
       }
 
       try {
-        const { data } = await detail({ noteId })
+        const { data } = await dispatch(detail({ noteId }))
 
         if(data.success) {
           const note = data.data
@@ -69,50 +68,49 @@ class Detail extends PureComponent {
           await AsyncStorage.setItem(CACHE_KEY, JSON.stringify(note))
         }
       } catch(error) {
-        messageShow({ success: false, message: translate.t('common.error.default') })
+        dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
       } finally {
-        this.isLoadingToggle(false)
+        this.#isLoadingToggle(false)
       }
     } else {
       navigation.navigate(routesNote.list.name)
     }
   }
 
-  isLoadingToggle = isLoading => {
+  #isLoadingToggle = isLoading => {
     this.setState({
       isLoading
     })
   }
 
-  isDeletingToggle = isDeleting => {
+  #isDeletingToggle = isDeleting => {
     this.setState({
       isDeleting
     })
   }
 
-  onDelete = async () => {
-    const { remove, list, messageShow, navigation } = this.props
+  #onDelete = async () => {
+    const { navigation, dispatch } = this.props
     const { detail: { _id } } = this.state
 
-    this.isDeletingToggle(true)
+    this.#isDeletingToggle(true)
 
     try {
-      const { data } = await remove({ noteId: _id })
+      const { data } = await dispatch(remove({ noteId: _id }))
 
-      this.isDeletingToggle(false)
+      this.#isDeletingToggle(false)
 
-      messageShow({ success: data.success, message: data.message })
+      dispatch(messageShow({ success: data.success, message: data.message }))
 
       if(data.success) {
-        list(false)
+        dispatch(list(false))
 
         navigation.navigate(routesNote.list.name)
       }
     } catch(error) {
-      console.warn(error.message)
-      this.isDeletingToggle(false)
+      this.#isDeletingToggle(false)
 
-      messageShow({ success: false, message: translate.t('common.error.default') })
+      dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
     }
   }
 
@@ -133,7 +131,7 @@ class Detail extends PureComponent {
               <Button
                 title={translate.t('common.button.delete')}
                 theme={'outlined'}
-                onPress={this.onDelete}
+                onPress={this.#onDelete}
                 disabled={isDeleting}
                 shadow={false}
                 condensed
@@ -145,7 +143,7 @@ class Detail extends PureComponent {
             refreshControl={
               <RefreshControl
                 refreshing={isLoading}
-                onRefresh={this.refresh}
+                onRefresh={this.#refresh}
                 tintColor={grey5}
               />
             }
@@ -164,12 +162,4 @@ class Detail extends PureComponent {
   }
 }
 
-// Component Properties
-Detail.propTypes = {
-  list: PropTypes.func.isRequired,
-  detail: PropTypes.func.isRequired,
-  remove: PropTypes.func.isRequired,
-  messageShow: PropTypes.func.isRequired
-}
-
-export default connect(null, { list, detail, remove, messageShow })(Detail)
+export default connect()(Detail)

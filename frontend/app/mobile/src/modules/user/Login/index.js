@@ -30,45 +30,45 @@ class Login extends PureComponent {
     password: ''
   }
 
-  onSubmit = async () => {
-    const { login, setUser, messageShow } = this.props
+  #onSubmit = async () => {
+    const { dispatch } = this.props
     const { email, password } = this.state
 
-    this.isSubmittingToggle(true)
+    this.#isSubmittingToggle(true)
 
     try {
-      const { data } = await login({ email, password })
+      const { data } = await dispatch(login({ email, password }))
 
-      this.isSubmittingToggle(false)
+      this.#isSubmittingToggle(false)
 
       if(data.success) {
-        setUser(data.data.token, data.data.user)
+        dispatch(setUser(data.data.token, data.data.user))
 
-        messageShow({ success: data.success, message: data.message })
+        dispatch(messageShow({ success: data.success, message: data.message }))
 
         // User profile is complete, redirect to post login route
-        this.navigateTo(routeNames.postLoginStack)
+        this.#navigateTo(routeNames.postLoginStack)
       } else {
-        messageShow({ success: data.success, message: data.message })
+        dispatch(messageShow({ success: data.success, message: data.message }))
       }
     } catch(error) {
-      this.isSubmittingToggle(false)
+      this.#isSubmittingToggle(false)
 
-      messageShow({ success: false, message: translate.t('common.error.default') })
+      dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
     }
   }
 
-  isSubmittingToggle = isSubmitting => {
+  #isSubmittingToggle = isSubmitting => {
     this.setState({
       isSubmitting
     })
   }
 
-  onPressSignup = () => {
-    this.navigateTo(routesPreLogin.signup.name)
+  #onPressSignup = () => {
+    this.#navigateTo(routesPreLogin.signup.name)
   }
 
-  navigateTo = (screen) => {
+  #navigateTo = (screen) => {
     const { navigation } = this.props
 
     navigation.navigate(screen)
@@ -114,13 +114,13 @@ class Login extends PureComponent {
                   value={password}
                   onChangeText={password => this.setState({ password })}
                   blurOnSubmit={false}
-                  onSubmitEditing={this.onSubmit}
+                  onSubmitEditing={this.#onSubmit}
                 />
               </View>
 
               {/* Submit */}
               <Button
-                onPress={this.onSubmit}
+                onPress={this.#onSubmit}
                 title={ translate.t('common.button.submit').toUpperCase() }
                 theme={'primary'}
                 disabled={isSubmitting}
@@ -129,7 +129,7 @@ class Login extends PureComponent {
 
             {/* Bottom CTA */}
             <View style={styles.bottomCta}>
-              <Button title={ translate.t('user.login.button.signup').toUpperCase() } onPress={this.onPressSignup} />
+              <Button title={ translate.t('user.login.button.signup').toUpperCase() } onPress={this.#onPressSignup} />
             </View>
           </View>
         </KeyboardAwareScrollView>
@@ -138,11 +138,4 @@ class Login extends PureComponent {
   }
 }
 
-// Component Properties
-Login.propTypes = {
-  login: PropTypes.func.isRequired,
-  setUser: PropTypes.func.isRequired,
-  messageShow: PropTypes.func.isRequired
-}
-
-export default connect(null, { login, setUser, messageShow })(Login)
+export default connect()(Login)

@@ -38,32 +38,32 @@ class Create extends PureComponent {
     }
   }
 
-  onSubmit = async () => {
-    const { create, list, messageShow, navigation } = this.props
+  #onSubmit = async () => {
+    const { navigation, dispatch } = this.props
     const { _id, note } = this.state
 
-    this.isSubmittingToggle(true)
+    this.#isSubmittingToggle(true)
 
     try {
-      const { data } = await create({ _id, note })
+      const { data } = await dispatch(create({ _id, note }))
 
-      this.isSubmittingToggle(false)
+      this.#isSubmittingToggle(false)
 
-      messageShow({ success: data.success, message: data.message })
+      dispatch(messageShow({ success: data.success, message: data.message }))
 
       if(data.success) {
-        list(false)
+        dispatch(list(false))
 
         navigation.navigate(routesNote.list.name)
       }
     } catch(error) {
-      this.isSubmittingToggle(false)
+      this.#isSubmittingToggle(false)
 
-      messageShow({ success: false, message: translate.t('common.error.default') })
+      dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
     }
   }
 
-  isSubmittingToggle = isSubmitting => {
+  #isSubmittingToggle = isSubmitting => {
     this.setState({
       isSubmitting
     })
@@ -85,7 +85,7 @@ class Create extends PureComponent {
             <Button
               title={translate.t('common.button.save')}
               theme={'outlined'}
-              onPress={this.onSubmit}
+              onPress={this.#onSubmit}
               disabled={isSubmitting}
               shadow={false}
               condensed
@@ -114,7 +114,7 @@ class Create extends PureComponent {
               <Button
                 title={ translate.t('common.button.save').toUpperCase() }
                 theme={'primary'}
-                onPress={this.onSubmit}
+                onPress={this.#onSubmit}
                 disabled={isSubmitting}
                 fullWidth
               />
@@ -128,11 +128,7 @@ class Create extends PureComponent {
 
 // Component Properties
 Create.propTypes = {
-  auth: PropTypes.object.isRequired,
-  create: PropTypes.func.isRequired,
-  remove: PropTypes.func.isRequired,
-  list: PropTypes.func.isRequired,
-  messageShow: PropTypes.func.isRequired
+  auth: PropTypes.object.isRequired
 }
 
 // Component State
@@ -142,4 +138,4 @@ function createState(state) {
   }
 }
 
-export default connect(createState, { create, remove, list, messageShow })(Create)
+export default connect(createState)(Create)

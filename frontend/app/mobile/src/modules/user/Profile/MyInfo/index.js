@@ -25,38 +25,39 @@ import Form from './Form'
 
 // Component
 class MyInfo extends PureComponent {
+
   state = {
     isUploading: false
   }
 
-  selectImage = () => {
-    const { messageShow } = this.props
+  #selectImage = () => {
+    const { dispatch } = this.props
 
-    this.isUploadingToggle(true)
+    this.#isUploadingToggle(true)
 
     ImagePicker.launchImageLibrary({
       title: translate.t('user.avatar'),
       noData: true,
       allowsEditing: true,
       mediaType: 'photo'
-    }, (response) => {
+    }, async response => {
       if (response.didCancel) {
-        this.isUploadingToggle(false)
+        this.#isUploadingToggle(false)
 
       } else if (response.error) {
-        this.isUploadingToggle(false)
+        this.#isUploadingToggle(false)
 
         // Error selecting image
-        messageShow({ success: false, message: translate.t('common.error.default') })
+        dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
       } else {
         // Image selection successful
-        this.uploadImage(response)
+        await this.#uploadImage(response)
       }
     })
   }
 
-  uploadImage = async (response) => {
-    const { upload, messageShow } = this.props
+  #uploadImage = async (response) => {
+    const { dispatch } = this.props
 
     const form = new FormData()
     form.append('type', 'user')
@@ -68,37 +69,37 @@ class MyInfo extends PureComponent {
     })
 
     try {
-      const { data: { success, file } } = await upload(form)
+      const { data: { success, file } } = await dispatch(upload(form))
 
       if(success && file) {
-        await this.updateImage(file)
+        await this.#updateImage(file)
       }
     } catch(error) {
-      messageShow({ success: false, message: translate.t('common.error.default') })
+      dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
     } finally {
-      this.isUploadingToggle(false)
+      this.#isUploadingToggle(false)
     }
   }
 
-  updateImage = async (file) => {
-    const { setUser, changeImage, messageShow } = this.props
+  #updateImage = async (file) => {
+    const { dispatch } = this.props
 
     try {
-      const { data } = await changeImage({ image : file })
+      const { data } = await dispatch(changeImage({ image : file }))
 
       if(data.success) {
-        messageShow({ success: true, message: data.message })
+        dispatch(messageShow({ success: true, message: data.message }))
 
-        setUser(data.data.token, data.data.user)
+        dispatch(setUser(data.data.token, data.data.user))
       } else {
-        messageShow({ success: false, message: translate.t('common.error.default') })
+        dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
       }
     } catch (error) {
-      messageShow({ success: false, message: translate.t('common.error.default') })
+      dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
     }
   }
 
-  isUploadingToggle = isUploading => {
+  #isUploadingToggle = isUploading => {
     this.setState({
       isUploading
     })
@@ -122,7 +123,7 @@ class MyInfo extends PureComponent {
             <View style={{ position: 'absolute', bottom: 0, right: 0, alignItems: 'center' }}>
               <Fab
                 icon={'photo-camera'}
-                onPress={this.selectImage}
+                onPress={this.#selectImage}
                 disabled={isUploading}
               />
             </View>
@@ -146,11 +147,7 @@ class MyInfo extends PureComponent {
 
 // Component Properties
 MyInfo.propTypes = {
-  auth: PropTypes.object.isRequired,
-  changeImage: PropTypes.func.isRequired,
-  setUser: PropTypes.func.isRequired,
-  upload: PropTypes.func.isRequired,
-  messageShow: PropTypes.func.isRequired
+  auth: PropTypes.object.isRequired
 }
 
 // Component State
@@ -160,4 +157,4 @@ function myInfoState(state) {
   }
 }
 
-export default connect(myInfoState, { changeImage, setUser, upload, playerList, messageShow })(withNavigation(MyInfo))
+export default connect(myInfoState)(withNavigation(MyInfo))
