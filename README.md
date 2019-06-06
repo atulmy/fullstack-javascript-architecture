@@ -203,6 +203,7 @@ A typical product (SaaS, etc.) usually consists of following services:
             - `WEB_URL` (`http://<your local network IP>:5000`)
             - `API_URL` (`http://<your local network IP>:8000`)
             - Tip: use `ifconfig` on macOS or Linux to get your local IP address
+            - Add your local IP address in: `frontend/app/mobile/android/app/src/debug/res/xml/react_native_config.xml` for Cleartext Traffic (API level 28+). Read more [here](https://facebook.github.io/react-native/docs/integration-with-existing-apps#network-security-config-api-level-28).
     - Setup
         - Install dependencies: `npm install`
     - Run

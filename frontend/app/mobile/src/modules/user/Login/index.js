@@ -1,6 +1,5 @@
 // Imports
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -26,8 +25,8 @@ class Login extends PureComponent {
   state = {
     isSubmitting: false,
 
-    email: '',
-    password: ''
+    email: 'user@example.com',
+    password: '123456'
   }
 
   #onSubmit = async () => {
@@ -53,6 +52,8 @@ class Login extends PureComponent {
       }
     } catch(error) {
       this.#isSubmittingToggle(false)
+
+      console.warn(error.message)
 
       dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
     }

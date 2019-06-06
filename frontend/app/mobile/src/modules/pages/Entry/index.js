@@ -8,7 +8,6 @@ import AsyncStorage from '@react-native-community/async-storage'
 import RNLanguages from 'react-native-languages'
 
 // UI Imports
-import { white } from '../../../ui/common/colors'
 import styles from './styles'
 
 // App Imports
@@ -20,22 +19,19 @@ import Loading from '../../common/Loading'
 
 // Component
 class Entry extends PureComponent {
-  componentDidMount() {
-    this.setLanguage()
 
-    this.checkLogin()
+  async componentDidMount() {
+    this.#setLanguage()
+
+    await this.#checkLogin()
   }
 
-  componentWillUnmount() {
-    Linking.removeEventListener('url', this.handleOpenURL)
-  }
-
-  setLanguage = async () => {
+  #setLanguage = () => {
     axios.defaults.headers.common['Language'] = RNLanguages.language
   }
 
-  checkLogin = async () => {
-    const { setUser, navigation, logout } = this.props
+  #checkLogin = async () => {
+    const { navigation, dispatch } = this.props
 
     try {
       const token = await AsyncStorage.getItem('token')
@@ -44,24 +40,24 @@ class Entry extends PureComponent {
         const user = JSON.parse(await AsyncStorage.getItem('user'))
 
         if (user) {
-          setUser(token, user)
+          dispatch(setUser(token, user))
 
           navigation.navigate(routeNames.postLoginStack)
         } else {
-          this.showLogin()
+          this.#showLogin()
         }
       } else {
-        this.showLogin()
+        this.#showLogin()
       }
     } catch (e) {
-      this.showLogin()
+      this.#showLogin()
     }
   }
 
-  showLogin = () => {
-    const { navigation, logout } = this.props
+  #showLogin = () => {
+    const { navigation, dispatch } = this.props
 
-    logout()
+    dispatch(logout())
 
     navigation.navigate(routeNames.preLoginStack)
   }
@@ -80,8 +76,6 @@ class Entry extends PureComponent {
 // Component Properties
 Entry.propTypes = {
   auth: PropTypes.object.isRequired,
-  setUser: PropTypes.func.isRequired,
-  logout: PropTypes.func.isRequired,
 }
 
 // Component State
@@ -91,4 +85,4 @@ function entryState(state) {
   }
 }
 
-export default connect(entryState, { setUser, logout })(Entry)
+export default connect(entryState)(Entry)
