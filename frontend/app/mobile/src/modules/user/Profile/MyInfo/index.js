@@ -150,7 +150,6 @@ MyInfo.propTypes = {
   changeImage: PropTypes.func.isRequired,
   setUser: PropTypes.func.isRequired,
   upload: PropTypes.func.isRequired,
-  playerList: PropTypes.func.isRequired,
   messageShow: PropTypes.func.isRequired
 }
 

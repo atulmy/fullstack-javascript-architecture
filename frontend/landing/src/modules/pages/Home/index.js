@@ -32,7 +32,7 @@ class Home extends PureComponent {
           </Typography>
 
           <div className={classes.heroButtons}>
-            <Grid container spacing={16} justify="center">
+            <Grid container spacing={1} justify="center">
               <Grid item>
                 <a href={ params.site.url.store.ios } target="_blank" rel="noopener noreferrer">
                   <Button variant="contained" color="primary">

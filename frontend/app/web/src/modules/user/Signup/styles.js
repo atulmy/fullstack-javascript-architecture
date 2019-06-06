@@ -2,12 +2,12 @@
 const styles = theme => ({
   root: {
     marginTop: '10%',
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3
+    marginLeft: theme.spacing(3),
+    marginRight: theme.spacing(3)
   },
 
   container: {
-    padding: theme.spacing.unit * 2,
+    padding: theme.spacing(2),
     maxWidth: 400,
     margin: '0 auto',
     backgroundColor: 'white'
@@ -15,11 +15,11 @@ const styles = theme => ({
 
   buttonsContainer: {
     textAlign: 'right',
-    marginTop: theme.spacing.unit
+    marginTop: theme.spacing()
   },
 
   heading: {
-    marginBottom: theme.spacing.unit,
+    marginBottom: theme.spacing(),
     textAlign: 'center'
   }
 })

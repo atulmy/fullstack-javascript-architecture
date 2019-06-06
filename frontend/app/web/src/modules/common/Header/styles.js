@@ -1,6 +1,6 @@
 // Component Styles
 const styles = {
-  root: {
+  header: {
     flexGrow: 1,
   },
   flex: {

@@ -40,7 +40,7 @@ const view = (env = { NODE_ENV: '', LANDING_URL: '', GA_TRACKING_ID: '' }, param
     }
   </style>
   <!-- CSS - Generated -->
-  <style type="text/css">${ app.css }</style>
+  <style type="text/css" id="jss-server-side">${ app.css }</style>
 </head>
 <body>  
   <!-- App -->

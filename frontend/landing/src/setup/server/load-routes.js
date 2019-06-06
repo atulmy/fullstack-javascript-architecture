@@ -1,20 +1,18 @@
 // Imports
-import { Server } from 'http'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter, matchPath } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
 // UI Imports
-import { createGenerateClassName } from '@material-ui/core/styles'
-import { SheetsRegistry } from 'jss'
-import { JssProvider } from 'react-jss'
+import { ServerStyleSheets, ThemeProvider } from '@material-ui/styles'
 
 // App Imports
 import { LANDING_URL, NODE_ENV, GA_TRACKING_ID } from '../config/env'
 import params from '../config/params'
 import routes from '../routes'
 import App from '../client/App'
+import theme from '../client/theme'
 import view from './view'
 
 export default function (app) {
@@ -43,19 +41,19 @@ export default function (app) {
       status = 404
     }
 
-    const sheetsRegistry = new SheetsRegistry()
-    const generateClassName = createGenerateClassName()
+    const sheets = new ServerStyleSheets()
 
     const html = renderToString(
-      <StaticRouter context={{}} location={request.url}>
-        <JssProvider registry={sheetsRegistry} generateClassName={generateClassName}>
-          <App/>
-        </JssProvider>
-      </StaticRouter>
+      sheets.collect(
+        <StaticRouter context={{}} location={request.url}>
+          <ThemeProvider theme={theme}>
+            <App/>
+          </ThemeProvider>
+        </StaticRouter>
+      )
     )
 
-    // Get styles
-    const css = sheetsRegistry.toString()
+    const css = sheets.toString()
 
     // Get Meta header tags
     const meta = Helmet.renderStatic()
