@@ -25,8 +25,8 @@ class Login extends PureComponent {
   state = {
     isSubmitting: false,
 
-    email: 'user@example.com',
-    password: '123456'
+    email: '',
+    password: ''
   }
 
   #onSubmit = async () => {
@@ -52,8 +52,6 @@ class Login extends PureComponent {
       }
     } catch(error) {
       this.#isSubmittingToggle(false)
-
-      console.warn(error.message)
 
       dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
     }
