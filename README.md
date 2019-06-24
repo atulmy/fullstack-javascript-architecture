@@ -271,9 +271,10 @@ View all screenshots [here](https://github.com/atulmy/atulmy.github.io/tree/mast
 ## Resources and Inspirations
 - 💁‍♂️ Hand picked collection of packages, tutorials and more for React Native - [GitHub](https://github.com/atulmy/react-native-curated)
 - 🌱 Lightweight (remote procedure call) API pattern - [GitHub](https://github.com/atulmy/wispy)
+- 🛡 A simple validation library for server and client side applications - [GitHub](https://github.com/atulmy/fullstack-validator) &bull; [NPM](https://www.npmjs.com/package/fullstack-validator)
 - 🌐 Universal react application with server side rendering - [GitHub](https://github.com/atulmy/universal-react)
 - 📦 A sample web and mobile application built with Node, Express, React, React Native and Redux - [GitHub](https://github.com/atulmy/crate)
-- Start learning by looking at sample codes: [#LearnByExamples](https://github.com/topics/learn-by-examples)
+- Start learning by looking at sample codes on GitHub: [#LearnByExamples](https://github.com/topics/learn-by-examples)
 
 ## Hire me
 Looking for a developer to build your next idea or need a developer to work remotely? Get in touch: [atul.12788@gmail.com](mailto:atul.12788@gmail.com)

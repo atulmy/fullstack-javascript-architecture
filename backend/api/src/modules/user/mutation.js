@@ -6,7 +6,7 @@ import React from 'react'
 import { SECURITY_SALT_ROUNDS } from '../../setup/config/env'
 import params from '../../setup/config/params'
 import { authCheck } from '../../setup/helpers/utils'
-import validate from '../../setup/helpers/validation'
+import v from '../../setup/helpers/validation'
 import User from './model'
 import { userAuthResponse } from './query'
 
@@ -20,29 +20,29 @@ export async function userSignup({ params: { name, email, password, passwordRepe
   const rules = [
     {
       data: { value: name, length: params.user.rules.nameMinLength },
-      check: 'lengthMin',
+      check: 'isLengthMinimum',
       message: translate.t('user.messages.fields.nameMinLength', { length: params.user.rules.nameMinLength })
     },
     {
       data: { value: email },
-      check: 'email',
+      check: 'isValidEmail',
       message: translate.t('user.messages.fields.email')
     },
     {
       data: { value: password, length: params.user.rules.passwordMinLength },
-      check: 'lengthMin',
+      check: 'isLengthMinimum',
       message: translate.t('user.messages.fields.passwordMinLength', { length: params.user.rules.passwordMinLength })
     },
     {
       data: { value1: password, value2: passwordRepeat },
-      check: 'equal',
+      check: 'isEqual',
       message: translate.t('user.messages.fields.passwordEqual')
     }
   ]
 
   // Validate
   try {
-    validate(rules)
+    v.validate(rules)
   } catch(error) {
     throw new Error(error.message)
   }

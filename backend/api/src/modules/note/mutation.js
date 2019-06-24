@@ -1,6 +1,6 @@
 // App Imports
 import { authCheck } from '../../setup/helpers/utils'
-import validate from '../../setup/helpers/validation'
+import v from '../../setup/helpers/validation'
 import Note from './model'
 
 // Create
@@ -10,14 +10,14 @@ export async function noteCreate({ params: { note }, auth, translate }) {
     const rules = [
       {
         data: { value: note },
-        check: 'empty', not: true,
+        check: 'isNotEmpty',
         message: translate.t('note.messages.fields.note')
       }
     ]
 
     // Validate
     try {
-      validate(rules)
+      v.validate(rules)
     } catch(error) {
       throw new Error(error.message)
     }
@@ -45,14 +45,14 @@ export async function noteDelete({ params: { noteId }, auth, translate }) {
     const rules = [
       {
         data: { value: noteId },
-        check: 'empty', not: true,
+        check: 'isNotEmpty',
         message: translate.t('note.messages.remove.error')
       }
     ]
 
     // Validate
     try {
-      validate(rules)
+      v.validate(rules)
     } catch(error) {
       throw new Error(error.message)
     }

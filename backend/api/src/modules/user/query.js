@@ -5,8 +5,8 @@ import jwt from 'jsonwebtoken'
 // App Imports
 import { SECURITY_SECRET } from '../../setup/config/env'
 import params from '../../setup/config/params'
-import { authCheck, authCheckAdmin } from '../../setup/helpers/utils'
-import validate from '../../setup/helpers/validation'
+import { authCheckAdmin } from '../../setup/helpers/utils'
+import v from '../../setup/helpers/validation'
 import User, { collection as user } from './model'
 
 // Login
@@ -15,19 +15,19 @@ export async function userLogin({ params: { email, password }, translate }) {
   const rules = [
     {
       data: { value: email },
-      check: 'email',
+      check: 'isValidEmail',
       message: translate.t('user.messages.fields.email')
     },
     {
       data: { value: password, length: params.user.rules.passwordMinLength },
-      check: 'lengthMin',
+      check: 'isLengthMinimum',
       message: translate.t('user.messages.fields.passwordMinLength', { length: params.user.rules.passwordMinLength })
     }
   ]
 
   // Validate
   try {
-    validate(rules)
+    v.validate(rules)
   } catch(error) {
     throw new Error(error.message)
   }
