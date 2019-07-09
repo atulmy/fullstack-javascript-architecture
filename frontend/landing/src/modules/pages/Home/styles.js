@@ -3,20 +3,20 @@ const styles = theme => ({
   hero: {
     maxWidth: 600,
     margin: '0 auto',
-    padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`,
+    padding: `${theme.spacing(8)}px 0 ${theme.spacing(6)}px`,
   },
   heroButtons: {
-    marginRight: theme.spacing.unit * 4,
+    marginRight: theme.spacing(4),
   },
 
   iconMobileApp: {
     fontSize: 16,
-    marginRight: theme.spacing.unit
+    marginRight: theme.spacing()
   },
 
   iconWebApp: {
     fontSize: 16,
-    marginLeft: theme.spacing.unit
+    marginLeft: theme.spacing()
   }
 })
 

@@ -1,7 +1,7 @@
 // Component Styles
 const styles = theme => ({
   button: {
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing(2)
   }
 })
 
