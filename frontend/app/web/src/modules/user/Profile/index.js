@@ -32,11 +32,7 @@ const Profile = ({ auth: { details }, classes }) => (
 
 // Component Properties
 Profile.propTypes = {
-  classes: PropTypes.object.isRequired
-}
-
-// Component Properties
-Profile.propTypes = {
+  classes: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired
 }
 
@@ -47,4 +43,4 @@ function profileState(state) {
   }
 }
 
-export default connect(profileState, {})(withStyles(styles)(Profile))
+export default connect(profileState)(withStyles(styles)(Profile))

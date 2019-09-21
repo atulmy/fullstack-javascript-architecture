@@ -39,15 +39,15 @@ ReactDOM.render(
               Object.values(routes).map((route, index) => (
                 route.auth
                   ? <RoutePrivate
-                    {...route}
-                    key={index}
-                    path={isFunction(route.path) ? route.path() : route.path}
-                  />
+                      {...route}
+                      key={index}
+                      path={isFunction(route.path) ? route.path() : route.path}
+                    />
                   : <Route
-                    {...route}
-                    key={index}
-                    path={isFunction(route.path) ? route.path() : route.path}
-                  />
+                      {...route}
+                      key={index}
+                      path={isFunction(route.path) ? route.path() : route.path}
+                    />
               ))
             }
 
