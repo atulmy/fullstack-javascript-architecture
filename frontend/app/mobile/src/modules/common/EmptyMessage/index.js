@@ -34,7 +34,7 @@ EmptyMessage.propTypes = {
   icon: PropTypes.string
 }
 EmptyMessage.defaultProps = {
-  icon: 'error',
+  icon: 'alert-circle-outline',
 }
 
 export default EmptyMessage

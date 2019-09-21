@@ -105,14 +105,14 @@ export async function userProfileUpdate({ params: { name }, auth, translate }) {
     const rules = [
       {
         data: { value: name, length: params.user.rules.nameMinLength },
-        check: 'lengthMin',
+        check: 'isLengthMinimum',
         message: translate.t('user.messages.fields.nameMinLength', { length: params.user.rules.nameMinLength })
       }
     ]
 
     // Validate
     try {
-      validate(rules)
+      v.validate(rules)
     } catch (error) {
       throw new Error(error.message)
     }

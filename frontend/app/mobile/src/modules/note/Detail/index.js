@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { View, ScrollView, RefreshControl } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
-import format from 'date-fns/format'
+import moment from 'moment'
 
 // UI Imports
 import Typography from '../../../ui/Typography'
@@ -123,7 +123,7 @@ class Detail extends PureComponent {
           {/* Navigation */}
           <NavigationTopInner
             title={translate.t('note.detail.title')}
-            subTitle={translate.t('note.detail.subTitle', { date: detail && detail._id ? format(detail.createdAt, params.common.formats.dateTime) : '' })}
+            subTitle={translate.t('note.detail.subTitle', { date: detail && detail._id ? moment(detail.createdAt).format(params.common.formats.dateTime) : '' })}
             leftIcon={
               <ActionBack />
             }

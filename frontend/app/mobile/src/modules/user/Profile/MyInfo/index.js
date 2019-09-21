@@ -122,7 +122,7 @@ class MyInfo extends PureComponent {
 
             <View style={{ position: 'absolute', bottom: 0, right: 0, alignItems: 'center' }}>
               <Fab
-                icon={'photo-camera'}
+                icon={'camera'}
                 onPress={this.#selectImage}
                 disabled={isUploading}
               />

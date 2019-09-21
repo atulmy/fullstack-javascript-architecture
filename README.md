@@ -193,29 +193,24 @@ A typical product (SaaS, etc.) usually consists of following services:
 - **Mobile**
     - Switch to `mobile` directory `cd frontend/app/mobile`
     - Configuration
-        - Create local environment file `cp .env.development.example .env.development`
-        - Modify `.env.development` for
-            - `APP_ID` (`com.example` (your app bundle ID))
-            - `APP_VERSION` (`0.0.1` (increment this for each publish on App or Play Store))
-            - `APP_BUILD` (`1` (increment this for each publish on App or Play Store))
+        - Modify `src/setup/config/env.js` for
             - `APP_ENV` (`development` | `production`)
             - `LANDING_URL` (`http://<your local network IP>:3000`)
             - `WEB_URL` (`http://<your local network IP>:5000`)
             - `API_URL` (`http://<your local network IP>:8000`)
             - Tip: use `ifconfig` on macOS or Linux to get your local IP address
-            - Add your local IP address in: `frontend/app/mobile/android/app/src/debug/res/xml/react_native_config.xml` for Cleartext Traffic (API level 28+). Read more [here](https://facebook.github.io/react-native/docs/integration-with-existing-apps#network-security-config-api-level-28).
     - Setup
         - Install dependencies: `npm install`
     - Run
-        - iOS `ENVFILE=.env.development react-native run-ios --simulator='iPhone 8'`
-        - Android `ENVFILE=.env.development react-native run-android` (connect your Android phone via USB or use already created simulator with name `Mobile_-_5` by running `cd ~/Library/Android/sdk/tools && ./emulator -avd Mobile_-_5`)
+        - iOS `react-native run-ios --simulator='iPhone 8'`
+        - Android `react-native run-android` (connect your Android phone via USB or use already created simulator with name `Mobile_-_5` by running `cd ~/Library/Android/sdk/tools && ./emulator -avd Mobile_-_5`)
     - Publish
         - Android
-            - Build: `. ./.env.production && cd android && ./gradlew assembleRelease && cd ..`. 
+            - Build: `cd android && ./gradlew assembleRelease && cd ..`. 
             - Upload `frontend/app/mobile/android/app/build/outputs/apk/release/app-release.apk` to Play Store.
         - iOS
             - Build: Open `frontend/app/mobile/ios/example.xcodeproj` in Xcode -> Choose Generic iOS Device (top left) -> Product (top menu) -> Archive.
-            - Upload using Archiver (will open automatically once Arhive is complete)
+            - Upload using Archiver (will open automatically once Archive is complete)
     - Resources
         - [From react-native init to app stores real quick](https://blog.elao.com/en/dev/from-react-native-init-to-app-stores-real-quick/)
         - iOS App icon and splashscreen generator [appicon](https://www.appicon.build/)

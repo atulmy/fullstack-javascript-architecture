@@ -18,7 +18,7 @@ class ActionBack extends PureComponent {
 
     return (
       <ActionIcon
-        icon={'arrow-back'}
+        icon={'arrow-left'}
         onPress={onPress || this.onPress}
       />
     )

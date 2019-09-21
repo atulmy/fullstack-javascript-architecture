@@ -1,7 +1,7 @@
-// Imports
-import Config from 'react-native-config'
+// Env
 
-// URL
-export const API_URL = Config.API_URL
-export const WEB_URL = Config.WEB_URL
-export const LANDING_URL = Config.LANDING_URL
+export const APP_ENV = 'development'
+
+export const API_URL = 'http://192.168.0.1:8000'
+export const WEB_URL = 'http://192.168.0.1:5000'
+export const LANDING_URL = 'http://192.168.0.1:3000'

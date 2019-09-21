@@ -16,7 +16,7 @@ const Toast = ({ onPress, message, success }) => (
       <View style={styles.container}>
         <View style={styles.icon}>
           <Icon
-            name={success ? 'check' : 'error-outline'}
+            name={success ? 'check' : 'alert-circle-outline'}
             size={font(18)}
             color={ success ? positive : negative }
           />

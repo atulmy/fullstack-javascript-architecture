@@ -1,13 +1,13 @@
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Zocial from 'react-native-vector-icons/Zocial'
 
 // Component
 const Icon = (props) => {
   return(
-    props.pack === 'social' ? <Zocial {...props} /> : <MaterialIcons {...props} />
+    props.pack === 'social' ? <Zocial {...props} /> : <MaterialCommunityIcons {...props} />
   )
 }
 

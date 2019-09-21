@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { View, TouchableOpacity } from 'react-native'
-import format from 'date-fns/format'
+import moment from 'moment'
 
 // UI Imports
 import { grey2 } from '../../../ui/common/colors'
@@ -18,7 +18,7 @@ const Item = ({ onSelect, item: { _id, note, createdAt } }) => (
     <View style={styles.container}>
       <Typography size={'h4'} numberOfLines={2}>{ note }</Typography>
 
-      <Typography size={'h6'} color={grey2} style={styles.date}>{ format(createdAt, params.common.formats.dateTime) }</Typography>
+      <Typography size={'h6'} color={grey2} style={styles.date}>{ moment(createdAt).format(params.common.formats.dateTime) }</Typography>
     </View>
   </TouchableOpacity>
 )

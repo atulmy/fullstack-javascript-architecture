@@ -1,6 +1,6 @@
 // Imports
 import React from 'react'
-import { createBottomTabNavigator } from 'react-navigation'
+import { createBottomTabNavigator } from 'react-navigation-tabs'
 
 // UI Imports
 import { font, scalable } from '../../../ui/common/responsive'
@@ -23,7 +23,7 @@ export const routesPostLogin = {
     screen: NoteStack,
     navigationOptions: {
       tabBarLabel: 'Notes',
-      tabBarIcon: ({ tintColor }) => <Icon name={'assignment'} size={iconSize} color={tintColor} />,
+      tabBarIcon: ({ tintColor }) => <Icon name={'clipboard-text'} size={iconSize} color={tintColor} />,
     }
   },
 
