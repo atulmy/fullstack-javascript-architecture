@@ -24,5 +24,13 @@ mongoose.connection.on('error', error => {
 
 // Retry connection
 const connectWithRetry = async () => {
-  return await mongoose.connect(MONGO_URL, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false })
+  return await mongoose.connect(
+    MONGO_URL,
+    {
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+      useUnifiedTopology: true
+    }
+  )
 }
