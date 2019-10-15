@@ -1,6 +1,7 @@
 // Imports
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import ReactGA from 'react-ga'
 
 // UI Imports
 import Typography from '@material-ui/core/Typography'
@@ -12,16 +13,24 @@ import { withStyles } from '@material-ui/core/styles'
 import styles from './styles'
 
 // App Imports
-import { WEB_URL } from '../../../setup/config/env'
+import { URL_WEB, GA_TRACKING_ID } from '../../../setup/config/env'
 import params from '../../../setup/config/params'
+import Layout from '../../common/Layout'
 
 // Component
 class Home extends PureComponent {
+
+  componentDidMount() {
+    if(GA_TRACKING_ID) {
+      ReactGA.initialize(GA_TRACKING_ID)
+    }
+  }
+
   render() {
     const { classes } = this.props
 
     return (
-      <div>
+      <Layout>
         <div className={classes.hero}>
           <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
             { params.site.name }
@@ -54,7 +63,7 @@ class Home extends PureComponent {
               </Grid>
 
               <Grid item>
-                <a href={ WEB_URL } target="_blank" rel="noopener noreferrer">
+                <a href={ URL_WEB } target="_blank" rel="noopener noreferrer">
                   <Button variant="outlined" color="primary">
                     Open Web App
 
@@ -65,7 +74,7 @@ class Home extends PureComponent {
             </Grid>
           </div>
         </div>
-      </div>
+      </Layout>
     )
   }
 }

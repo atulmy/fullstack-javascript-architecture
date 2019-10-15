@@ -16,6 +16,11 @@
     "copyright": "Example",
     "applicationName": "Example",
     "copyright_year": 2018,
-    "image": "logo.png"
+    "image": "logo.png",
+    "contact": {
+      "address": "Bangalore, India",
+      "email": "contact@example.com",
+      "phone": "+91 98765 43210"
+    }
   }
 }

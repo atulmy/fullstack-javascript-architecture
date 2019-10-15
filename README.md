@@ -146,10 +146,9 @@ A typical product (SaaS, etc.) usually consists of following services:
         - Modify `.env` for
             - `PORT` (`3000`)
             - `NODE_ENV` (`development` | `production`)
-            - `LANDING_URL` (`http://localhost:3000`)
-            - `WEB_URL` (`http://localhost:5000`)
-            - `API_URL` (`http://localhost:8000`)
-            - `CONTACT_PHONE`, `CONTACT_EMAIL`, `CONTACT_ADDRESS` (your contact information)
+            - `URL_LANDING` (`http://localhost:3000`)
+            - `URL_WEB` (`http://localhost:5000`)
+            - `URL_API` (`http://localhost:8000`)
             - `GA_TRACKING_ID` (Google analytics tracking ID)
     - Setup
         - Install dependencies: `npm install`

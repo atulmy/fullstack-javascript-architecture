@@ -1,21 +1,32 @@
-// Imports
-import { Server } from 'http'
-import Express from 'express'
+import http from 'http'
 
-// App Imports
-import loadModules from './setup/server/load-modules'
-import loadRoutes from './setup/server/load-routes'
-import startServer from './setup/server/start-server'
+let app = require('./server').default
 
-// Create new server
-const app = new Express()
-const server = new Server(app)
+const server = http.createServer(app)
 
-// Load express modules
-loadModules(app)
+let currentApp = app
 
-// Load routes and SSR
-loadRoutes(app)
+server.listen(process.env.PORT || 3000, error => {
+  if (error) {
+    console.log(error)
+  }
 
-// Start Server
-startServer(server)
+  console.log('🚀 started')
+})
+
+if (module.hot) {
+  console.log('✅  Server-side HMR Enabled!')
+
+  module.hot.accept('./server', () => {
+    console.log('🔁  HMR Reloading `./server`...')
+
+    try {
+      app = require('./server').default
+      server.removeListener('request', currentApp)
+      server.on('request', app)
+      currentApp = app
+    } catch (error) {
+      console.error(error)
+    }
+  });
+}

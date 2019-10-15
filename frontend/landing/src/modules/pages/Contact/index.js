@@ -6,30 +6,32 @@ import Helmet from 'react-helmet'
 import Typography from '@material-ui/core/Typography'
 
 // App Imports
-import { CONTACT_PHONE, CONTACT_EMAIL, CONTACT_ADDRESS } from '../../../setup/config/env'
 import params from '../../../setup/config/params'
+import Layout from '../../common/Layout'
 import Section from '../../common/Section'
 
 // Component
 const Contact = () => (
-  <Section>
-    {/* Meta tags */}
-    <Helmet>
-      <title>Contact</title>
-    </Helmet>
+  <Layout>
+    <Section>
+      {/* Meta tags */}
+      <Helmet>
+        <title>Contact</title>
+      </Helmet>
 
-    {/* Content */}
-    <Typography variant="h4">Contact</Typography>
+      {/* Content */}
+      <Typography variant="h4">Contact</Typography>
 
-    <p>Bromium potus, omnes urbses imperium talis, regius particulaes.</p>
+      <p>Bromium potus, omnes urbses imperium talis, regius particulaes.</p>
 
-    <address>
-      { params.site.name }, <br />
-      { CONTACT_ADDRESS }.<br/>
-      { CONTACT_PHONE }<br/>
-      { CONTACT_EMAIL }
-    </address>
-  </Section>
+      <address>
+        { params.site.name }, <br />
+        { params.site.contact.address }.<br/>
+        { params.site.contact.phone }<br/>
+        { params.site.contact.email }
+      </address>
+    </Section>
+  </Layout>
 )
 
 export default Contact
