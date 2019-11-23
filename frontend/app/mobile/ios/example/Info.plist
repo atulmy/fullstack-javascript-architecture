@@ -26,56 +26,56 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>localhost</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-		</dict>
-	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME) would like to use your camera</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>$(PRODUCT_NAME) would like to your microphone (for videos)</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>$(PRODUCT_NAME) would like to save photos to your photo gallery</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) would like access to your photo gallery</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>AntDesign.ttf</string>
-		<string>Entypo.ttf</string>
-		<string>EvilIcons.ttf</string>
-		<string>Feather.ttf</string>
-		<string>FontAwesome.ttf</string>
-		<string>FontAwesome5_Brands.ttf</string>
-		<string>FontAwesome5_Regular.ttf</string>
-		<string>FontAwesome5_Solid.ttf</string>
-		<string>Foundation.ttf</string>
-		<string>Ionicons.ttf</string>
-		<string>MaterialCommunityIcons.ttf</string>
-		<string>MaterialIcons.ttf</string>
-		<string>Octicons.ttf</string>
-		<string>SimpleLineIcons.ttf</string>
-		<string>Zocial.ttf</string>
-	</array>
-	<key>UILaunchStoryboardName</key>
-	<string>Launch Screen</string>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-	</array>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
+  		<key>NSAllowsArbitraryLoads</key>
+  		<true/>
+  		<key>NSExceptionDomains</key>
+  		<dict>
+  			<key>localhost</key>
+  			<dict>
+  				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+  				<true/>
+  			</dict>
+  		</dict>
+  	</dict>
+  	<key>NSCameraUsageDescription</key>
+  	<string>$(PRODUCT_NAME) would like to use your camera</string>
+  	<key>NSLocationWhenInUseUsageDescription</key>
+  	<string></string>
+  	<key>NSMicrophoneUsageDescription</key>
+  	<string>$(PRODUCT_NAME) would like to your microphone (for videos)</string>
+  	<key>NSPhotoLibraryAddUsageDescription</key>
+  	<string>$(PRODUCT_NAME) would like to save photos to your photo gallery</string>
+  	<key>NSPhotoLibraryUsageDescription</key>
+  	<string>$(PRODUCT_NAME) would like access to your photo gallery</string>
+  	<key>UIAppFonts</key>
+  	<array>
+  		<string>AntDesign.ttf</string>
+  		<string>Entypo.ttf</string>
+  		<string>EvilIcons.ttf</string>
+  		<string>Feather.ttf</string>
+  		<string>FontAwesome.ttf</string>
+  		<string>FontAwesome5_Brands.ttf</string>
+  		<string>FontAwesome5_Regular.ttf</string>
+  		<string>FontAwesome5_Solid.ttf</string>
+  		<string>Foundation.ttf</string>
+  		<string>Ionicons.ttf</string>
+  		<string>MaterialCommunityIcons.ttf</string>
+  		<string>MaterialIcons.ttf</string>
+  		<string>Octicons.ttf</string>
+  		<string>SimpleLineIcons.ttf</string>
+  		<string>Zocial.ttf</string>
+  	</array>
+  	<key>UILaunchStoryboardName</key>
+  	<string>Launch Screen</string>
+  	<key>UIRequiredDeviceCapabilities</key>
+  	<array>
+  		<string>armv7</string>
+  	</array>
+  	<key>UISupportedInterfaceOrientations</key>
+  	<array>
+  		<string>UIInterfaceOrientationPortrait</string>
+  	</array>
+  	<key>UIViewControllerBasedStatusBarAppearance</key>
+  	<false/>
 </dict>
 </plist>
