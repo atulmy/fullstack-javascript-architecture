@@ -11,15 +11,13 @@ import { withStyles } from '@material-ui/core/styles/index'
 import styles from './styles'
 
 // Component
-const Loading = (props) => {
-  const { classes, size, message } = props
-
+const Loading = ({ classes, size, message }) => {
   return(
     <Fade in={true}>
       <div className={classes.root}>
         <CircularProgress size={size} style={{ color: green[500] }} />
 
-        <Typography variant={'caption'} gutterBottom align="center">
+        <Typography variant='caption' gutterBottom align='center'>
           { message }
         </Typography>
       </div>
@@ -39,4 +37,3 @@ Loading.defaultProps = {
 }
 
 export default withStyles(styles)(Loading)
-

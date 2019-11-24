@@ -32,4 +32,3 @@ Dashboard.propTypes = {
 }
 
 export default withStyles(styles)(Dashboard)
-

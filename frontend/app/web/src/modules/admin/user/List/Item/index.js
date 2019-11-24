@@ -19,7 +19,7 @@ class Item extends PureComponent {
     return (
       <TableRow key={user._id}>
         <TableCell>
-          { user.image && <img src={routeImageUser + user.image} alt={user.name} style={{ width: 50 }} /> }
+          { user.image ? <img src={routeImageUser + user.image} alt={user.name} style={{ width: 50 }} /> : 'No Image' }
         </TableCell>
         <TableCell>{user.email}</TableCell>
         <TableCell>{user.name}</TableCell>

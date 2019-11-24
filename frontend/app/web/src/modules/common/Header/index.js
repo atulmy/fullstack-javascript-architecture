@@ -1,7 +1,7 @@
 // Imports
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 import PropTypes from 'prop-types'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 
 // UI Imports
@@ -21,28 +21,29 @@ import { messageShow } from '../api/actions'
 import { logout } from '../../user/api/actions/query'
 
 // Component
-class Header extends Component {
-  onClickLogout = () => {
+const Header = ({ location, classes }) => {
+  // state
+  const { isAuthenticated, details } = useSelector(state => state.auth)
+  const dispatch = useDispatch()
+
+  // on click logout
+  const onClickLogout = () => {
     let check = window.confirm('Are you sure you want to logout?')
 
     if(check) {
-      const { logout, messageShow } = this.props
+      dispatch(logout())
 
-      logout()
-
-      messageShow('You have been logged out successfully.')
+      dispatch(messageShow('You have been logged out successfully.'))
     }
   }
 
-  isActiveRoute = (routePath, menu = 'primary') => {
-    const { location } = this.props
-
+  // check is active route
+  const isActiveRoute = (routePath, menu = 'primary') => {
     return routePath === location.pathname ? { backgroundColor: menu === 'primary' ? blue[600] : grey[300] } : {}
   }
 
-  homeLink = () => {
-    const { auth: { isAuthenticated, details } } = this.props
-
+  // home link
+  const  homeLink = () => {
     return isAuthenticated
       ? details.role === params.user.roles.admin.key
         ? routes.adminDashboard.path
@@ -50,71 +51,58 @@ class Header extends Component {
       : routes.pagesHome.path
   }
 
-  render () {
-    const { classes, auth: { isAuthenticated, details } } = this.props
+  // render
+  return (
+    <div className={classes.root}>
+      <AppBar position="static" elevation={2}>
+        <Toolbar>
+          <Typography variant="h6" color="inherit" className={classes.flex}>
+            <Link to={homeLink()}>{ params.site.name.toUpperCase() }</Link>
+          </Typography>
 
-    return (
-      <div className={classes.root}>
-        <AppBar position="static" elevation={2}>
+          {
+            isAuthenticated
+              ? <>
+                  <Button component={Link} to={routes.userProfile.path} color="inherit" style={isActiveRoute(routes.userProfile.path)}>Profile</Button>
+
+                  <Button color="inherit" onClick={onClickLogout}>Logout</Button>
+                </>
+              : <>
+                  <Button component={Link} to={routes.userLogin.path} color="inherit" style={isActiveRoute(routes.userLogin.path)}>Login</Button>
+
+                  <Button component={Link} to={routes.userSignup.path} color="inherit" style={isActiveRoute(routes.userSignup.path)}>Signup</Button>
+                </>
+          }
+        </Toolbar>
+      </AppBar>
+
+      {
+        isAuthenticated &&
+        <AppBar position="static" color="default" elevation={2}>
           <Toolbar>
-            <Typography variant="h6" color="inherit" className={classes.flex}>
-              <Link to={this.homeLink()}>{ params.site.name.toUpperCase() }</Link>
-            </Typography>
-
             {
-              isAuthenticated
+              details.role === params.user.roles.admin.key
                 ? <>
-                    <Button component={Link} to={routes.userProfile.path} color="inherit" style={this.isActiveRoute(routes.userProfile.path)}>Profile</Button>
+                    <Button component={Link} to={routes.adminDashboard.path}  color="inherit" style={isActiveRoute(routes.adminDashboard.path, 'secondary')}>Dashboard</Button>
 
-                    <Button color="inherit" onClick={this.onClickLogout}>Logout</Button>
+                    <Button component={Link} to={routes.adminUserList.path}  color="inherit" style={isActiveRoute(routes.adminUserList.path, 'secondary')}>Users</Button>
                   </>
                 : <>
-                    <Button component={Link} to={routes.userLogin.path} color="inherit" style={this.isActiveRoute(routes.userLogin.path)}>Login</Button>
+                    <Button component={Link} to={routes.userDashboard.path}  color="inherit" style={isActiveRoute(routes.userDashboard.path, 'secondary')}>Dashboard</Button>
 
-                    <Button component={Link} to={routes.userSignup.path} color="inherit" style={this.isActiveRoute(routes.userSignup.path)}>Signup</Button>
+                    <Button component={Link} to={routes.noteList.path}  color="inherit" style={isActiveRoute(routes.noteList.path, 'secondary')}>Notes</Button>
                   </>
             }
           </Toolbar>
         </AppBar>
-
-        {
-          isAuthenticated &&
-          <AppBar position="static" color="default" elevation={2}>
-            <Toolbar>
-              {
-                details.role === params.user.roles.admin.key
-                  ? <>
-                      <Button component={Link} to={routes.adminDashboard.path}  color="inherit" style={this.isActiveRoute(routes.adminDashboard.path, 'secondary')}>Dashboard</Button>
-
-                      <Button component={Link} to={routes.adminUserList.path}  color="inherit" style={this.isActiveRoute(routes.adminUserList.path, 'secondary')}>Users</Button>
-                    </>
-                  : <>
-                      <Button component={Link} to={routes.userDashboard.path}  color="inherit" style={this.isActiveRoute(routes.userDashboard.path, 'secondary')}>Dashboard</Button>
-
-                      <Button component={Link} to={routes.noteList.path}  color="inherit" style={this.isActiveRoute(routes.noteList.path, 'secondary')}>Notes</Button>
-                    </>
-              }
-            </Toolbar>
-          </AppBar>
-        }
-      </div>
-    )
-  }
+      }
+    </div>
+  )
 }
 
 // Component Properties
 Header.propTypes = {
-  auth: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
-  logout: PropTypes.func.isRequired,
-  messageShow: PropTypes.func.isRequired
 }
 
-// Component State
-function headerState (state) {
-  return {
-    auth: state.auth
-  }
-}
-
-export default withRouter(connect(headerState, { logout, messageShow })(withStyles(styles)(Header)))
+export default withRouter(withStyles(styles)(Header))

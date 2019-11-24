@@ -1,5 +1,5 @@
 // Imports
-import React, { PureComponent } from 'react'
+import React from 'react'
 import { withRouter } from 'react-router-dom'
 
 // App Imports
@@ -7,25 +7,22 @@ import Header from '../Header'
 import Message from '../Message'
 
 // Component
-class Layout extends PureComponent {
-  render() {
-    const { children } = this.props
+const Layout = ({ children }) => {
+  // render
+  return (
+    <div>
+      {/* Header */}
+      <Header />
 
-    return (
-      <div>
-        {/* Header */}
-        <Header />
+      {/* Body */}
+      <main>
+        { children }
+      </main>
 
-        {/* Body */}
-        <main>
-          { children }
-        </main>
-
-        {/* Message */}
-        <Message />
-      </div>
-    )
-  }
+      {/* Message */}
+      <Message />
+    </div>
+  )
 }
 
 export default withRouter(Layout)

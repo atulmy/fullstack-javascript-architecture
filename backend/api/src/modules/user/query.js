@@ -7,7 +7,8 @@ import { SECURITY_SECRET } from '../../setup/config/env'
 import params from '../../setup/config/params'
 import { authCheckAdmin } from '../../setup/helpers/utils'
 import v from '../../setup/helpers/validation'
-import User, { collection as user } from './model'
+import User from './model'
+import Note from '../note/model'
 
 // Login
 export async function userLogin({ params: { email, password }, translate }) {
@@ -77,13 +78,17 @@ export async function userList({ auth, translate }) {
 }
 
 // Count (Admin)
-export async function userCount({ auth, translate }) {
+export async function userDashboardCount({ auth, translate }) {
   if(authCheckAdmin(auth)) {
     try {
-      const data = await User.count({ role: { $ne: params.user.roles.admin.key }, isDeleted: false })
+      const users = await User.countDocuments({ role: { $ne: params.user.roles.admin.key }, isDeleted: false })
+      const notes = await Note.countDocuments({ isDeleted: false })
 
       return {
-        data
+        data: {
+          users,
+          notes
+        }
       }
     } catch (error) {
       throw new Error(translate.t('common.messages.error.server'))

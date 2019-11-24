@@ -1,7 +1,7 @@
 // Imports
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 // UI Imports
 import Snackbar from '@material-ui/core/Snackbar'
@@ -12,45 +12,42 @@ import CloseIcon from '@material-ui/icons/Close'
 import { messageHide } from '../api/actions'
 
 // Component
-class Message extends PureComponent {
-  render() {
-    const { common: { message }, messageHide } = this.props
+const Message = ({ }) => {
+  // state
+  const { message } = useSelector(state => state.common)
+  const dispatch = useDispatch()
 
-    return (
-      <Snackbar
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left'
-        }}
-        open={message.open}
-        autoHideDuration={5000}
-        onClose={messageHide}
-        message={message.text}
-        action={[
-          <IconButton
-            key={'close'}
-            color={'inherit'}
-            onClick={messageHide}
-          >
-            <CloseIcon />
-          </IconButton>
-        ]}
-      />
-    )
+  const onHideMessage = () => {
+    dispatch(messageHide())
   }
+
+  // render
+  return (
+    <Snackbar
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'left'
+      }}
+      open={message.open}
+      autoHideDuration={5000}
+      onClose={onHideMessage}
+      message={message.text}
+      action={[
+        <IconButton
+          key={'close'}
+          color={'inherit'}
+          onClick={onHideMessage}
+        >
+          <CloseIcon />
+        </IconButton>
+      ]}
+    />
+  )
 }
 
 // Component Properties
 Message.propTypes = {
   common: PropTypes.object.isRequired,
-  messageHide: PropTypes.func.isRequired
 }
 
-// Component State
-function messageState(state) {
-  return {
-    common: state.common
-  }
-}
-
-export default connect(messageState, { messageHide })(Message)
+export default Message

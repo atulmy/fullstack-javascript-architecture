@@ -1,7 +1,7 @@
 // Imports
-import React, { PureComponent } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 // UI Imports
@@ -19,134 +19,111 @@ import styles from './styles'
 
 // App Imports
 import routes from '../../../setup/routes'
-import { nullToEmptyString } from '../../../setup/helpers'
 import { messageShow } from '../../common/api/actions'
 import { create } from '../api/actions/mutation'
 import Section from '../../common/Section'
 
 // Component
-class Create extends PureComponent {
+const Create = ({ classes, history }) => {
+  // state
+  const [isSubmitting, isSubmittingToggle] = useState(false)
+  const [note, setNote] = useState('')
+  const dispatch = useDispatch()
 
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      isLoading: false,
-
-      note: ''
-    }
-  }
-
-  save = async event => {
+  // on create
+  const onCreate = async event => {
     event.preventDefault()
 
-    const { create, messageShow, history } = this.props
-
-    const { note } = this.state
-
-    this.isLoadingToggle(true)
+    isSubmittingToggle(true)
 
     try {
       const { data } = await create({ note })
 
-      this.isLoadingToggle(false)
+      isSubmittingToggle(false)
 
-      messageShow(data.message)
+      dispatch(messageShow(data.message))
 
       if(data.success) {
         history.push(routes.noteList.path)
       }
     } catch (error) {
-      this.isLoadingToggle(false)
+      isSubmittingToggle(false)
 
-      messageShow('Some error occurred. Please try again.')
+      dispatch(messageShow('Some error occurred. Please try again.'))
     }
   }
 
-  onType = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
+  // on change
+  const onChange = event => {
+    setNote(event.target.value)
   }
 
-  isLoadingToggle = isLoading => {
-    this.setState({
-      isLoading
-    })
-  }
+  // render
+  return (
+    <div>
+      <Toolbar>
+        <Link to={routes.noteList.path}>
+          <IconButton className={classes.menuButton} color='inherit'>
+            <IconArrowBack />
+          </IconButton>
+        </Link>
 
-  render() {
-    const { classes } = this.props
-    const { note, isLoading } = this.state
+        <Typography variant='h6' color='inherit' className={classes.grow}>
+          Create Note
+        </Typography>
+      </Toolbar>
 
-    return (
-      <div>
-        <Toolbar>
-          <Link to={routes.noteList.path}>
-            <IconButton className={classes.menuButton} color="inherit">
-              <IconArrowBack />
-            </IconButton>
-          </Link>
+      <Section>
+        <Paper className={classes.container}>
+          <form onSubmit={onCreate}>
+            {/* Input - email */}
+            <Grid item xs={12}>
+              <TextField
+                name='note'
+                value={note}
+                onChange={onChange}
+                label='Note'
+                placeholder='Enter note'
+                required={true}
+                margin='dense'
+                autoComplete='off'
+                multiline
+                rowsMax={20}
+                fullWidth
+                autoFocus
+              />
+            </Grid>
 
-          <Typography variant="h6" color="inherit" className={classes.grow}>
-            Create Note
-          </Typography>
-        </Toolbar>
-
-        <Section>
-          <Paper className={classes.container}>
-            <form onSubmit={this.save}>
-              {/* Input - email */}
-              <Grid item xs={12}>
-                <TextField
-                  name={'note'}
-                  value={nullToEmptyString(note)}
-                  onChange={this.onType}
-                  label={'Note'}
-                  placeholder={'Enter note'}
-                  required={true}
-                  margin={'dense'}
-                  autoComplete={'off'}
-                  multiline
-                  rowsMax={20}
-                  fullWidth
-                  autoFocus
-                />
-              </Grid>
-
-              {/* Button -  Save */}
-              <Grid item xs={12} className={classes.buttonsContainer}>
-                <Link to={routes.noteList.path}>
-                  <IconButton
-                    type={'submit'}
-                    aria-label={'Close'}
-                  >
-                    <IconClose />
-                  </IconButton>
-                </Link>
-
+            {/* Button -  Save */}
+            <Grid item xs={12} className={classes.buttonsContainer}>
+              <Link to={routes.noteList.path}>
                 <IconButton
-                  type={'submit'}
-                  aria-label={'Save'}
-                  color={'primary'}
-                  disabled={isLoading}
+                  type='submit'
+                  aria-label='Close'
                 >
-                  <IconCheck />
+                  <IconClose />
                 </IconButton>
-              </Grid>
-            </form>
-          </Paper>
-        </Section>
-      </div>
-    )
-  }
+              </Link>
+
+              <IconButton
+                type='submit'
+                aria-label='Save'
+                color='primary'
+                disabled={isSubmitting}
+              >
+                <IconCheck />
+              </IconButton>
+            </Grid>
+          </form>
+        </Paper>
+      </Section>
+    </div>
+  )
 }
 
 // Component Properties
 Create.propTypes = {
-  create: PropTypes.func.isRequired,
-  messageShow: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired
 }
 
-export default connect(null, { create, messageShow })(withStyles(styles)(Create))
+export default withStyles(styles)(Create)

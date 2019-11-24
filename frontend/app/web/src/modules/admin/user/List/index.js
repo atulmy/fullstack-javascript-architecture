@@ -1,7 +1,7 @@
 // Imports
-import React, { PureComponent } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 // UI Imports
 import Fade from '@material-ui/core/Fade'
@@ -25,104 +25,85 @@ import Section from '../../../common/Section'
 import Item from './Item'
 
 // Component
-class List extends PureComponent {
+const List = ({ classes }) => {
+  // state
+  const [isRefreshing, isRefreshingToggle] = useState(false)
+  const [users, setUsers] = useState([])
+  const dispatch = useDispatch()
 
-  constructor(props) {
-    super(props)
+  // on component load
+  useEffect(() => {
+    refresh()
+  }, [])
 
-    this.state = {
-      isLoading: false,
-      users: []
-    }
-  }
-
-  componentDidMount() {
-    this.refresh()()
-  }
-
-  isLoadingToggle = isLoading => {
-    this.setState({
-      isLoading
-    })
-  }
-
-  refresh = (isLoading = true) => async () => {
-    const { getList, messageShow } = this.props
-
-    this.isLoadingToggle(isLoading)
+  // refresh
+  const refresh = async () => {
+    isRefreshingToggle(true)
 
     try {
       const { data } = await getList()
 
       if(data.success) {
-        this.setState({
-          users: data.data
-        })
+        setUsers(data.data)
       } else {
-        messageShow(data.message)
+        dispatch(messageShow(data.message))
       }
     } catch(error) {
-      messageShow('There was some error. Please try again.')
+      dispatch(messageShow('There was some error. Please try again.'))
     } finally {
-      this.isLoadingToggle(false)
+      isRefreshingToggle(false)
     }
   }
 
-  render() {
-    const { classes } = this.props
-    const { isLoading, users } = this.state
+  // render
+  return (
+    <div>
+      {/* Actions */}
+      <Toolbar className={classes.toolbar}>
+        <Button onClick={refresh}>
+          Refresh
+        </Button>
+      </Toolbar>
 
-    return (
-      <div>
-        {/* Actions */}
-        <Toolbar className={classes.toolbar}>
-          <Button onClick={this.refresh()}>
-            Refresh
-          </Button>
-        </Toolbar>
-
-        {/* List */}
-        <Section style={{ paddingTop: 0 }}>
-          <Paper>
-            {
-              isLoading
-                ? <Loading />
-                : users.length > 0
-                  ? <Fade in={true}>
-                      <Table className={classes.table}>
-                        <TableHead>
-                          <TableRow>
-                            <TableCell>Image</TableCell>
-                            <TableCell>Email</TableCell>
-                            <TableCell>Name</TableCell>
-                          </TableRow>
-                        </TableHead>
-                        <TableBody>
-                          {
-                            users.map(user => (
-                              <Item
-                                key={user._id}
-                                user={user}
-                              />
-                            ))
-                          }
-                        </TableBody>
-                      </Table>
-                    </Fade>
-                  : <EmptyMessage message={'No users to show.'} />
-            }
-          </Paper>
-        </Section>
-      </div>
-    )
-  }
+      {/* List */}
+      <Section style={{ paddingTop: 0 }}>
+        <Paper>
+          {
+            isRefreshing
+              ? <Loading />
+              : users.length > 0
+                ? <Fade in={true}>
+                    <Table className={classes.table}>
+                      <TableHead>
+                        <TableRow>
+                          <TableCell>Image</TableCell>
+                          <TableCell>Email</TableCell>
+                          <TableCell>Name</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {
+                          users.map(user => (
+                            <Item
+                              key={user._id}
+                              user={user}
+                            />
+                          ))
+                        }
+                      </TableBody>
+                    </Table>
+                  </Fade>
+                : <EmptyMessage message={'No users to show.'} />
+          }
+        </Paper>
+      </Section>
+    </div>
+  )
 }
 
 // Component Properties
 List.propTypes = {
   classes: PropTypes.object.isRequired,
-  getList: PropTypes.func.isRequired,
-  messageShow: PropTypes.func.isRequired,
 }
 
-export default connect(null, { getList, messageShow })(withStyles(styles)(List))
+export default withStyles(styles)(List)

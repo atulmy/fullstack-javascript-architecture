@@ -8,15 +8,16 @@ import { withStyles } from '@material-ui/core/styles/index'
 import styles from './styles'
 
 // Component
-const EmptyMessage = (props) => (
-  <Typography variant="subtitle1" color="textSecondary" className={props.classes.root}>
-    { props.message }
+const EmptyMessage = ({ message, classes }) => (
+  <Typography variant="subtitle1" color="textSecondary" className={classes.root}>
+    { message }
   </Typography>
 )
 
 // Component Properties
 EmptyMessage.propTypes = {
-  message: PropTypes.string
+  classes: PropTypes.object.isRequired,
+  message: PropTypes.string,
 }
 
 // Component Default Properties

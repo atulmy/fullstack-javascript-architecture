@@ -84,20 +84,16 @@ export function setUser(token, user) {
 
 // Get list
 export function getList() {
-  return dispatch => {
-    return axios.post(API_URL, {
-      operation: 'userList'
-    })
-  }
+  return axios.post(API_URL, {
+    operation: 'userList'
+  })
 }
 
 // Get count
-export function getCount() {
-  return dispatch => {
-    return axios.post(API_URL, {
-      operation: 'userCount'
-    })
-  }
+export function getDashboardCount() {
+  return axios.post(API_URL, {
+    operation: 'userDashboardCount'
+  })
 }
 
 // Set user token and info locally (AsyncStorage)
