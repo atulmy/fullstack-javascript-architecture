@@ -10,7 +10,7 @@ import { grey1, transparent } from '../common/colors'
 const InputText = ({ onSubmitEditing, inputRef, style = {}, ...props}) => {
   return(
     <TextInput
-      ref={inputRef ? ref => inputRef(ref) : null}
+      ref={inputRef || null}
       onSubmitEditing={() => {
         if (onSubmitEditing) onSubmitEditing()
       }}

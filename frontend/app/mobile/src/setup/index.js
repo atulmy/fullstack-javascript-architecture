@@ -22,7 +22,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <Provider store={store} key="provider">
+      <Provider store={store} key='provider'>
         <Routes />
       </Provider>
     )

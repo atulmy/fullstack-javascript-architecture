@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-navigation'
 import LinearGradient from 'react-native-linear-gradient'
 
 // UI Imports
-import { black, grey1, white } from '../../../ui/common/colors'
+import { white } from '../../../ui/common/colors'
 import { gradient } from '../../../ui/common/styles'
 import styles from './styles'
 
@@ -32,7 +32,7 @@ const Body = ({ fullscreen, children }) => (
   fullscreen
     ? <LinearGradient {...gradient}>
         <StatusBar
-          barStyle={'dark-content'}
+          barStyle='dark-content'
           backgroundColor={white}
         />
 
@@ -42,7 +42,7 @@ const Body = ({ fullscreen, children }) => (
       </LinearGradient>
     : <SafeAreaView style={[styles.container, { backgroundColor: white }]}>
         <StatusBar
-          barStyle={'dark-content'}
+          barStyle='dark-content'
           backgroundColor={white}
         />
 

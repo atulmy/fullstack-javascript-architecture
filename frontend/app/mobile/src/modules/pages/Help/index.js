@@ -41,79 +41,79 @@ class Help extends PureComponent {
         <ScrollView style={styles.container}>
           <View style={styles.content}>
             {/* About */}
-            <Typography size={'h3'}>
+            <Typography size='h3'>
               { translate.t('pages.help.content.about') }
             </Typography>
 
             {/* Feature 1 */}
             <View style={styles.section}>
-              <Typography size={'h3'}>{ translate.t('pages.help.content.feature1.title') }</Typography>
+              <Typography size='h3'>{ translate.t('pages.help.content.feature1.title') }</Typography>
 
               <View style={styles.item}>
                 <View style={styles.itemRow}>
-                  <View style={styles.itemBullet}><Typography size={'h5'} color={grey1}>-</Typography></View>
-                  <View><Typography size={'h5'} color={grey1}>{ translate.t('pages.help.content.feature1.points.p1') }</Typography></View>
+                  <View style={styles.itemBullet}><Typography size='h5' color={grey1}>-</Typography></View>
+                  <View><Typography size='h5' color={grey1}>{ translate.t('pages.help.content.feature1.points.p1') }</Typography></View>
                 </View>
               </View>
 
               <View style={styles.item}>
                 <View style={styles.itemRow}>
-                  <View style={styles.itemBullet}><Typography size={'h5'} color={grey1}>-</Typography></View>
-                  <View><Typography size={'h5'} color={grey1}>{ translate.t('pages.help.content.feature1.points.p2') }</Typography></View>
+                  <View style={styles.itemBullet}><Typography size='h5' color={grey1}>-</Typography></View>
+                  <View><Typography size='h5' color={grey1}>{ translate.t('pages.help.content.feature1.points.p2') }</Typography></View>
                 </View>
               </View>
 
               <View style={styles.item}>
                 <View style={styles.itemRow}>
-                  <View style={styles.itemBullet}><Typography size={'h5'} color={grey1}>-</Typography></View>
-                  <View><Typography size={'h5'} color={grey1}>{ translate.t('pages.help.content.feature1.points.p3') }</Typography></View>
+                  <View style={styles.itemBullet}><Typography size='h5' color={grey1}>-</Typography></View>
+                  <View><Typography size='h5' color={grey1}>{ translate.t('pages.help.content.feature1.points.p3') }</Typography></View>
                 </View>
               </View>
 
               <View style={styles.item}>
                 <View style={styles.itemRow}>
-                  <View style={styles.itemBullet}><Typography size={'h5'} color={grey1}>-</Typography></View>
-                  <View><Typography size={'h5'} color={grey1}>{ translate.t('pages.help.content.feature1.points.p4') }</Typography></View>
+                  <View style={styles.itemBullet}><Typography size='h5' color={grey1}>-</Typography></View>
+                  <View><Typography size='h5' color={grey1}>{ translate.t('pages.help.content.feature1.points.p4') }</Typography></View>
                 </View>
               </View>
             </View>
 
             {/* Feature 2 */}
             <View style={styles.section}>
-              <Typography size={'h3'}>{ translate.t('pages.help.content.feature2.title') }</Typography>
+              <Typography size='h3'>{ translate.t('pages.help.content.feature2.title') }</Typography>
 
               <View style={styles.item}>
                 <View style={styles.itemRow}>
-                  <View style={styles.itemBullet}><Typography size={'h5'} color={grey1}>-</Typography></View>
-                  <View><Typography size={'h5'} color={grey1}>{ translate.t('pages.help.content.feature2.points.p1') }</Typography></View>
+                  <View style={styles.itemBullet}><Typography size='h5' color={grey1}>-</Typography></View>
+                  <View><Typography size='h5' color={grey1}>{ translate.t('pages.help.content.feature2.points.p1') }</Typography></View>
                 </View>
               </View>
 
               <View style={styles.item}>
                 <View style={styles.itemRow}>
-                  <View style={styles.itemBullet}><Typography size={'h5'} color={grey1}>-</Typography></View>
-                  <View><Typography size={'h5'} color={grey1}>{ translate.t('pages.help.content.feature2.points.p2') }</Typography></View>
+                  <View style={styles.itemBullet}><Typography size='h5' color={grey1}>-</Typography></View>
+                  <View><Typography size='h5' color={grey1}>{ translate.t('pages.help.content.feature2.points.p2') }</Typography></View>
                 </View>
               </View>
 
               <View style={styles.item}>
                 <View style={styles.itemRow}>
-                  <View style={styles.itemBullet}><Typography size={'h5'} color={grey1}>-</Typography></View>
-                  <View><Typography size={'h5'} color={grey1}>{ translate.t('pages.help.content.feature2.points.p3') }</Typography></View>
+                  <View style={styles.itemBullet}><Typography size='h5' color={grey1}>-</Typography></View>
+                  <View><Typography size='h5' color={grey1}>{ translate.t('pages.help.content.feature2.points.p3') }</Typography></View>
                 </View>
               </View>
 
               <View style={styles.item}>
                 <View style={styles.itemRow}>
-                  <View style={styles.itemBullet}><Typography size={'h5'} color={grey1}>-</Typography></View>
-                  <View><Typography size={'h5'} color={grey1}>{ translate.t('pages.help.content.feature2.points.p4') }</Typography></View>
+                  <View style={styles.itemBullet}><Typography size='h5' color={grey1}>-</Typography></View>
+                  <View><Typography size='h5' color={grey1}>{ translate.t('pages.help.content.feature2.points.p4') }</Typography></View>
                 </View>
               </View>
             </View>
             
             <DividerItem margin={blockMargin * 1.5} />
 
-            <Button title={translate.t('common.button.contact')} onPress={this.onPressContact} theme={'primary'} condensed />
+            <Button title={translate.t('common.button.contact')} onPress={this.onPressContact} theme='primary' condensed />
           </View>
         </ScrollView>
       </Body>

@@ -13,7 +13,7 @@ class ActionDrawer extends PureComponent {
 
     return (
       <ActionIcon
-        icon={'menu'}
+        icon='menu'
         onPress={() => navigation.openDrawer()}
       />
     )

@@ -1,7 +1,6 @@
 // Imports
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { View, RefreshControl } from 'react-native'
 import { FlatList } from 'react-navigation'
 
@@ -14,95 +13,76 @@ import styles from './styles'
 // App Imports
 import translate from '../../../setup/translate'
 import { routesNote } from '../../../setup/routes/postLogin/note'
-import { list } from '../api/actions/query'
+import { list as getList } from '../api/actions/query'
 import Body from '../../common/Body'
 import NavigationTopInner from '../../common/NavigationTopInner'
 import EmptyMessage from '../../common/EmptyMessage'
 import Item from '../Item'
 
 // Component
-class List extends PureComponent {
+const List = ({ navigation }) => {
+  // state
+  const { isLoading, list } = useSelector(state => state.notes)
+  const dispatch = useDispatch()
 
-  componentDidMount() {
-    this.#refresh()
+  // on component load
+  useEffect(() => {
+    refresh()
+  }, [])
+
+  // refresh
+  const refresh = () => {
+    dispatch(getList())
   }
 
-  #refresh = () => {
-    const { dispatch } = this.props
-
-    dispatch(list())
+  // on click create
+  const onClickCreate = () => {
+    navigation.navigate(routesNote.create.name)
   }
 
-  onClickCreate = () => {
-    this.#navigateTo(routesNote.create.name)
-  }
-
-  #navigateTo = (screen) => {
-    const { navigation } = this.props
-
-    navigation.navigate(screen)
-  }
-
-  onSelect = ({ _id }) => () => {
-    const { navigation } = this.props
-
+  // on select
+  const onSelect = ({ _id }) => () => {
     navigation.navigate(routesNote.detail.name, { noteId: _id })
   }
 
-  render() {
-    const { notes: { isLoading, list } } = this.props
+  return (
+    <Body>
+      {/* Navigation */}
+      <NavigationTopInner
+        title={translate.t('note.list.title')}
+        subTitle={translate.t('note.list.subTitle')}
+        rightContent={
+          <Button
+            title={translate.t('common.button.create')}
+            onPress={onClickCreate}
+            theme='primary'
+            style={styles.navigationButton}
+            shadow={false}
+            condensed
+          />
+        }
+      />
 
-    return (
-      <Body>
-        {/* Navigation */}
-        <NavigationTopInner
-          title={translate.t('note.list.title')}
-          subTitle={translate.t('note.list.subTitle')}
-          rightContent={
-            <Button
-              title={translate.t('common.button.create')}
-              onPress={this.onClickCreate}
-              theme={'primary'}
-              style={styles.navigationButton}
-              shadow={false}
-              condensed
+      {/* List */}
+      <View style={styles.container}>
+        <FlatList
+          data={list}
+          keyExtractor={item => item._id}
+          renderItem={({ item }) => <Item item={item} onSelect={onSelect} />}
+          ItemSeparatorComponent={() => <DividerItem />}
+          refreshControl={
+            <RefreshControl
+              refreshing={isLoading}
+              onRefresh={refresh}
+              tintColor={grey5}
             />
           }
+          ListEmptyComponent={() => <EmptyMessage message={translate.t('note.list.empty')} />}
+          refreshing={isLoading}
         />
-
-        {/* List */}
-        <View style={styles.container}>
-          <FlatList
-            data={list}
-            keyExtractor={item => item._id}
-            renderItem={({ item }) => <Item item={item} onSelect={this.onSelect} />}
-            ItemSeparatorComponent={() => <DividerItem />}
-            refreshControl={
-              <RefreshControl
-                refreshing={isLoading}
-                onRefresh={this.#refresh}
-                tintColor={grey5}
-              />
-            }
-            ListEmptyComponent={() => <EmptyMessage message={translate.t('note.list.empty')} />}
-            refreshing={isLoading}
-          />
-        </View>
-      </Body>
-    )
-  }
+      </View>
+    </Body>
+  )
 }
 
-// Component Properties
-List.propTypes = {
-  notes: PropTypes.object.isRequired
-}
-
-// Component State
-function listState(state) {
-  return {
-    notes: state.notes
-  }
-}
-
-export default connect(listState)(List)
+export default List

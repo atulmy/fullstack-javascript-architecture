@@ -24,16 +24,6 @@ export function login({ email, password }) {
   }
 }
 
-// Profile
-export function profile() {
-  return dispatch => {
-    return axios.post(API_URL, {
-      operation: 'userProfile',
-      fields: ['nickname', 'nationality', 'age', 'organization', 'location', 'level']
-    })
-  }
-}
-
 // Log out user and remove token from local (AsyncStorage)
 export function logout() {
   return dispatch => {
@@ -46,11 +36,11 @@ export function logout() {
 }
 
 // Set a user after login or using local (AsyncStorage) token
-export function setUser(token, user) {
+export function loginSetUser(token, user) {
   if (token) {
     axios.defaults.headers.common['Authentication'] = `Bearer ${ token }`
 
-    setUserLocally(token, user)
+    loginSetUserLocally(token, user)
   } else {
     delete axios.defaults.headers.common['Authentication']
   }
@@ -62,7 +52,7 @@ export function setUser(token, user) {
 }
 
 // Set user token and info locally (AsyncStorage)
-export async function setUserLocally(token, user) {
+export async function loginSetUserLocally(token, user) {
   // Set token
   await AsyncStorage.setItem('token', token)
   await AsyncStorage.setItem('user', JSON.stringify(user))

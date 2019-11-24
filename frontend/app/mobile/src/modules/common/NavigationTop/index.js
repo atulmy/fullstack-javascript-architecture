@@ -1,5 +1,5 @@
 // Imports
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { View, Text } from 'react-native'
 
@@ -7,28 +7,26 @@ import { View, Text } from 'react-native'
 import styles from './styles'
 
 // Component
-class NavigationTop extends PureComponent {
-  render() {
-    const { leftIcon, title, rightIcon } = this.props
+const NavigationTop = ({ leftIcon, title, rightIcon }) => (
+  <View style={styles.container}>
+    {/* Left Icon */}
+    <View style={styles.left}>
+      { leftIcon || <View style={styles.iconPlaceholder} /> }
+    </View>
 
-    return (
-      <View style={styles.container}>
-        {/* Left Icon */}
-        <View style={styles.left}>
-          { leftIcon || <View style={styles.iconPlaceholder} /> }
-        </View>
+    {/* Title */}
+    {
+      title
+        ? <View style={styles.middle}><Text style={styles.title}>{ title }</Text></View>
+        : null
+    }
 
-        {/* Title */}
-        { title ? <View style={styles.middle}><Text style={styles.title}>{ title }</Text></View> : null }
-
-        {/* Right Icon */}
-        <View style={styles.right}>
-          { rightIcon || <View style={styles.iconPlaceholder} /> }
-        </View>
-      </View>
-    )
-  }
-}
+    {/* Right Icon */}
+    <View style={styles.right}>
+      { rightIcon || <View style={styles.iconPlaceholder} /> }
+    </View>
+  </View>
+)
 
 // Component Properties
 NavigationTop.propTypes = {
@@ -41,4 +39,3 @@ NavigationTop.defaultProps = {
 }
 
 export default NavigationTop
-

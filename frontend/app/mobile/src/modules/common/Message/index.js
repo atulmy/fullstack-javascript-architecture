@@ -1,7 +1,6 @@
 // Imports
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 // UI Imports
 import Toast from '../../../ui/Toast'
@@ -10,27 +9,13 @@ import Toast from '../../../ui/Toast'
 import { messageHide } from '../api/actions'
 
 // Component
-class Message extends PureComponent {
-  render() {
-    const { common: { message: { open, success, message } }, messageHide } = this.props
+const Message = () => {
+  const { message: { open, success, message } } = useSelector(state => state.common)
+  const dispatch = useDispatch()
 
-    return (
-      open && <Toast message={message} success={success} onPress={ messageHide } />
-    )
-  }
+  return (
+    open && <Toast message={message} success={success} onPress={() => dispatch(messageHide())} />
+  )
 }
 
-// Component Properties
-Message.propTypes = {
-  common: PropTypes.object.isRequired,
-  messageHide: PropTypes.func.isRequired
-}
-
-// Component State
-function messageState(state) {
-  return {
-    common: state.common
-  }
-}
-
-export default connect(messageState, { messageHide })(Message)
+export default Message

@@ -8,11 +8,11 @@ import { grey2 } from '../../../ui/common/colors'
 import styles from './styles'
 
 // Component
-const Loading = (props) => (
+const Loading = ({ message, size, color }) => (
   <View style={styles.container}>
-    <ActivityIndicator size={props.size} color={props.color} />
+    <ActivityIndicator size={size} color={color} />
 
-    <Text style={styles.text}>{ props.message }</Text>
+    <Text style={styles.text}>{ message }</Text>
   </View>
 )
 

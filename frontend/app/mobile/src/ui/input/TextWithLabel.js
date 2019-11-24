@@ -14,7 +14,7 @@ const InputTextWithLabel = ({ label, onSubmitEditing, inputRef, icon, onPressIco
   return(
     <View style={styles.container}>
       <View style={styles.inputWrapper}>
-        <Typography color={grey1} size={'h5'} style={{ marginTop: blockMargin }}>{ label.toUpperCase() }</Typography>
+        <Typography color={grey1} size='h5' style={{ marginTop: blockMargin }}>{ label.toUpperCase() }</Typography>
 
         <TextInput
           ref={inputRef ? ref => inputRef(ref) : null}

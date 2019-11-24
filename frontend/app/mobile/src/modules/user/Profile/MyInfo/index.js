@@ -1,7 +1,7 @@
 // Imports
-import React, { PureComponent } from 'react'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { View, Image } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import ImagePicker from 'react-native-image-picker'
@@ -19,21 +19,20 @@ import params from '../../../../setup/config/params'
 import translate from '../../../../setup/translate'
 import { userImage } from '../../../../setup/helpers/utils'
 import { upload, messageShow } from '../../../common/api/actions'
-import { list as playerList, setUser } from '../../api/actions/query'
+import { loginSetUser } from '../../api/actions/query'
 import { changeImage } from '../../api/actions/mutation'
 import Form from './Form'
 
 // Component
-class MyInfo extends PureComponent {
+const MyInfo = () => {
+  // state
+  const [isUploading, isUploadingToggle] = useState(false)
+  const { details: { name, email, image } } = useSelector(state => state.auth)
+  const dispatch = useDispatch()
 
-  state = {
-    isUploading: false
-  }
-
-  #selectImage = () => {
-    const { dispatch } = this.props
-
-    this.#isUploadingToggle(true)
+  // on select image
+  const onSelectImage = () => {
+    isUploadingToggle(true)
 
     ImagePicker.launchImageLibrary({
       title: translate.t('user.avatar'),
@@ -42,23 +41,22 @@ class MyInfo extends PureComponent {
       mediaType: 'photo'
     }, async response => {
       if (response.didCancel) {
-        this.#isUploadingToggle(false)
+        isUploadingToggle(false)
 
       } else if (response.error) {
-        this.#isUploadingToggle(false)
+        isUploadingToggle(false)
 
         // Error selecting image
         dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
       } else {
         // Image selection successful
-        await this.#uploadImage(response)
+        await uploadImage(response)
       }
     })
   }
 
-  #uploadImage = async (response) => {
-    const { dispatch } = this.props
-
+  // upload image
+  const uploadImage = async (response) => {
     const form = new FormData()
     form.append('type', 'user')
     form.append('folder', params.folders.user.image)
@@ -69,28 +67,27 @@ class MyInfo extends PureComponent {
     })
 
     try {
-      const { data: { success, file } } = await dispatch(upload(form))
+      const { data: { success, file } } = await upload(form)
 
       if(success && file) {
-        await this.#updateImage(file)
+        await updateImage(file)
       }
     } catch(error) {
       dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
     } finally {
-      this.#isUploadingToggle(false)
+      isUploadingToggle(false)
     }
   }
 
-  #updateImage = async (file) => {
-    const { dispatch } = this.props
-
+  // update image
+  const updateImage = async file => {
     try {
-      const { data } = await dispatch(changeImage({ image : file }))
+      const { data } = await changeImage({ image : file })
 
       if(data.success) {
         dispatch(messageShow({ success: true, message: data.message }))
 
-        dispatch(setUser(data.data.token, data.data.user))
+        dispatch(loginSetUser(data.data.token, data.data.user))
       } else {
         dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
       }
@@ -99,62 +96,45 @@ class MyInfo extends PureComponent {
     }
   }
 
-  #isUploadingToggle = isUploading => {
-    this.setState({
-      isUploading
-    })
-  }
+  // render
+  return (
+    <KeyboardAwareScrollView
+      contentContainerStyle={stylesCommon.flexGrow}
+      enableOnAndroid={true}
+      style={styles.container}
+      keyboardShouldPersistTaps='handled'
+    >
+      <View style={styles.profile}>
+        {/* Image */}
+        <View style={styles.profileImageWrapper}>
+          <Image
+            source={{ uri: userImage(image), cache: 'force-cache' }}
+            resizeMode='cover'
+            style={styles.profileImage}
+          />
 
-  render() {
-    const { auth: { details: { name, email, image } } } = this.props
-    const { isUploading } = this.state
-
-    return (
-      <KeyboardAwareScrollView contentContainerStyle={stylesCommon.flexGrow} enableOnAndroid={true} style={styles.container}>
-        <View style={styles.profile}>
-          {/* Image */}
-          <View style={styles.profileImageWrapper}>
-            <Image
-              source={{ uri: userImage(image), cache: 'force-cache' }}
-              resizeMode={'cover'}
-              style={styles.profileImage}
+          <View style={{ position: 'absolute', bottom: 0, right: 0, alignItems: 'center' }}>
+            <Fab
+              icon='camera'
+              onPress={onSelectImage}
+              disabled={isUploading}
             />
-
-            <View style={{ position: 'absolute', bottom: 0, right: 0, alignItems: 'center' }}>
-              <Fab
-                icon={'camera'}
-                onPress={this.#selectImage}
-                disabled={isUploading}
-              />
-            </View>
           </View>
-
-          {/* Name */}
-          <Typography size={'h2'} style={styles.profileTitle}>{ name }</Typography>
-
-          {/* Email */}
-          <Typography size={'h6'} color={grey3} style={styles.profileCaption}>{ email }</Typography>
         </View>
 
-        {/* Form */}
-        <View style={styles.formContainer}>
-          <Form />
-        </View>
-      </KeyboardAwareScrollView>
-    )
-  }
+        {/* Name */}
+        <Typography size='h2' style={styles.profileTitle}>{ name }</Typography>
+
+        {/* Email */}
+        <Typography size='h6' color={grey3} style={styles.profileCaption}>{ email }</Typography>
+      </View>
+
+      {/* Form */}
+      <View style={styles.formContainer}>
+        <Form />
+      </View>
+    </KeyboardAwareScrollView>
+  )
 }
 
-// Component Properties
-MyInfo.propTypes = {
-  auth: PropTypes.object.isRequired
-}
-
-// Component State
-function myInfoState(state) {
-  return {
-    auth: state.auth
-  }
-}
-
-export default connect(myInfoState)(withNavigation(MyInfo))
+export default withNavigation(MyInfo)

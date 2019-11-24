@@ -1,5 +1,5 @@
 // Imports
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { View, Text } from 'react-native'
 
@@ -8,32 +8,26 @@ import stylesCommon from '../../../ui/common/styles'
 import styles from './styles'
 
 // Component
-class NavigationTopInner extends PureComponent {
-  render() {
-    const { leftIcon, title, subTitle, rightContent, shadow } = this.props
-
-    return (
-      <View style={[styles.container, shadow ? stylesCommon.shadowSubtle : {} ]} zIndex={1}>
-        {/* Left */}
-        <View style={styles.left}>
-          {/* Left Icon */}
-          <View style={styles.leftIcon}>
-            { leftIcon || <View style={styles.leftIconPlaceholder} /> }
-          </View>
-
-          {/* Info */}
-          <View style={styles.info}>
-            { title && <Text style={styles.title}>{ title.toUpperCase() }</Text> }
-            { subTitle && <Text style={styles.subTitle}>{ subTitle.toUpperCase() }</Text> }
-          </View>
-        </View>
-
-        {/* Right */}
-        <View style={styles.right}>{ rightContent }</View>
+const NavigationTopInner = ({ leftIcon, title, subTitle, rightContent, shadow }) => (
+  <View style={[styles.container, shadow ? stylesCommon.shadowSubtle : {} ]} zIndex={1}>
+    {/* Left */}
+    <View style={styles.left}>
+      {/* Left Icon */}
+      <View style={styles.leftIcon}>
+        { leftIcon || <View style={styles.leftIconPlaceholder} /> }
       </View>
-    )
-  }
-}
+
+      {/* Info */}
+      <View style={styles.info}>
+        { title && <Text style={styles.title}>{ title.toUpperCase() }</Text> }
+        { subTitle && <Text style={styles.subTitle}>{ subTitle.toUpperCase() }</Text> }
+      </View>
+    </View>
+
+    {/* Right */}
+    <View style={styles.right}>{ rightContent }</View>
+  </View>
+)
 
 // Component Properties
 NavigationTopInner.propTypes = {
@@ -48,4 +42,3 @@ NavigationTopInner.defaultProps = {
 }
 
 export default NavigationTopInner
-

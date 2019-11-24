@@ -1,6 +1,6 @@
 // Imports
-import React, { PureComponent } from 'react'
-import { connect } from 'react-redux'
+import React, { useState, useRef } from 'react'
+import { useDispatch } from 'react-redux'
 import { View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
@@ -14,7 +14,7 @@ import styles from './styles'
 import translate from '../../../setup/translate'
 import { routesPreLogin } from '../../../setup/routes/preLogin'
 import routeNames from '../../../setup/routes/names'
-import { setUser } from '../api/actions/query'
+import { loginSetUser } from '../api/actions/query'
 import { signup } from '../api/actions/mutation'
 import { messageShow } from '../../common/api/actions'
 import Body from '../../common/Body'
@@ -22,151 +22,148 @@ import NavigationTop from '../../common/NavigationTop'
 import ActionBack from '../../common/NavigationTop/ActionBack'
 
 // Component
-class Signup extends PureComponent {
-  state = {
-    isSubmitting: false,
-
+const Signup = ({ navigation }) => {
+  // state
+  const [isSubmitting, isSubmittingToggle] = useState(false)
+  const [user, setUser] = useState({
     name: '',
     email: '',
     password: '',
     passwordRepeat: ''
-  }
+  })
+  const dispatch = useDispatch()
+  const inputEmail = useRef(null)
+  const inputPassword = useRef(null)
+  const inputPasswordRepeat = useRef(null)
 
-  #onSubmit = async () => {
-    const { dispatch } = this.props
-    const { name, email, password, passwordRepeat } = this.state
-
-    this.#isSubmittingToggle(true)
+  // on submit
+  const onSubmit = async () => {
+    isSubmittingToggle(true)
 
     try {
-      const { data } = await dispatch(signup({ name, email, password, passwordRepeat }))
+      const { data } = await signup(user)
 
-      this.#isSubmittingToggle(false)
+      isSubmittingToggle(false)
 
       dispatch(messageShow({ success: data.success, message: data.message }))
 
       if(data.success) {
-        dispatch(setUser(data.data.token, data.data.user))
+        dispatch(loginSetUser(data.data.token, data.data.user))
 
-        this.#navigateTo(routeNames.postLoginStack)
+        navigation.navigate(routeNames.postLoginStack)
       }
     } catch(error) {
-      this.#isSubmittingToggle(false)
+      isSubmittingToggle(false)
 
       dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
     }
   }
 
-  #isSubmittingToggle = isSubmitting => {
-    this.setState({
-      isSubmitting
-    })
+  // on change
+  const onChange = name => value => {
+    setUser({ ...user, [name]: value})
   }
 
-  #onPressLogin = () => {
-    this.#navigateTo(routesPreLogin.login.name)
+  // on press login
+  const onPressLogin = () => {
+    navigation.navigate(routesPreLogin.login.name)
   }
 
-  #navigateTo = (screen) => {
-    const { navigation } = this.props
+  // render
+  return (
+    <Body fullscreen={true}>
+      {/* Navigation */}
+      <NavigationTop
+        title={translate.t('user.signup.title')}
+        leftIcon={<ActionBack />}
+      />
 
-    navigation.navigate(screen)
-  }
+      <KeyboardAwareScrollView
+        contentContainerStyle={stylesCommon.flexGrow}
+        enableOnAndroid={true}
+        keyboardShouldPersistTaps='handled'
+      >
+        <View style={styles.container}>
+          {/* Form */}
+          <View style={styles.formContainer}>
+            <View style={[stylesCommon.formRounded, styles.form]}>
+              {/* Email */}
+              <InputText
+                placeholder={translate.t('user.fields.name').toUpperCase()}
+                autoCapitalize='none'
+                returnKeyType='next'
+                value={user.name}
+                onChangeText={onChange('name')}
+                blurOnSubmit={false}
+                onSubmitEditing={() => inputEmail.current.focus()}
+              />
 
-  render() {
-    const { isSubmitting, name, email, password, passwordRepeat } = this.state
+              <View style={stylesCommon.divider} />
 
-    return (
-      <Body fullscreen={true}>
-        {/* Navigation */}
-        <NavigationTop
-          title={translate.t('user.signup.title')}
-          leftIcon={<ActionBack />}
-        />
+              {/* Email */}
+              <InputText
+                inputRef={inputEmail}
+                placeholder={translate.t('user.fields.email').toUpperCase()}
+                keyboardType='email-address'
+                autoCapitalize='none'
+                returnKeyType='next'
+                value={user.email}
+                onChangeText={onChange('email')}
+                blurOnSubmit={false}
+                onSubmitEditing={() => inputPassword.current.focus()}
+              />
 
-        <KeyboardAwareScrollView contentContainerStyle={stylesCommon.flexGrow} enableOnAndroid={true}>
-          <View style={styles.container}>
-            {/* Form */}
-            <View style={styles.formContainer}>
-              <View style={[stylesCommon.formRounded, styles.form]}>
-                {/* Email */}
-                <InputText
-                  placeholder={translate.t('user.fields.name').toUpperCase()}
-                  autoCapitalize={'none'}
-                  returnKeyType={'next'}
-                  value={name}
-                  onChangeText={name => this.setState({ name })}
-                  blurOnSubmit={false}
-                  onSubmitEditing={() => this.inputEmail.focus()}
-                />
+              <View style={stylesCommon.divider} />
 
-                <View style={stylesCommon.divider} />
+              {/* Password */}
+              <InputText
+                inputRef={inputPassword}
+                placeholder={translate.t('user.fields.password').toUpperCase()}
+                secureTextEntry={true}
+                autoCapitalize='none'
+                returnKeyType='next'
+                value={user.password}
+                onChangeText={onChange('password')}
+                blurOnSubmit={false}
+                onSubmitEditing={() => inputPasswordRepeat.current.focus()}
+              />
 
-                {/* Email */}
-                <InputText
-                  inputRef={input => this.inputEmail = input}
-                  placeholder={translate.t('user.fields.email').toUpperCase()}
-                  keyboardType={'email-address'}
-                  autoCapitalize={'none'}
-                  returnKeyType={'next'}
-                  value={email}
-                  onChangeText={email => this.setState({ email })}
-                  blurOnSubmit={false}
-                  onSubmitEditing={() => this.inputPassword.focus()}
-                />
+              <View style={stylesCommon.divider} />
 
-                <View style={stylesCommon.divider} />
-
-                {/* Password */}
-                <InputText
-                  inputRef={input => this.inputPassword = input}
-                  placeholder={translate.t('user.fields.password').toUpperCase()}
-                  secureTextEntry={true}
-                  autoCapitalize={'none'}
-                  returnKeyType={'next'}
-                  value={password}
-                  onChangeText={password => this.setState({ password })}
-                  blurOnSubmit={false}
-                  onSubmitEditing={() => this.inputPasswordRetype.focus()}
-                />
-
-                <View style={stylesCommon.divider} />
-
-                {/* Retype password */}
-                <InputText
-                  inputRef={input => this.inputPasswordRetype = input}
-                  placeholder={translate.t('user.fields.passwordRepeat').toUpperCase()}
-                  secureTextEntry={true}
-                  autoCapitalize={'none'}
-                  returnKeyType={'next'}
-                  value={passwordRepeat}
-                  onChangeText={passwordRepeat => this.setState({ passwordRepeat })}
-                  blurOnSubmit={false}
-                  onSubmitEditing={this.#onSubmit}
-                />
-              </View>
-
-              {/* Submit */}
-              <Button
-                onPress={this.#onSubmit}
-                title={ translate.t('common.button.submit').toUpperCase() }
-                theme={'primary'}
-                disabled={isSubmitting}
+              {/* Repeat password */}
+              <InputText
+                inputRef={inputPasswordRepeat}
+                placeholder={translate.t('user.fields.passwordRepeat').toUpperCase()}
+                secureTextEntry={true}
+                autoCapitalize='none'
+                returnKeyType='go'
+                value={user.passwordRepeat}
+                onChangeText={onChange('passwordRepeat')}
+                blurOnSubmit={false}
+                onSubmitEditing={onSubmit}
               />
             </View>
 
-            {/* Bottom CTA */}
-            <View style={styles.bottomCta}>
-              <Button
-                title={ translate.t('user.signup.button.login').toUpperCase() }
-                onPress={this.#onPressLogin}
-              />
-            </View>
+            {/* Submit */}
+            <Button
+              onPress={onSubmit}
+              title={translate.t('common.button.submit').toUpperCase()}
+              theme='primary'
+              disabled={isSubmitting}
+            />
           </View>
-        </KeyboardAwareScrollView>
-      </Body>
-    )
-  }
+
+          {/* Bottom CTA */}
+          <View style={styles.bottomCta}>
+            <Button
+              title={translate.t('user.signup.button.login').toUpperCase() }
+              onPress={onPressLogin}
+            />
+          </View>
+        </View>
+      </KeyboardAwareScrollView>
+    </Body>
+  )
 }
 
-export default connect()(Signup)
+export default Signup

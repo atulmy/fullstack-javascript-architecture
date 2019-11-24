@@ -1,7 +1,6 @@
 // Imports
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
@@ -16,38 +15,26 @@ import translate from '../../../setup/translate'
 import { routesNote } from '../../../setup/routes/postLogin/note'
 import { messageShow } from '../../common/api/actions'
 import { list } from '../api/actions/query'
-import { create, remove } from '../api/actions/mutation'
+import { create } from '../api/actions/mutation'
 import NavigationTopInner from '../../common/NavigationTopInner'
 import ActionBack from '../../common/NavigationTop/ActionBack'
 import Body from '../../common/Body'
 
 // Component
-class Create extends PureComponent {
+const Create = ({ navigation }) => {
+  // state
+  const [isSubmitting, isSubmittingToggle] = useState(false)
+  const [note, setNote] = useState('')
+  const dispatch = useDispatch()
 
-  constructor (props) {
-    super(props)
-
-    this.note = {
-      note: ''
-    }
-
-    this.state = {
-      isSubmitting: false,
-
-      ...this.note
-    }
-  }
-
-  #onSubmit = async () => {
-    const { navigation, dispatch } = this.props
-    const { _id, note } = this.state
-
-    this.#isSubmittingToggle(true)
+  // on submit
+  const onSubmit = async () => {
+    isSubmittingToggle(true)
 
     try {
-      const { data } = await dispatch(create({ _id, note }))
+      const { data } = await create({ note })
 
-      this.#isSubmittingToggle(false)
+      isSubmittingToggle(false)
 
       dispatch(messageShow({ success: data.success, message: data.message }))
 
@@ -57,85 +44,70 @@ class Create extends PureComponent {
         navigation.navigate(routesNote.list.name)
       }
     } catch(error) {
-      this.#isSubmittingToggle(false)
+      isSubmittingToggle(false)
 
       dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
     }
   }
 
-  #isSubmittingToggle = isSubmitting => {
-    this.setState({
-      isSubmitting
-    })
-  }
+  // render
+  return (
+    <Body>
+      {/* Navigation */}
+      <NavigationTopInner
+        title={translate.t('note.create.title')}
+        subTitle={translate.t('note.create.subTitle')}
+        leftIcon={
+          <ActionBack />
+        }
+        rightContent={
+          <Button
+            title={translate.t('common.button.save')}
+            theme='outlined'
+            onPress={onSubmit}
+            disabled={isSubmitting}
+            shadow={false}
+            condensed
+          />
+        }
+      />
 
-  render() {
-    const { isSubmitting, note } = this.state
-
-    return (
-      <Body>
-        {/* Navigation */}
-        <NavigationTopInner
-          title={translate.t('note.create.title')}
-          subTitle={translate.t('note.create.subTitle')}
-          leftIcon={
-            <ActionBack />
-          }
-          rightContent={
-            <Button
-              title={translate.t('common.button.save')}
-              theme={'outlined'}
-              onPress={this.#onSubmit}
-              disabled={isSubmitting}
-              shadow={false}
-              condensed
+      {/* Form */}
+      <KeyboardAwareScrollView
+        contentContainerStyle={stylesCommon.flexGrow}
+        enableOnAndroid={true}
+        keyboardShouldPersistTaps='handled'
+        style={styles.container}
+      >
+        <View style={styles.formContainer}>
+          <View style={stylesCommon.form}>
+            {/* Notes */}
+            <InputTextWithLabel
+              label={translate.t('note.fields.note').toUpperCase()}
+              placeholder={translate.t('note.fields.notePlaceholder')}
+              value={note}
+              autoCapitalize='none'
+              autoFocus
+              multiline={true}
+              onChangeText={note => setNote(note)}
             />
-          }
-        />
-
-        <KeyboardAwareScrollView contentContainerStyle={stylesCommon.flexGrow} enableOnAndroid={true} style={styles.container}>
-          <View style={styles.formContainer}>
-            <View style={stylesCommon.form}>
-              {/* Notes */}
-              <InputTextWithLabel
-                label={translate.t('note.fields.note').toUpperCase()}
-                placeholder={translate.t('note.fields.notePlaceholder')}
-                value={note}
-                autoCapitalize={'none'}
-                autoFocus
-                multiline={true}
-                onChangeText={note => this.setState({ note })}
-              />
-            </View>
-
-            {/* Bottom CTA */}
-            <View style={stylesCommon.formCta}>
-              {/* Submit */}
-              <Button
-                title={ translate.t('common.button.save').toUpperCase() }
-                theme={'primary'}
-                onPress={this.#onSubmit}
-                disabled={isSubmitting}
-                fullWidth
-              />
-            </View>
           </View>
-        </KeyboardAwareScrollView>
-      </Body>
-    )
-  }
+
+          {/* Bottom CTA */}
+          <View style={stylesCommon.formCta}>
+            {/* Submit */}
+            <Button
+              title={translate.t('common.button.save').toUpperCase()}
+              theme='primary'
+              onPress={onSubmit}
+              disabled={isSubmitting}
+              fullWidth
+            />
+          </View>
+        </View>
+      </KeyboardAwareScrollView>
+    </Body>
+  )
 }
 
-// Component Properties
-Create.propTypes = {
-  auth: PropTypes.object.isRequired
-}
-
-// Component State
-function createState(state) {
-  return {
-    auth: state.auth
-  }
-}
-
-export default connect(createState)(Create)
+export default Create

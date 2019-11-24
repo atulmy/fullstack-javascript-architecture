@@ -10,21 +10,21 @@ import Icon from '../../../ui/icon/Icon'
 import styles from './styles'
 
 // Component
-const EmptyMessage = (props) => (
+const EmptyMessage = ({ icon, message }) => (
   <View
-    animation={'fadeIn'}
+    animation='fadeIn'
     useNativeDriver={true}
     duration={1000}
-    easing={'ease-in-out-back'}
+    easing='ease-in-out-back'
     style={styles.container}
   >
     <Icon
-      name={props.icon}
+      name={icon}
       size={font(30)}
       color={grey2 + opacityLow}
     />
 
-    <Text style={styles.text}>{ props.message }</Text>
+    <Text style={styles.text}>{ message }</Text>
   </View>
 )
 

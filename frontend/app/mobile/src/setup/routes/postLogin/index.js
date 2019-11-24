@@ -23,7 +23,7 @@ export const routesPostLogin = {
     screen: NoteStack,
     navigationOptions: {
       tabBarLabel: 'Notes',
-      tabBarIcon: ({ tintColor }) => <Icon name={'clipboard-text'} size={iconSize} color={tintColor} />,
+      tabBarIcon: ({ tintColor }) => <Icon name='clipboard-text' size={iconSize} color={tintColor} />,
     }
   },
 
@@ -34,7 +34,7 @@ export const routesPostLogin = {
     screen: UserStack,
     navigationOptions: {
       tabBarLabel: 'Profile',
-      tabBarIcon: ({ tintColor }) => <Icon name={'account-circle'} size={iconSize} color={tintColor} />,
+      tabBarIcon: ({ tintColor }) => <Icon name='account-circle' size={iconSize} color={tintColor} />,
     }
   },
 }

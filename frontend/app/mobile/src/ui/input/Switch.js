@@ -13,7 +13,7 @@ import { renderIf } from "../../setup/helpers/utils"
 const InputSwitch = ({ label, onChange, value, description = '', trackColor = highlight, style = {}, ...props}) => {
   return(
     <View style={styles.container}>
-      <Typography size={'h5'} color={grey1}>{ label.toUpperCase() }</Typography>
+      <Typography size='h5' color={grey1}>{ label.toUpperCase() }</Typography>
 
       <Switch
         onValueChange={onChange}
@@ -27,7 +27,7 @@ const InputSwitch = ({ label, onChange, value, description = '', trackColor = hi
 
       {
         renderIf(description,
-          <Typography size={'h6'} color={grey2} style={styles.description}>{ description }</Typography>
+          <Typography size='h6' color={grey2} style={styles.description}>{ description }</Typography>
         )
       }
     </View>

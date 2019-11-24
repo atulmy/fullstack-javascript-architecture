@@ -16,9 +16,9 @@ import params from '../../../setup/config/params'
 const Item = ({ onSelect, item: { _id, note, createdAt } }) => (
   <TouchableOpacity onPress={onSelect({ _id })}>
     <View style={styles.container}>
-      <Typography size={'h4'} numberOfLines={2}>{ note }</Typography>
+      <Typography size='h4' numberOfLines={2}>{ note }</Typography>
 
-      <Typography size={'h6'} color={grey2} style={styles.date}>{ moment(createdAt).format(params.common.formats.dateTime) }</Typography>
+      <Typography size='h6' color={grey2} style={styles.date}>{ moment(createdAt).format(params.common.formats.dateTime) }</Typography>
     </View>
   </TouchableOpacity>
 )

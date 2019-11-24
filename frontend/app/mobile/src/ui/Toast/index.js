@@ -22,7 +22,7 @@ const Toast = ({ onPress, message, success }) => (
           />
         </View>
 
-        <Typography size={'h5'} color={black}>{ message }</Typography>
+        <Typography size='h5' color={black}>{ message }</Typography>
       </View>
     </TouchableWithoutFeedback>
 )

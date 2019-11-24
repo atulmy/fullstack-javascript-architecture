@@ -13,7 +13,7 @@ import styles from './styles'
 // App Imports
 import translate from '../../../setup/translate'
 import routeNames from '../../../setup/routes/names'
-import { setUser, logout } from '../../user/api/actions/query'
+import { loginSetUser, logout } from '../../user/api/actions/query'
 import Body from '../../common/Body'
 import Loading from '../../common/Loading'
 
@@ -40,7 +40,7 @@ class Entry extends PureComponent {
         const user = JSON.parse(await AsyncStorage.getItem('user'))
 
         if (user) {
-          dispatch(setUser(token, user))
+          dispatch(loginSetUser(token, user))
 
           navigation.navigate(routeNames.postLoginStack)
         } else {

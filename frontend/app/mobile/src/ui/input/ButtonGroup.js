@@ -12,7 +12,7 @@ import Typography from '../Typography'
 const InputButtonGroup = ({ label, list, active, onSelect, textSize }) => {
   return(
     <View style={styles.container}>
-      <Typography size={'h5'} color={grey1}>{ label.toUpperCase() }</Typography>
+      <Typography size='h5' color={grey1}>{ label.toUpperCase() }</Typography>
 
       <View style={styles.buttons}>
         {

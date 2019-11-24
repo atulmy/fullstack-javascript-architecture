@@ -22,11 +22,9 @@ export function messageHide() {
 }
 
 export function upload(file) {
-  return dispatch => {
-    return axios.post(API_URL + params.endpoint.uploads, file, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    })
-  }
+  return axios.post(API_URL + params.endpoint.uploads, file, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  })
 }

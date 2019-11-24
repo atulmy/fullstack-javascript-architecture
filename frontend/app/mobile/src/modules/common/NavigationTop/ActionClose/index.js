@@ -13,7 +13,7 @@ class ActionClose extends PureComponent {
 
     return (
       <ActionIcon
-        icon={'close'}
+        icon='close'
         onPress={onPress}
       />
     )

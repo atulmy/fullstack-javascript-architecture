@@ -8,30 +8,24 @@ import { API_URL } from '../../../../setup/config/env'
 
 // Signup
 export function signup({ name, email, password, passwordRepeat }) {
-  return dispatch => {
-    return axios.post(API_URL, {
-      operation: 'userSignup',
-      params: { name, email, password, passwordRepeat }
-    })
-  }
+  return axios.post(API_URL, {
+    operation: 'userSignup',
+    params: { name, email, password, passwordRepeat }
+  })
 }
 
 // Update
 export function profileUpdate({ name }) {
-  return dispatch => {
-    return axios.post(API_URL, {
-      operation: 'userProfileUpdate',
-      params: { name }
-    })
-  }
+  return axios.post(API_URL, {
+    operation: 'userProfileUpdate',
+    params: { name }
+  })
 }
 
 // Change image
 export function changeImage({ image }) {
-  return dispatch => {
-    return axios.post(API_URL, {
-      operation: 'userChangeImage',
-      params: { image }
-    })
-  }
+  return axios.post(API_URL, {
+    operation: 'userChangeImage',
+    params: { image }
+  })
 }

@@ -75,10 +75,8 @@ export function list(isLoading = true) {
 
 // Get detail
 export function detail({ noteId }) {
-  return dispatch => {
-    return axios.post(API_URL, {
-      operation: 'noteDetail',
-      params: { noteId }
-    })
-  }
+  return axios.post(API_URL, {
+    operation: 'noteDetail',
+    params: { noteId }
+  })
 }
