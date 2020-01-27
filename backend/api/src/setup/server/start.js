@@ -1,7 +1,7 @@
 // Imports
 import ip from 'ip'
 import mongoose from 'mongoose'
-import format from 'date-fns/format'
+import moment from 'moment'
 
 // App Imports
 import { PORT, NODE_ENV } from '../config/env'
@@ -18,7 +18,7 @@ export default function (server) {
       console.info(`INFO - Server started on`)
       console.info(`  Local   http://localhost:${ PORT } [${ NODE_ENV }]`)
       console.info(`  Network http://${ ip.address() }:${ PORT } [${ NODE_ENV }]`)
-      console.info(`  Datetime ${ format(new Date(), 'YYYY-MM-DD hh:mm:ss a') }\n`)
+      console.info(`  Datetime ${ moment().format('YYYY-MM-DD hh:mm:ss a') }\n`)
     }
   })
 

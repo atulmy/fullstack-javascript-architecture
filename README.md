@@ -121,8 +121,8 @@ A typical product (SaaS, etc.) usually consists of following services:
         - [Lightweight RPC API pattern](https://github.com/atulmy/wispy)
     - Switch to `api` directory `cd backend/api`
     - Configuration
-        - Create local environment file `cp .env.dev.example .env`
-        - Modify `.env` for
+        - Create local environment file `cp .env.dev.example .env.local`
+        - Modify `.env.local` for
             - `PORT` (`8000`)
             - `NODE_ENV` (`development` | `production`)
             - `SECURITY_SECRET` (Use [passwordsgenerator](https://passwordsgenerator.net))
@@ -142,8 +142,8 @@ A typical product (SaaS, etc.) usually consists of following services:
 - **Landing**
     - Switch to `landing` directory `cd frontend/landing`
     - Configuration
-        - Create local environment file `cp .env.dev.example .env`
-        - Modify `.env` for
+        - Create local environment file `cp .env.dev.example .env.local`
+        - Modify `.env.local` for
             - `PORT` (`3000`)
             - `NODE_ENV` (`development` | `production`)
             - `URL_LANDING` (`http://localhost:3000`)
@@ -161,8 +161,8 @@ A typical product (SaaS, etc.) usually consists of following services:
 - **Web**
     - Switch to `web` directory `cd frontend/app/web`
     - Configuration
-        - Create local environment file `cp .env.dev.example .env`
-        - Modify `.env` for
+        - Create local environment file `cp .env.dev.example .env.local`
+        - Modify `.env.local` for
             - `PORT` (`5000`)
             - `REACT_APP_LANDING_URL` (`http://localhost:3000`)
             - `REACT_APP_WEB_URL` (`http://localhost:5000`)

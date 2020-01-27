@@ -1,7 +1,7 @@
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'
-import format from 'date-fns/format'
+import moment from 'moment'
 
 // UI Imports
 import Card from '@material-ui/core/Card'
@@ -21,7 +21,7 @@ const Item = ({ note: { _id, note, createdAt }, onDelete, classes }) => (
       <Typography className={classes.note}>{ note }</Typography>
 
       <Typography color="textSecondary">
-        { format(createdAt, 'ddd MMM Do, hh:mm a') }
+        { moment(createdAt).format('YYYY-MM-DD hh:mm a') }
       </Typography>
     </CardContent>
 

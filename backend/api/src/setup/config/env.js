@@ -2,7 +2,7 @@
 import dotenv from 'dotenv'
 
 // Load .env
-dotenv.config()
+dotenv.config({ path: '.env.local' })
 
 // Environment
 export const NODE_ENV = process.env.NODE_ENV
