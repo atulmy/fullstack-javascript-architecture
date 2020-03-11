@@ -13,7 +13,7 @@ const RoutePrivate = ({ role, component, ...props }) => {
   return (
     isAuthenticated
       ? role
-        ? details.role === props.role
+        ? details.role === role
           ? <Route {...props} component={component}/>
           : <Redirect to={userRoutes.userLogin.path}/>
         : <Route {...props} component={component}/>
