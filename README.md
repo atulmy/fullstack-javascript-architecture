@@ -260,6 +260,9 @@ View all screenshots [here](https://github.com/atulmy/atulmy.github.io/tree/mast
 
 ## Authors
 - Atul Yadav - [GitHub](https://github.com/atulmy) · [Twitter](https://twitter.com/atulmy)
+
+## Collaborators
+- Hossein Nedaee - [GitHub](https://github.com/hosseinnedaee)
 - [YOUR NAME HERE] - Feel free to contribute to the codebase by resolving any open issues, refactoring, adding new features, writing test cases or any other way to make the project better and helpful to the community. Feel free to fork and send pull requests.
 
 ## Resources and Inspirations
