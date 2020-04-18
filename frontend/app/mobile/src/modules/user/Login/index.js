@@ -25,8 +25,8 @@ const Login = ({ navigation }) => {
   // state
   const [isSubmitting, isSubmittingToggle] = useState(false)
   const [user, setUser] = useState({
-    email: '',
-    password: ''
+    email: 'user@example.com',
+    password: '123456'
   })
   const dispatch = useDispatch()
   const inputPassword = useRef(null)

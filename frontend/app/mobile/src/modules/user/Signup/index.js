@@ -26,10 +26,10 @@ const Signup = ({ navigation }) => {
   // state
   const [isSubmitting, isSubmittingToggle] = useState(false)
   const [user, setUser] = useState({
-    name: '',
-    email: '',
-    password: '',
-    passwordRepeat: ''
+    name: 'User',
+    email: 'user@example.com',
+    password: '123456',
+    passwordRepeat: '123456'
   })
   const dispatch = useDispatch()
   const inputEmail = useRef(null)
