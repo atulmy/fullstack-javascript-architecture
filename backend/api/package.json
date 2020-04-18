@@ -27,23 +27,23 @@
     "jsonwebtoken": "8.5.1",
     "lodash": "4.17.15",
     "moment": "^2.24.0",
-    "mongoose": "5.9.3",
-    "morgan": "1.9.1",
+    "mongoose": "5.9.9",
+    "morgan": "1.10.0",
     "multer": "1.4.2",
-    "nodemailer": "6.4.4",
+    "nodemailer": "6.4.6",
     "prop-types": "15.7.2",
-    "react": "16.13.0",
-    "react-dom": "16.13.0",
-    "sharp": "0.25.1"
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "sharp": "0.25.2"
   },
   "devDependencies": {
     "@babel/cli": "7.8.4",
-    "@babel/core": "7.8.7",
+    "@babel/core": "7.9.0",
     "@babel/node": "7.8.7",
-    "@babel/plugin-transform-runtime": "7.8.3",
-    "@babel/preset-env": "7.8.7",
-    "@babel/preset-react": "7.8.3",
-    "@babel/runtime": "7.8.7",
-    "nodemon": "2.0.2"
+    "@babel/plugin-transform-runtime": "7.9.0",
+    "@babel/preset-env": "7.9.5",
+    "@babel/preset-react": "7.9.4",
+    "@babel/runtime": "7.9.2",
+    "nodemon": "2.0.3"
   }
 }

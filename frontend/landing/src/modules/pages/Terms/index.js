@@ -1,6 +1,6 @@
 // Imports
 import React from 'react'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 
 // UI Imports
 import Typography from '@material-ui/core/Typography'
