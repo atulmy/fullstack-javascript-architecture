@@ -282,7 +282,7 @@ If you liked this project, you can donate to support it ❤️
 [![Donate via PayPal](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/mix/paypal-me-smaller.png)](http://paypal.me/atulmy)
 
 Thank you for donating: 
-- [o-serbin](https://github.com/o-serbin)
+- [Oleg Serbin](https://github.com/oserbin)
 
 ## License
 Copyright (c) 2018 Atul Yadav http://github.com/atulmy
