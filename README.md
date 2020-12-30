@@ -79,12 +79,10 @@ A typical product (SaaS, etc.) usually consists of following services:
 
 ### Frontend
 - Landing
-    - NodeJS
-    - Express
     - React
-    - React Router
-    - Server Side Rendering
+    - Next.js
     - Material UI
+    - Server Side Rendering
 
 - Web
     - React
