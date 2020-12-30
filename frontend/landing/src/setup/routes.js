@@ -1,33 +1,22 @@
 // Imports
 import React from 'react'
 
-// App Imports
-import PagesHome from '../modules/pages/Home'
-import PagesContact from '../modules/pages/Contact'
-import PagesPrivacy from '../modules/pages/Privacy'
-import PagesTerms from '../modules/pages/Terms'
-
 // Routes
 export const routes = {
   pagesHome: {
-    path: '/',
-    component: PagesHome,
-    exact: true
+    path: '/'
   },
 
   pagesContact: {
-    path: '/contact',
-    component: PagesContact
+    path: '/contact'
   },
 
   pagesPrivacy: {
-    path: '/privacy-policy',
-    component: PagesPrivacy
+    path: '/privacy'
   },
 
   pagesTerms: {
-    path: '/terms-of-use',
-    component: PagesTerms
+    path: '/terms'
   }
 }
 

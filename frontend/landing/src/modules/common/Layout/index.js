@@ -1,47 +1,42 @@
 // Imports
-import React, { PureComponent } from 'react'
-import { Helmet } from 'react-helmet'
-import { withRouter } from 'react-router-dom'
+import React from 'react'
+import Head from 'next/head'
 
 // App Imports
-import { URL_LANDING } from '../../../setup/config/env'
-import params from '../../../setup/config/params'
-import Header from '../Header'
+import { URL_LANDING } from 'setup/config/env'
+import params from 'setup/config/params'
+import Header from 'modules/common/header'
 
 // Component
-class Layout extends PureComponent {
-  render() {
-    const { children } = this.props
+const Layout = ({ children }) => {
+  return (
+    <div>
+      {/* Meta tags */}
+      <Head>
+        <title>{ params.site.title }</title>
+        <meta name={'description'} content={params.site.description} />
+        <meta name={'keywords'} content={params.site.keywords} />
+        <meta name={'author'} content={params.site.author} />
+        <meta name={'copyright'} content={params.site.copyright} />
+        <meta name={'application-name'} content={params.site.applicationName} />
 
-    return (
-      <div>
-        {/* Meta tags */}
-        <Helmet>
-          <title>{ params.site.title }</title>
-          <meta name={'description'} content={params.site.description} />
-          <meta name={'keywords'} content={params.site.keywords} />
-          <meta name={'author'} content={params.site.author} />
-          <meta name={'copyright'} content={params.site.copyright} />
-          <meta name={'application-name'} content={params.site.applicationName} />
+        <meta name={'og:title'} content={params.site.title} />
+        <meta name={'og:description'} content={params.site.description} />
+        <meta name={'og:url'} content={params.site.url} />
+        <meta name={'og:image'} content={`${ URL_LANDING }/images/${ params.site.image }`} />
+        <meta name={'og:site_name'} content={params.site.applicationName} />
+        <meta name={'og:type'} content={'website'} />
+      </Head>
 
-          <meta name={'og:title'} content={params.site.title} />
-          <meta name={'og:description'} content={params.site.description} />
-          <meta name={'og:url'} content={params.site.url} />
-          <meta name={'og:image'} content={`${ URL_LANDING }/images/${ params.site.image }`} />
-          <meta name={'og:site_name'} content={params.site.applicationName} />
-          <meta name={'og:type'} content={'website'} />
-        </Helmet>
+      {/* Header */}
+      <Header />
 
-        {/* Header */}
-        <Header />
-
-        {/* Body */}
-        <main>
-          { children }
-        </main>
-      </div>
-    )
-  }
+      {/* Body */}
+      <main>
+        { children }
+      </main>
+    </div>
+  )
 }
 
-export default withRouter(Layout)
+export default Layout

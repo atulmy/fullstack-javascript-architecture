@@ -1,8 +1,10 @@
 // Configurations
 export const ENV = process.env.NODE_ENV
 
-export const URL_API = process.env.RAZZLE_URL_API
-export const URL_WEB = process.env.RAZZLE_URL_WEB
-export const URL_LANDING = process.env.RAZZLE_URL_LANDING
+// URL
+export const URL_API = process.env.NEXT_PUBLIC_URL_API
+export const URL_WEB = process.env.NEXT_PUBLIC_URL_WEB
+export const URL_LANDING = process.env.NEXT_PUBLIC_URL_LANDING
 
-export const GA_TRACKING_ID = process.env.RAZZLE_GA_TRACKING_ID
+// Analytics
+export const GOOGLE_ANALYTICS = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS

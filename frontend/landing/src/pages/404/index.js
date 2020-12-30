@@ -1,7 +1,6 @@
 // Imports
 import React from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 
 // UI Imports
 import Typography from '@material-ui/core/Typography'
@@ -10,11 +9,11 @@ import { withStyles } from '@material-ui/core/styles/index'
 import styles from './styles'
 
 // App Imports
-import routes from '../../../setup/routes'
-import Section from '../Section'
+import routes from 'setup/routes'
+import Section from 'modules/common/section'
 
 // Component
-const NotFound = (props) => (
+const NotFound = ({ classes }) => (
   <Section>
     <Typography variant={'h5'} gutterBottom>
       Its a 404
@@ -24,18 +23,13 @@ const NotFound = (props) => (
       The page you are looking for does not exists or has been removed.
     </Typography>
 
-    <Link to={routes.pagesHome.path}>
-      <Button variant={'contained'} color={'primary'} className={props.classes.button}>
+    <Link href={routes.pagesHome.path}>
+      <Button variant={'contained'} color={'primary'} className={classes.button}>
         Back to Home
       </Button>
     </Link>
   </Section>
 )
-
-// Component Properties
-NotFound.propTypes = {
-  classes: PropTypes.object.isRequired
-}
 
 export default withStyles(styles)(NotFound)
 

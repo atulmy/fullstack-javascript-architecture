@@ -1,24 +1,24 @@
 // Imports
 import React from 'react'
-import { Helmet } from 'react-helmet'
+import Head from 'next/head'
 
 // UI Imports
 import Typography from '@material-ui/core/Typography'
 
 // App Imports
-import { URL_LANDING } from '../../../setup/config/env'
-import params from '../../../setup/config/params'
-import Layout from '../../common/Layout'
-import Section from '../../common/Section'
+import { URL_LANDING } from 'setup/config/env'
+import params from 'setup/config/params'
+import Layout from 'modules/common/layout'
+import Section from 'modules/common/section'
 
 // Component
 const Terms = () => (
   <Layout>
     <Section>
       {/* Meta tags */}
-      <Helmet>
+      <Head>
         <title>Terms of Use</title>
-      </Helmet>
+      </Head>
 
       {/* Content */}
       <Typography variant="h4">Terms of Use (SAMPLE)</Typography>

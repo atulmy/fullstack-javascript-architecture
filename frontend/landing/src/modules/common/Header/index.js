@@ -1,7 +1,7 @@
 // Imports
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Link, withRouter } from 'react-router-dom'
+import React from 'react'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 // UI Imports
 import AppBar from '@material-ui/core/AppBar'
@@ -13,52 +13,43 @@ import { withStyles } from '@material-ui/core/styles'
 import styles from './styles'
 
 // App Imports
-import { routes } from '../../../setup/routes'
-import params from '../../../setup/config/params'
+import { routes } from 'setup/routes'
+import params from 'setup/config/params'
 
 // Component
-class Header extends Component {
+const Header = ({ classes }) => {
+  // router
+  const router = useRouter()
 
-  isActiveRoute = (routePath) => {
-    const { location } = this.props
-
-    return routePath === location.pathname ? { backgroundColor: blue[600] } : {}
+  const activeClass = (route) => {
+    return router.pathname === route ? { backgroundColor: blue[600] } : {}
   }
 
-  render () {
-    const { classes } = this.props
+  return (
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" color="inherit" className={classes.flex}>
+            <Link href={routes.pagesHome.path}>{ params.site.name.toUpperCase() }</Link>
+          </Typography>
 
-    return (
-      <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h6" color="inherit" className={classes.flex}>
-              <Link to={routes.pagesHome.path}>{ params.site.name.toUpperCase() }</Link>
-            </Typography>
+          <>
+            <Link href={routes.pagesContact.path}>
+              <Button color="inherit" style={activeClass(routes.pagesContact.path)}>Contact</Button>
+            </Link>
 
-            <>
-              <Link to={routes.pagesContact.path}>
-                <Button color="inherit" style={this.isActiveRoute(routes.pagesContact.path)}>Contact</Button>
-              </Link>
+            <Link href={routes.pagesPrivacy.path}>
+              <Button color="inherit" style={activeClass(routes.pagesPrivacy.path)}>Privacy</Button>
+            </Link>
 
-              <Link to={routes.pagesPrivacy.path}>
-                <Button color="inherit" style={this.isActiveRoute(routes.pagesPrivacy.path)}>Privacy</Button>
-              </Link>
-
-              <Link to={routes.pagesTerms.path}>
-                <Button color="inherit" style={this.isActiveRoute(routes.pagesTerms.path)}>Terms</Button>
-              </Link>
-            </>
-          </Toolbar>
-        </AppBar>
-      </div>
-    )
-  }
+            <Link href={routes.pagesTerms.path}>
+              <Button color="inherit" style={activeClass(routes.pagesTerms.path)}>Terms</Button>
+            </Link>
+          </>
+        </Toolbar>
+      </AppBar>
+    </div>
+  )
 }
 
-// Component Properties
-Header.propTypes = {
-  classes: PropTypes.object.isRequired
-}
-
-export default withRouter(withStyles(styles)(Header))
+export default withStyles(styles)(Header)
