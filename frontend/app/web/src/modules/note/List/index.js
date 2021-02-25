@@ -24,7 +24,7 @@ import Item from './Item'
 // Component
 const List = ({ classes }) => {
   // state
-  const { isLoading, list } = useSelector(state => state.notes)
+  const { isLoading, list } = useSelector((state) => state.notes)
   const dispatch = useDispatch()
 
   // on component load
@@ -37,16 +37,16 @@ const List = ({ classes }) => {
     dispatch(getList())
   }
 
-  const onDelete = noteId => async () => {
+  const onDelete = (noteId) => async () => {
     let check = window.confirm('Are you sure you want to delete this note?')
 
-    if(check) {
+    if (check) {
       try {
         const { data } = await remove({ noteId })
 
         dispatch(messageShow(data.message))
 
-        if(data.success) {
+        if (data.success) {
           refresh()
         }
       } catch (error) {
@@ -59,29 +59,25 @@ const List = ({ classes }) => {
   return (
     <div>
       <Toolbar>
-        <Typography variant="h6" color="inherit" className={classes.grow}>
+        <Typography variant='h6' color='inherit' className={classes.grow}>
           Notes
         </Typography>
 
         <Link to={routes.noteCreate.path}>
-          <Button color="inherit">Create</Button>
+          <Button color='inherit'>Create</Button>
         </Link>
       </Toolbar>
 
       <Section>
-        {
-          isLoading
-            ? <Loading />
-            : list.length === 0
-            ? <EmptyMessage message={'You have not added any notes yet.'} />
-            : list.map(note =>
-              <Item
-                key={note._id}
-                note={note}
-                onDelete={onDelete}
-              />
-            )
-        }
+        {isLoading ? (
+          <Loading />
+        ) : list.length === 0 ? (
+          <EmptyMessage message={'You have not added any notes yet.'} />
+        ) : (
+          list.map((note) => (
+            <Item key={note._id} note={note} onDelete={onDelete} />
+          ))
+        )}
       </Section>
     </div>
   )
@@ -89,7 +85,7 @@ const List = ({ classes }) => {
 
 // Component Properties
 List.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles)(List)

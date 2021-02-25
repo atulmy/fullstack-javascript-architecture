@@ -6,9 +6,9 @@ import yellow from '@material-ui/core/colors/yellow'
 export default createMuiTheme({
   palette: {
     primary: blue,
-    secondary: yellow
+    secondary: yellow,
   },
   typography: {
-    useNextVariants: true
-  }
+    useNextVariants: true,
+  },
 })

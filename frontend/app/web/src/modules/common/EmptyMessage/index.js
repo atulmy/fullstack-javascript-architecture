@@ -9,8 +9,11 @@ import styles from './styles'
 
 // Component
 const EmptyMessage = ({ message, classes }) => (
-  <Typography variant="subtitle1" color="textSecondary" className={classes.root}>
-    { message }
+  <Typography
+    variant='subtitle1'
+    color='textSecondary'
+    className={classes.root}>
+    {message}
   </Typography>
 )
 
@@ -22,7 +25,7 @@ EmptyMessage.propTypes = {
 
 // Component Default Properties
 EmptyMessage.defaultProps = {
-  message: 'No data to show'
+  message: 'No data to show',
 }
 
 export default withStyles(styles)(EmptyMessage)

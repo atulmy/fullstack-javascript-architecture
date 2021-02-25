@@ -1,16 +1,16 @@
 // Component Styles
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
-    marginBottom: theme.spacing(3)
+    marginBottom: theme.spacing(3),
   },
 
   content: {
-    paddingBottom: 0
+    paddingBottom: 0,
   },
 
   note: {
-    whiteSpace: 'pre-line'
-  }
+    whiteSpace: 'pre-line',
+  },
 })
 
 export default styles

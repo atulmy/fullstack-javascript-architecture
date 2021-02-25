@@ -2,7 +2,12 @@
 import isEmpty from 'lodash/isEmpty'
 
 // App Imports
-import { SET_USER, LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT } from '../actions/types'
+import {
+  SET_USER,
+  LOGIN_REQUEST,
+  LOGIN_RESPONSE,
+  LOGOUT,
+} from '../actions/types'
 
 // Auth (user)
 
@@ -12,7 +17,7 @@ export const authInitialState = {
   error: null,
   isLoading: false,
   isAuthenticated: false,
-  details: null
+  details: null,
 }
 
 // State
@@ -22,21 +27,21 @@ export default (state = authInitialState, action) => {
       return {
         ...state,
         isAuthenticated: !isEmpty(action.user),
-        details: action.user
+        details: action.user,
       }
 
     case LOGIN_REQUEST:
       return {
         ...state,
         error: null,
-        isLoading: action.isLoading
+        isLoading: action.isLoading,
       }
 
     case LOGIN_RESPONSE:
       return {
         ...state,
         error: action.error,
-        isLoading: false
+        isLoading: false,
       }
 
     case LOGOUT:

@@ -12,13 +12,13 @@ import styles from './styles'
 
 // Component
 const Loading = ({ classes, size, message }) => {
-  return(
+  return (
     <Fade in={true}>
       <div className={classes.root}>
         <CircularProgress size={size} style={{ color: green[500] }} />
 
         <Typography variant='caption' gutterBottom align='center'>
-          { message }
+          {message}
         </Typography>
       </div>
     </Fade>

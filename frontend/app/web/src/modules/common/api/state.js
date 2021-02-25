@@ -5,8 +5,8 @@ import { MESSAGE_SHOW, MESSAGE_HIDE } from './actions'
 export const commonInitialState = {
   message: {
     text: [],
-    open: false
-  }
+    open: false,
+  },
 }
 
 // State
@@ -17,8 +17,8 @@ export default (state = commonInitialState, action) => {
         ...state,
         message: {
           text: action.message,
-          open: true
-        }
+          open: true,
+        },
       }
 
     case MESSAGE_HIDE:
@@ -26,8 +26,8 @@ export default (state = commonInitialState, action) => {
         ...state,
         message: {
           text: [],
-          open: false
-        }
+          open: false,
+        },
       }
 
     default:

@@ -17,11 +17,11 @@ export function messageHide() {
 }
 
 export function upload(data) {
-  return dispatch => {
-    return axios.post(`${ API_URL }/upload`, data, {
+  return (dispatch) => {
+    return axios.post(`${API_URL}/upload`, data, {
       headers: {
-        'Content-Type': 'multipart/form-data'
-      }
+        'Content-Type': 'multipart/form-data',
+      },
     })
   }
 }

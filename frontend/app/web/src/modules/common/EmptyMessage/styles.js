@@ -1,8 +1,8 @@
 // Component Styles
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     padding: theme.spacing(2),
-    textAlign: 'center'
+    textAlign: 'center',
   },
 })
 

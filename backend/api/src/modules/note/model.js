@@ -8,25 +8,28 @@ import { collection as User } from '../user/model'
 export const collection = 'Note'
 
 // Schema
-const schema = new Schema({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: User,
-    index: true
-  },
+const schema = new Schema(
+  {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: User,
+      index: true,
+    },
 
-  note: {
-    type: String,
-    required: true
-  },
+    note: {
+      type: String,
+      required: true,
+    },
 
-  isDeleted: {
-    type: Boolean,
-    required: true,
-    default: false
-  }
-}, { timestamps: true })
+    isDeleted: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+  },
+  { timestamps: true },
+)
 
 // Model
 export default mongoose.model(collection, schema, collection)

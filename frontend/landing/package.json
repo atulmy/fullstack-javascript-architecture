@@ -7,15 +7,25 @@
     "start": "next dev -p 3000",
     "start:prod": "next start -p 3000"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
   "dependencies": {
-    "@material-ui/core": "^4.11.2",
+    "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
-    "@material-ui/styles": "^4.11.2",
+    "@material-ui/styles": "^4.11.3",
     "axios": "^0.21.1",
-    "next": "10.0.4",
+    "next": "10.0.7",
     "nprogress": "^0.2.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-ga": "^3.3.0"
+  },
+  "devDependencies": {
+    "husky": "^4.3.8",
+    "prettier": "2.2.1",
+    "pretty-quick": "^3.1.0"
   }
 }

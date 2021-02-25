@@ -5,7 +5,7 @@ import params from '../config/params'
 
 // Generate random number
 export function randomNumber(low, high) {
-  return Math.floor(Math.random() * (high - low) + low);
+  return Math.floor(Math.random() * (high - low) + low)
 }
 
 // Auth check user

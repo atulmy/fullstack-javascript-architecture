@@ -7,14 +7,14 @@ import note from './note'
 import admin from './admin'
 
 // Image
-export const routeImageUser = `${ API_URL }/${ params.user.uploads.path }/`
+export const routeImageUser = `${API_URL}/${params.user.uploads.path}/`
 
 // Combined routes
 const routes = {
   ...pages,
   ...user,
   ...note,
-  ...admin
+  ...admin,
 }
 
 export default routes

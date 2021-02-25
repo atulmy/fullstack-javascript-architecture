@@ -31,7 +31,7 @@ const Create = ({ classes, history }) => {
   const dispatch = useDispatch()
 
   // on create
-  const onCreate = async event => {
+  const onCreate = async (event) => {
     event.preventDefault()
 
     isSubmittingToggle(true)
@@ -43,7 +43,7 @@ const Create = ({ classes, history }) => {
 
       dispatch(messageShow(data.message))
 
-      if(data.success) {
+      if (data.success) {
         history.push(routes.noteList.path)
       }
     } catch (error) {
@@ -54,7 +54,7 @@ const Create = ({ classes, history }) => {
   }
 
   // on change
-  const onChange = event => {
+  const onChange = (event) => {
     setNote(event.target.value)
   }
 
@@ -97,10 +97,7 @@ const Create = ({ classes, history }) => {
             {/* Button -  Save */}
             <Grid item xs={12} className={classes.buttonsContainer}>
               <Link to={routes.noteList.path}>
-                <IconButton
-                  type='submit'
-                  aria-label='Close'
-                >
+                <IconButton type='submit' aria-label='Close'>
                   <IconClose />
                 </IconButton>
               </Link>
@@ -109,8 +106,7 @@ const Create = ({ classes, history }) => {
                 type='submit'
                 aria-label='Save'
                 color='primary'
-                disabled={isSubmitting}
-              >
+                disabled={isSubmitting}>
                 <IconCheck />
               </IconButton>
             </Grid>
@@ -123,7 +119,7 @@ const Create = ({ classes, history }) => {
 
 // Component Properties
 Create.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles)(Create)

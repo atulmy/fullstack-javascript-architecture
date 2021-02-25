@@ -26,13 +26,13 @@ const Signup = ({ classes, history }) => {
     name: '',
     email: '',
     password: '',
-    passwordRepeat: ''
+    passwordRepeat: '',
   })
-  const { isLoading } = useSelector(state => state.auth)
+  const { isLoading } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
   // on signup
-  const onSignup = async event => {
+  const onSignup = async (event) => {
     event.preventDefault()
 
     try {
@@ -40,7 +40,7 @@ const Signup = ({ classes, history }) => {
 
       dispatch(messageShow(data.message))
 
-      if(data.success) {
+      if (data.success) {
         history.push(routesUser.userLogin.path)
       }
     } catch (error) {
@@ -49,10 +49,10 @@ const Signup = ({ classes, history }) => {
   }
 
   // on change
-  const onChange = event => {
+  const onChange = (event) => {
     setUser({
       ...user,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     })
   }
 
@@ -63,8 +63,7 @@ const Signup = ({ classes, history }) => {
         <Typography
           variant={'subtitle1'}
           color={'inherit'}
-          className={classes.heading}
-        >
+          className={classes.heading}>
           Don't have an account? Please signup:
         </Typography>
 
@@ -139,8 +138,7 @@ const Signup = ({ classes, history }) => {
               type='submit'
               aria-label='Save'
               color='primary'
-              disabled={isLoading}
-            >
+              disabled={isLoading}>
               <IconCheck />
             </IconButton>
           </Grid>
@@ -155,7 +153,7 @@ const Signup = ({ classes, history }) => {
 
 // Component Properties
 Signup.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles)(Signup)

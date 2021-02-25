@@ -16,14 +16,14 @@ export default function (server) {
       console.error('ERROR - Unable to start server.')
     } else {
       console.info(`INFO - Server started on`)
-      console.info(`  Local   http://localhost:${ PORT } [${ NODE_ENV }]`)
-      console.info(`  Network http://${ ip.address() }:${ PORT } [${ NODE_ENV }]`)
-      console.info(`  Datetime ${ moment().format('YYYY-MM-DD hh:mm:ss a') }\n`)
+      console.info(`  Local   http://localhost:${PORT} [${NODE_ENV}]`)
+      console.info(`  Network http://${ip.address()}:${PORT} [${NODE_ENV}]`)
+      console.info(`  Datetime ${moment().format('YYYY-MM-DD hh:mm:ss a')}\n`)
     }
   })
 
   // Stop Server
-  for(let signal of ['SIGINT', 'SIGTERM']) {
+  for (let signal of ['SIGINT', 'SIGTERM']) {
     process.on(signal, function () {
       console.info('INFO - Shutting down server..')
 

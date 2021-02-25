@@ -12,8 +12,8 @@ export default async function () {
 }
 
 // Handle connection error
-mongoose.connection.on('error', error => {
-  console.log(`ERROR - Connection failed: ${ error.message }`)
+mongoose.connection.on('error', (error) => {
+  console.log(`ERROR - Connection failed: ${error.message}`)
 
   setTimeout(async () => {
     console.log('SETUP - Connecting database.. retrying..')
@@ -24,13 +24,10 @@ mongoose.connection.on('error', error => {
 
 // Retry connection
 const connectWithRetry = async () => {
-  return await mongoose.connect(
-    MONGO_URL,
-    {
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-      useUnifiedTopology: true
-    }
-  )
+  return await mongoose.connect(MONGO_URL, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+  })
 }

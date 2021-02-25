@@ -7,7 +7,7 @@ export function renderIf(condition, renderFn) {
 
 // Substring with ...
 export function subString(string = '', length = 0) {
-  return string.length > length ? `${ string.substr(0, length) }...` : string
+  return string.length > length ? `${string.substr(0, length)}...` : string
 }
 
 // Return empty string if value is null

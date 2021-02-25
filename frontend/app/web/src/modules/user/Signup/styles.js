@@ -1,27 +1,27 @@
 // Component Styles
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     marginTop: '10%',
     marginLeft: theme.spacing(3),
-    marginRight: theme.spacing(3)
+    marginRight: theme.spacing(3),
   },
 
   container: {
     padding: theme.spacing(2),
     maxWidth: 400,
     margin: '0 auto',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
 
   buttonsContainer: {
     textAlign: 'right',
-    marginTop: theme.spacing()
+    marginTop: theme.spacing(),
   },
 
   heading: {
     marginBottom: theme.spacing(),
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 })
 
 export default styles

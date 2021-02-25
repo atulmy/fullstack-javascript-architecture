@@ -24,7 +24,11 @@ const NotFound = ({ classes }) => (
     </Typography>
 
     <Link href={routes.pagesHome.path}>
-      <Button variant={'contained'} color={'primary'} className={classes.button}>
+      <Button
+        variant={'contained'}
+        color={'primary'}
+        className={classes.button}
+      >
         Back to Home
       </Button>
     </Link>
@@ -32,4 +36,3 @@ const NotFound = ({ classes }) => (
 )
 
 export default withStyles(styles)(NotFound)
-

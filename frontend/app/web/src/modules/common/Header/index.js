@@ -23,14 +23,14 @@ import { logout } from '../../user/api/actions/query'
 // Component
 const Header = ({ location, classes }) => {
   // state
-  const { isAuthenticated, details } = useSelector(state => state.auth)
+  const { isAuthenticated, details } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
   // on click logout
   const onClickLogout = () => {
     let check = window.confirm('Are you sure you want to logout?')
 
-    if(check) {
+    if (check) {
       dispatch(logout())
 
       dispatch(messageShow('You have been logged out successfully.'))
@@ -39,11 +39,13 @@ const Header = ({ location, classes }) => {
 
   // check is active route
   const isActiveRoute = (routePath, menu = 'primary') => {
-    return routePath === location.pathname ? { backgroundColor: menu === 'primary' ? blue[600] : grey[300] } : {}
+    return routePath === location.pathname
+      ? { backgroundColor: menu === 'primary' ? blue[600] : grey[300] }
+      : {}
   }
 
   // home link
-  const  homeLink = () => {
+  const homeLink = () => {
     return isAuthenticated
       ? details.role === params.user.roles.admin.key
         ? routes.adminDashboard.path
@@ -54,48 +56,94 @@ const Header = ({ location, classes }) => {
   // render
   return (
     <div className={classes.root}>
-      <AppBar position="static" elevation={2}>
+      <AppBar position='static' elevation={2}>
         <Toolbar>
-          <Typography variant="h6" color="inherit" className={classes.flex}>
-            <Link to={homeLink()}>{ params.site.name.toUpperCase() }</Link>
+          <Typography variant='h6' color='inherit' className={classes.flex}>
+            <Link to={homeLink()}>{params.site.name.toUpperCase()}</Link>
           </Typography>
 
-          {
-            isAuthenticated
-              ? <>
-                  <Button component={Link} to={routes.userProfile.path} color="inherit" style={isActiveRoute(routes.userProfile.path)}>Profile</Button>
+          {isAuthenticated ? (
+            <>
+              <Button
+                component={Link}
+                to={routes.userProfile.path}
+                color='inherit'
+                style={isActiveRoute(routes.userProfile.path)}>
+                Profile
+              </Button>
 
-                  <Button color="inherit" onClick={onClickLogout}>Logout</Button>
-                </>
-              : <>
-                  <Button component={Link} to={routes.userLogin.path} color="inherit" style={isActiveRoute(routes.userLogin.path)}>Login</Button>
+              <Button color='inherit' onClick={onClickLogout}>
+                Logout
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button
+                component={Link}
+                to={routes.userLogin.path}
+                color='inherit'
+                style={isActiveRoute(routes.userLogin.path)}>
+                Login
+              </Button>
 
-                  <Button component={Link} to={routes.userSignup.path} color="inherit" style={isActiveRoute(routes.userSignup.path)}>Signup</Button>
-                </>
-          }
+              <Button
+                component={Link}
+                to={routes.userSignup.path}
+                color='inherit'
+                style={isActiveRoute(routes.userSignup.path)}>
+                Signup
+              </Button>
+            </>
+          )}
         </Toolbar>
       </AppBar>
 
-      {
-        isAuthenticated &&
-        <AppBar position="static" color="default" elevation={2}>
+      {isAuthenticated && (
+        <AppBar position='static' color='default' elevation={2}>
           <Toolbar>
-            {
-              details.role === params.user.roles.admin.key
-                ? <>
-                    <Button component={Link} to={routes.adminDashboard.path}  color="inherit" style={isActiveRoute(routes.adminDashboard.path, 'secondary')}>Dashboard</Button>
+            {details.role === params.user.roles.admin.key ? (
+              <>
+                <Button
+                  component={Link}
+                  to={routes.adminDashboard.path}
+                  color='inherit'
+                  style={isActiveRoute(
+                    routes.adminDashboard.path,
+                    'secondary',
+                  )}>
+                  Dashboard
+                </Button>
 
-                    <Button component={Link} to={routes.adminUserList.path}  color="inherit" style={isActiveRoute(routes.adminUserList.path, 'secondary')}>Users</Button>
-                  </>
-                : <>
-                    <Button component={Link} to={routes.userDashboard.path}  color="inherit" style={isActiveRoute(routes.userDashboard.path, 'secondary')}>Dashboard</Button>
+                <Button
+                  component={Link}
+                  to={routes.adminUserList.path}
+                  color='inherit'
+                  style={isActiveRoute(routes.adminUserList.path, 'secondary')}>
+                  Users
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button
+                  component={Link}
+                  to={routes.userDashboard.path}
+                  color='inherit'
+                  style={isActiveRoute(routes.userDashboard.path, 'secondary')}>
+                  Dashboard
+                </Button>
 
-                    <Button component={Link} to={routes.noteList.path}  color="inherit" style={isActiveRoute(routes.noteList.path, 'secondary')}>Notes</Button>
-                  </>
-            }
+                <Button
+                  component={Link}
+                  to={routes.noteList.path}
+                  color='inherit'
+                  style={isActiveRoute(routes.noteList.path, 'secondary')}>
+                  Notes
+                </Button>
+              </>
+            )}
           </Toolbar>
         </AppBar>
-      }
+      )}
     </div>
   )
 }

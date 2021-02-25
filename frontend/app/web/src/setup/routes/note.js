@@ -7,12 +7,12 @@ export default {
   noteList: {
     path: '/note/list',
     component: List,
-    auth: true
+    auth: true,
   },
 
   noteCreate: {
     path: '/note/create',
     component: Create,
-    auth: true
-  }
+    auth: true,
+  },
 }

@@ -7,6 +7,6 @@ import en from './en.json'
 
 // Translate
 i18n.fallbacks = en
-i18n.translations = { en, /* es */ }
+i18n.translations = { en /* es */ }
 
 export default i18n

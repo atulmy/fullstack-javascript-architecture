@@ -10,7 +10,7 @@ import { API_URL } from '../../../../setup/config/env'
 export function create({ note }) {
   return axios.post(API_URL, {
     operation: 'noteCreate',
-    params: { note }
+    params: { note },
   })
 }
 
@@ -18,6 +18,6 @@ export function create({ note }) {
 export function remove({ noteId }) {
   return axios.post(API_URL, {
     operation: 'noteDelete',
-    params: { noteId  }
+    params: { noteId },
   })
 }

@@ -20,15 +20,16 @@ const Contact = () => (
       </Head>
 
       {/* Content */}
-      <Typography variant="h4">Contact</Typography>
+      <Typography variant='h4'>Contact</Typography>
 
       <p>Bromium potus, omnes urbses imperium talis, regius particulaes.</p>
 
       <address>
-        { params.site.name }, <br />
-        { params.site.contact.address }.<br/>
-        { params.site.contact.phone }<br/>
-        { params.site.contact.email }
+        {params.site.name}, <br />
+        {params.site.contact.address}.<br />
+        {params.site.contact.phone}
+        <br />
+        {params.site.contact.email}
       </address>
     </Section>
   </Layout>

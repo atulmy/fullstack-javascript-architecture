@@ -43,12 +43,12 @@ const List = ({ classes }) => {
     try {
       const { data } = await getList()
 
-      if(data.success) {
+      if (data.success) {
         setUsers(data.data)
       } else {
         dispatch(messageShow(data.message))
       }
-    } catch(error) {
+    } catch (error) {
       dispatch(messageShow('There was some error. Please try again.'))
     } finally {
       isRefreshingToggle(false)
@@ -60,41 +60,34 @@ const List = ({ classes }) => {
     <div>
       {/* Actions */}
       <Toolbar className={classes.toolbar}>
-        <Button onClick={refresh}>
-          Refresh
-        </Button>
+        <Button onClick={refresh}>Refresh</Button>
       </Toolbar>
 
       {/* List */}
       <Section style={{ paddingTop: 0 }}>
         <Paper>
-          {
-            isRefreshing
-              ? <Loading />
-              : users.length > 0
-                ? <Fade in={true}>
-                    <Table className={classes.table}>
-                      <TableHead>
-                        <TableRow>
-                          <TableCell>Image</TableCell>
-                          <TableCell>Email</TableCell>
-                          <TableCell>Name</TableCell>
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {
-                          users.map(user => (
-                            <Item
-                              key={user._id}
-                              user={user}
-                            />
-                          ))
-                        }
-                      </TableBody>
-                    </Table>
-                  </Fade>
-                : <EmptyMessage message={'No users to show.'} />
-          }
+          {isRefreshing ? (
+            <Loading />
+          ) : users.length > 0 ? (
+            <Fade in={true}>
+              <Table className={classes.table}>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Image</TableCell>
+                    <TableCell>Email</TableCell>
+                    <TableCell>Name</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {users.map((user) => (
+                    <Item key={user._id} user={user} />
+                  ))}
+                </TableBody>
+              </Table>
+            </Fade>
+          ) : (
+            <EmptyMessage message={'No users to show.'} />
+          )}
         </Paper>
       </Section>
     </div>

@@ -22,23 +22,23 @@ import AuthCheck from '../../auth/AuthCheck'
 const Login = ({ classes }) => {
   // state
   const [user, setUser] = useState({ email: '', password: '' })
-  const { isLoading } = useSelector(state => state.auth)
+  const { isLoading } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
   // on login
-  const onLogin = async event => {
+  const onLogin = async (event) => {
     event.preventDefault()
 
-    if(!isEmpty(user.email) && !isEmpty(user.password)) {
+    if (!isEmpty(user.email) && !isEmpty(user.password)) {
       dispatch(login(user))
     }
   }
 
   // on change
-  const onChange = event => {
+  const onChange = (event) => {
     setUser({
       ...user,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     })
   }
 
@@ -48,8 +48,7 @@ const Login = ({ classes }) => {
         <Typography
           variant='subtitle1'
           color='inherit'
-          className={classes.heading}
-        >
+          className={classes.heading}>
           Already have an account? Please login:
         </Typography>
 
@@ -93,8 +92,7 @@ const Login = ({ classes }) => {
               type='submit'
               aria-label='Save'
               color='primary'
-              disabled={isLoading}
-            >
+              disabled={isLoading}>
               <IconCheck />
             </IconButton>
           </Grid>

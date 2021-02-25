@@ -15,10 +15,10 @@ export default async function (request, response, next) {
       const userToken = jwt.verify(token[1], SECURITY_SECRET)
       let user = await User.findOne({ _id: userToken.id })
 
-      if(user) {
+      if (user) {
         request.auth = {
           isAuthenticated: true,
-          user
+          user,
         }
       }
     } catch (e) {
@@ -27,7 +27,7 @@ export default async function (request, response, next) {
   } else {
     request.auth = {
       isAuthenticated: false,
-      user: null
+      user: null,
     }
   }
 

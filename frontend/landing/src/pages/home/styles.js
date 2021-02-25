@@ -1,5 +1,5 @@
 // Component Styles
-const styles = theme => ({
+const styles = (theme) => ({
   hero: {
     maxWidth: 600,
     margin: '0 auto',
@@ -11,13 +11,13 @@ const styles = theme => ({
 
   iconMobileApp: {
     fontSize: 16,
-    marginRight: theme.spacing()
+    marginRight: theme.spacing(),
   },
 
   iconWebApp: {
     fontSize: 16,
-    marginLeft: theme.spacing()
-  }
+    marginLeft: theme.spacing(),
+  },
 })
 
 export default styles

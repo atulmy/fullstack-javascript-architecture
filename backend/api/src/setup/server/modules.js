@@ -5,5 +5,5 @@ import note from '../../modules/note'
 // Modules
 export default {
   ...user,
-  ...note
+  ...note,
 }

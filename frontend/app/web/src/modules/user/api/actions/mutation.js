@@ -9,7 +9,7 @@ import { API_URL } from '../../../../setup/config/env'
 export function signup({ name, email, password, passwordRepeat }) {
   return axios.post(API_URL, {
     operation: 'userSignup',
-    params: { name, email, password, passwordRepeat }
+    params: { name, email, password, passwordRepeat },
   })
 }
 
@@ -25,30 +25,30 @@ export function createOrUpdate(user) {
 
 // Create
 export function create(user) {
-  return dispatch => {
+  return (dispatch) => {
     return axios.post(API_URL, {
       operation: 'userCreate',
-      params: user
+      params: user,
     })
   }
 }
 
 // Update
 export function update(user) {
-  return dispatch => {
+  return (dispatch) => {
     return axios.post(API_URL, {
       operation: 'userUpdate',
-      params: user
+      params: user,
     })
   }
 }
 
 // Remove
 export function remove(data) {
-  return dispatch => {
+  return (dispatch) => {
     return axios.post(API_URL, {
       operation: 'userRemove',
-      params: data
+      params: data,
     })
   }
 }

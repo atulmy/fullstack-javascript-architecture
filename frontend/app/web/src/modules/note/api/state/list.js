@@ -1,12 +1,17 @@
 // App Imports
-import { LIST_DONE, LIST_REQUEST, LIST_RESET, LIST_RESPONSE } from '../actions/types'
+import {
+  LIST_DONE,
+  LIST_REQUEST,
+  LIST_RESET,
+  LIST_RESPONSE,
+} from '../actions/types'
 
 // List
 
 // Initial State
 const notesInitialState = {
   isLoading: false,
-  list: []
+  list: [],
 }
 
 // State
@@ -15,19 +20,19 @@ export default (state = notesInitialState, action) => {
     case LIST_REQUEST:
       return {
         ...state,
-        isLoading: action.isLoading
+        isLoading: action.isLoading,
       }
 
     case LIST_RESPONSE:
       return {
         ...state,
-        list: action.list
+        list: action.list,
       }
 
     case LIST_DONE:
       return {
         ...state,
-        isLoading: false
+        isLoading: false,
       }
 
     case LIST_RESET:

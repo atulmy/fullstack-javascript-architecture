@@ -5,7 +5,7 @@ const styles = {
   },
   flex: {
     flexGrow: 1,
-  }
+  },
 }
 
 export default styles

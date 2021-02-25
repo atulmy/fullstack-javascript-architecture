@@ -7,7 +7,7 @@ import params from '../../setup/config/params'
 import User from './model'
 
 // Seeds
-export default async function() {
+export default async function () {
   console.log('SEED - Users..')
 
   const users = [
@@ -17,7 +17,7 @@ export default async function() {
       role: params.user.roles.admin.key,
       name: 'Admin',
       image: 'default.jpg',
-      isDeleted: false
+      isDeleted: false,
     },
 
     {
@@ -26,8 +26,8 @@ export default async function() {
       role: params.user.roles.user.key,
       name: 'User',
       image: 'default.jpg',
-      isDeleted: false
-    }
+      isDeleted: false,
+    },
   ]
 
   for (const user of users) {

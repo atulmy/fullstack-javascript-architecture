@@ -15,20 +15,22 @@ import Section from '../../common/Section'
 const Dashboard = ({ classes }) => (
   <div>
     <Toolbar>
-      <Typography variant="h6" color="inherit" className={classes.grow}>
+      <Typography variant='h6' color='inherit' className={classes.grow}>
         Dashboard
       </Typography>
     </Toolbar>
 
     <Section>
-      <Typography>Classis germanus habena est. Quadra de grandis bromium, imitari rector!</Typography>
+      <Typography>
+        Classis germanus habena est. Quadra de grandis bromium, imitari rector!
+      </Typography>
     </Section>
   </div>
 )
 
 // Component Properties
 Dashboard.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles)(Dashboard)

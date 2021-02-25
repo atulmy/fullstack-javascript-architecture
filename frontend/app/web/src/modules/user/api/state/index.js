@@ -4,5 +4,5 @@ import users from './list'
 
 export default {
   auth,
-  users
+  users,
 }

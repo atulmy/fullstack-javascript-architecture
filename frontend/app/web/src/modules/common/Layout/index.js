@@ -15,9 +15,7 @@ const Layout = ({ children }) => {
       <Header />
 
       {/* Body */}
-      <main>
-        { children }
-      </main>
+      <main>{children}</main>
 
       {/* Message */}
       <Message />

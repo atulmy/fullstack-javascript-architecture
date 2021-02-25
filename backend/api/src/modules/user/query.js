@@ -17,19 +17,21 @@ export async function userLogin({ params: { email, password }, translate }) {
     {
       data: { value: email },
       check: 'isValidEmail',
-      message: translate.t('user.messages.fields.email')
+      message: translate.t('user.messages.fields.email'),
     },
     {
       data: { value: password, length: params.user.rules.passwordMinLength },
       check: 'isLengthMinimum',
-      message: translate.t('user.messages.fields.passwordMinLength', { length: params.user.rules.passwordMinLength })
-    }
+      message: translate.t('user.messages.fields.passwordMinLength', {
+        length: params.user.rules.passwordMinLength,
+      }),
+    },
   ]
 
   // Validate
   try {
     v.validate(rules)
-  } catch(error) {
+  } catch (error) {
     throw new Error(error.message)
   }
 
@@ -38,13 +40,13 @@ export async function userLogin({ params: { email, password }, translate }) {
     // Get user
     const user = await User.findOne({ email })
 
-    if(user) {
+    if (user) {
       const passwordsMatch = await bcrypt.compare(password, user.password)
 
       if (passwordsMatch) {
         return {
           data: userAuthResponse(user),
-          message: translate.t('user.login.messages.success')
+          message: translate.t('user.login.messages.success'),
         }
       }
     }
@@ -57,17 +59,19 @@ export async function userLogin({ params: { email, password }, translate }) {
 
 // Get all (Admin)
 export async function userList({ auth, translate }) {
-  if(authCheckAdmin(auth)) {
+  if (authCheckAdmin(auth)) {
     try {
       const fields = ['_id', 'email', 'name', 'createdAt']
 
-      const data = await User
-        .find({ role: { $ne: params.user.roles.admin.key }, isDeleted: false })
+      const data = await User.find({
+        role: { $ne: params.user.roles.admin.key },
+        isDeleted: false,
+      })
         .select(fields)
         .sort({ createdAt: -1 })
 
       return {
-        data
+        data,
       }
     } catch (error) {
       throw new Error(translate.t('common.messages.error.server'))
@@ -79,16 +83,19 @@ export async function userList({ auth, translate }) {
 
 // Count (Admin)
 export async function userDashboardCount({ auth, translate }) {
-  if(authCheckAdmin(auth)) {
+  if (authCheckAdmin(auth)) {
     try {
-      const users = await User.countDocuments({ role: { $ne: params.user.roles.admin.key }, isDeleted: false })
+      const users = await User.countDocuments({
+        role: { $ne: params.user.roles.admin.key },
+        isDeleted: false,
+      })
       const notes = await Note.countDocuments({ isDeleted: false })
 
       return {
         data: {
           users,
-          notes
-        }
+          notes,
+        },
       }
     } catch (error) {
       throw new Error(translate.t('common.messages.error.server'))
@@ -102,6 +109,6 @@ export async function userDashboardCount({ auth, translate }) {
 export function userAuthResponse({ _id, name, email, role, image }) {
   return {
     token: jwt.sign({ id: _id }, SECURITY_SECRET),
-    user: { name, email, role, image }
+    user: { name, email, role, image },
   }
 }

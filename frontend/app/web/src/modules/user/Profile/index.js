@@ -15,21 +15,23 @@ import Section from '../../common/Section'
 // Component
 const Profile = ({ classes }) => {
   // state
-  const { details } = useSelector(state => state.auth)
+  const { details } = useSelector((state) => state.auth)
 
   return (
     <div>
       <Toolbar>
-        <Typography variant="h6" color="inherit" className={classes.grow}>
+        <Typography variant='h6' color='inherit' className={classes.grow}>
           Profile
         </Typography>
       </Toolbar>
 
       <Section>
-        <Typography paragraph>Sunt consiliumes convertam nobilis, neuter cobaltumes.</Typography>
+        <Typography paragraph>
+          Sunt consiliumes convertam nobilis, neuter cobaltumes.
+        </Typography>
 
-        <Typography>Name: { details.name }</Typography>
-        <Typography>Email: { details.email }</Typography>
+        <Typography>Name: {details.name}</Typography>
+        <Typography>Email: {details.email}</Typography>
       </Section>
     </div>
   )

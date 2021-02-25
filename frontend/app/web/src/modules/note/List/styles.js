@@ -1,8 +1,8 @@
 // Component Styles
-const styles = theme => ({
+const styles = (theme) => ({
   grow: {
-    flexGrow: 1
-  }
+    flexGrow: 1,
+  },
 })
 
 export default styles

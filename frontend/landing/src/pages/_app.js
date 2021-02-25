@@ -27,16 +27,16 @@ Router.events.on('routeChangeError', () => NProgress.done())
 export default function App({ Component, pageProps }) {
   // on mount
   useEffect(() => {
-    if(!isDevelopment()) {
+    if (!isDevelopment()) {
       // Google Analytics
       initGA()
       logPageView()
       Router.events.on('routeChangeComplete', logPageView)
     }
 
-    const jssStyles = document.querySelector('#jss-server-side');
+    const jssStyles = document.querySelector('#jss-server-side')
     if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles);
+      jssStyles.parentElement.removeChild(jssStyles)
     }
   }, [])
 

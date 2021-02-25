@@ -19,7 +19,7 @@ import Section from '../../common/Section'
 const Home = ({ classes }) => (
   <div>
     <Toolbar>
-      <Typography variant="h6" color="inherit" className={classes.grow}>
+      <Typography variant='h6' color='inherit' className={classes.grow}>
         Home
       </Typography>
     </Toolbar>
@@ -28,11 +28,15 @@ const Home = ({ classes }) => (
       <Typography paragraph>Simple note taking application!</Typography>
 
       <Link to={routes.userSignup.path}>
-        <Button variant="contained" color="primary">Signup</Button>
+        <Button variant='contained' color='primary'>
+          Signup
+        </Button>
       </Link>
 
       <Link to={routes.userLogin.path}>
-        <Button variant="outlined" color="primary" style={{ marginLeft: 10 }}>Login</Button>
+        <Button variant='outlined' color='primary' style={{ marginLeft: 10 }}>
+          Login
+        </Button>
       </Link>
     </Section>
 
@@ -43,8 +47,7 @@ const Home = ({ classes }) => (
 
 // Component Properties
 Home.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles)(Home)
-

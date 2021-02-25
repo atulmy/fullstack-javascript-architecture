@@ -8,6 +8,6 @@ export default {
     path: '/admin/users',
     component: UserList,
     auth: true,
-    role: params.user.roles.admin.key
-  }
+    role: params.user.roles.admin.key,
+  },
 }

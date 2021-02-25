@@ -2,8 +2,8 @@
 const styles = {
   toolbar: {
     textAlign: 'right',
-    justifyContent: 'flex-end'
-  }
+    justifyContent: 'flex-end',
+  },
 }
 
 export default styles

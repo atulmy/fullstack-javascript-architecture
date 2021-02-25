@@ -35,21 +35,21 @@ ReactDOM.render(
       <MuiThemeProvider theme={theme}>
         <Layout>
           <Switch>
-            {
-              Object.values(routes).map((route, index) => (
-                route.auth
-                  ? <RoutePrivate
-                      {...route}
-                      key={index}
-                      path={isFunction(route.path) ? route.path() : route.path}
-                    />
-                  : <Route
-                      {...route}
-                      key={index}
-                      path={isFunction(route.path) ? route.path() : route.path}
-                    />
-              ))
-            }
+            {Object.values(routes).map((route, index) =>
+              route.auth ? (
+                <RoutePrivate
+                  {...route}
+                  key={index}
+                  path={isFunction(route.path) ? route.path() : route.path}
+                />
+              ) : (
+                <Route
+                  {...route}
+                  key={index}
+                  path={isFunction(route.path) ? route.path() : route.path}
+                />
+              ),
+            )}
 
             <Route component={Redirector} />
           </Switch>
@@ -57,7 +57,7 @@ ReactDOM.render(
       </MuiThemeProvider>
     </Router>
   </StateProvider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 )
 
 // Service Worker

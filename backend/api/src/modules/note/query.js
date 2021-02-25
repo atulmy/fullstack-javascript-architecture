@@ -4,18 +4,17 @@ import Note from './model'
 
 // Get all
 export async function noteList({ auth, fields, translate }) {
-  if(authCheck(auth)) {
+  if (authCheck(auth)) {
     try {
-      const data = await Note
-        .find({
-          userId: auth.user._id,
-          isDeleted: false
-        })
+      const data = await Note.find({
+        userId: auth.user._id,
+        isDeleted: false,
+      })
         .sort({ createdAt: -1 })
         .select(fields)
 
       return {
-        data
+        data,
       }
     } catch (error) {
       throw new Error(translate.t('common.messages.error.server'))
@@ -26,19 +25,22 @@ export async function noteList({ auth, fields, translate }) {
 }
 
 // Get by id
-export async function noteDetail({ params: { noteId }, auth, fields, translate }) {
-  if(authCheck(auth)) {
+export async function noteDetail({
+  params: { noteId },
+  auth,
+  fields,
+  translate,
+}) {
+  if (authCheck(auth)) {
     try {
-      const data = await Note
-        .findOne({
-          _id: noteId,
-          userId: auth.user._id,
-          isDeleted: false
-        })
-        .select(fields)
+      const data = await Note.findOne({
+        _id: noteId,
+        userId: auth.user._id,
+        isDeleted: false,
+      }).select(fields)
 
       return {
-        data
+        data,
       }
     } catch (error) {
       throw new Error(translate.t('common.messages.error.server'))

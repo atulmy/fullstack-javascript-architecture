@@ -27,7 +27,7 @@ const Dashboard = ({ classes }) => {
   const [isRefreshing, isRefreshingToggle] = useState(false)
   const [counts, setCounts] = useState({
     users: 0,
-    notes: 0
+    notes: 0,
   })
   const dispatch = useDispatch()
 
@@ -43,10 +43,10 @@ const Dashboard = ({ classes }) => {
     try {
       const counts = await getDashboardCount()
 
-      if(counts.data && counts.data.success) {
+      if (counts.data && counts.data.success) {
         setCounts(counts.data.data)
       }
-    } catch(error) {
+    } catch (error) {
       dispatch(messageShow('There was some error. Please try again.'))
     } finally {
       isRefreshingToggle(false)
@@ -57,49 +57,53 @@ const Dashboard = ({ classes }) => {
   return (
     <div>
       <Toolbar>
-        <Typography variant="h6" color="inherit" className={classes.grow}>
+        <Typography variant='h6' color='inherit' className={classes.grow}>
           Dashboard
         </Typography>
 
-        <Button onClick={refresh()}>
-          Refresh
-        </Button>
+        <Button onClick={refresh()}>Refresh</Button>
       </Toolbar>
 
       <Section>
-        {
-          isRefreshing
-            ? <Loading />
-            : <Grid container spacing={2}>
-                <Grid item>
-                  <Link to={routes.adminUserList.path}>
-                    <Card>
-                      <CardContent>
-                        <Typography className={classes.title} color="textSecondary" gutterBottom>
-                          Users Count
-                        </Typography>
-                        <Typography variant="h5" component="h2">
-                          { counts.users }
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                </Grid>
-
-                <Grid item>
-                  <Card>
-                    <CardContent>
-                      <Typography className={classes.title} color="textSecondary" gutterBottom>
-                        Notes Count
-                      </Typography>
-                      <Typography variant="h5" component="h2">
-                        { counts.notes }
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </Grid>
+        {isRefreshing ? (
+          <Loading />
+        ) : (
+          <Grid container spacing={2}>
+            <Grid item>
+              <Link to={routes.adminUserList.path}>
+                <Card>
+                  <CardContent>
+                    <Typography
+                      className={classes.title}
+                      color='textSecondary'
+                      gutterBottom>
+                      Users Count
+                    </Typography>
+                    <Typography variant='h5' component='h2'>
+                      {counts.users}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Link>
             </Grid>
-        }
+
+            <Grid item>
+              <Card>
+                <CardContent>
+                  <Typography
+                    className={classes.title}
+                    color='textSecondary'
+                    gutterBottom>
+                    Notes Count
+                  </Typography>
+                  <Typography variant='h5' component='h2'>
+                    {counts.notes}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        )}
       </Section>
     </div>
   )
@@ -107,7 +111,7 @@ const Dashboard = ({ classes }) => {
 
 // Component Properties
 Dashboard.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles)(Dashboard)

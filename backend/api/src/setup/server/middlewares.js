@@ -13,9 +13,11 @@ export default function (server) {
   console.info('SETUP - Middlewares..')
 
   // Enable CORS
-  server.use(cors({
-    origin: WEB_URL
-  }))
+  server.use(
+    cors({
+      origin: WEB_URL,
+    }),
+  )
 
   // Request body parser
   server.use(bodyParser.json())
@@ -25,7 +27,7 @@ export default function (server) {
   server.use(express.static(path.join(__dirname, '..', '..', '..', 'public')))
 
   // HTTP logger
-  if(NODE_ENV === 'development') {
+  if (NODE_ENV === 'development') {
     server.use(morgan('tiny'))
   }
 }

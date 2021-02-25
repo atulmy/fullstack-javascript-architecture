@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
     <div>
       {/* Meta tags */}
       <Head>
-        <title>{ params.site.title }</title>
+        <title>{params.site.title}</title>
         <meta name={'description'} content={params.site.description} />
         <meta name={'keywords'} content={params.site.keywords} />
         <meta name={'author'} content={params.site.author} />
@@ -23,7 +23,10 @@ const Layout = ({ children }) => {
         <meta name={'og:title'} content={params.site.title} />
         <meta name={'og:description'} content={params.site.description} />
         <meta name={'og:url'} content={params.site.url} />
-        <meta name={'og:image'} content={`${ URL_LANDING }/images/${ params.site.image }`} />
+        <meta
+          name={'og:image'}
+          content={`${URL_LANDING}/images/${params.site.image}`}
+        />
         <meta name={'og:site_name'} content={params.site.applicationName} />
         <meta name={'og:type'} content={'website'} />
       </Head>
@@ -32,9 +35,7 @@ const Layout = ({ children }) => {
       <Header />
 
       {/* Body */}
-      <main>
-        { children }
-      </main>
+      <main>{children}</main>
     </div>
   )
 }

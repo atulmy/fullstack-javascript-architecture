@@ -8,38 +8,41 @@ import params from '../../setup/config/params'
 export const collection = 'User'
 
 // Schema
-const schema = new Schema({
-  email: {
-    type: String,
-    unique: true,
-    required: true
-  },
+const schema = new Schema(
+  {
+    email: {
+      type: String,
+      unique: true,
+      required: true,
+    },
 
-  password: {
-    type: String,
-    required: true
-  },
+    password: {
+      type: String,
+      required: true,
+    },
 
-  role: {
-    type: String,
-    required: true,
-    default: params.user.roles.user.key
-  },
+    role: {
+      type: String,
+      required: true,
+      default: params.user.roles.user.key,
+    },
 
-  name: {
-    type: String
-  },
+    name: {
+      type: String,
+    },
 
-  image: {
-    type: String
-  },
+    image: {
+      type: String,
+    },
 
-  isDeleted: {
-    type: Boolean,
-    required: true,
-    default: false
-  }
-}, { timestamps: true })
+    isDeleted: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+  },
+  { timestamps: true },
+)
 
 // Model
 export default mongoose.model(collection, schema, collection)

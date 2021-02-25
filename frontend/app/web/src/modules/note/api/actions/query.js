@@ -11,61 +11,61 @@ import { LIST_REQUEST, LIST_RESPONSE, LIST_DONE } from './types'
 
 // Get list
 export function list(isLoading = true) {
-  return async dispatch => {
+  return async (dispatch) => {
     // Caching
     try {
       const list = JSON.parse(window.localStorage.getItem(NOTE_LIST_CACHE))
 
-      if(list) {
+      if (list) {
         dispatch({
           type: LIST_RESPONSE,
-          list
+          list,
         })
       } else {
         dispatch({
           type: LIST_REQUEST,
-          isLoading
+          isLoading,
         })
       }
-    } catch(e) {
+    } catch (e) {
       dispatch({
         type: LIST_REQUEST,
-        isLoading
+        isLoading,
       })
     }
 
     try {
       const { data } = await axios.post(API_URL, {
         operation: 'noteList',
-        fields: ['_id', 'note', 'createdAt']
+        fields: ['_id', 'note', 'createdAt'],
       })
 
-      if(!data.success) {
+      if (!data.success) {
         dispatch({
           type: MESSAGE_SHOW,
           success: data.success,
-          message: data.message
+          message: data.message,
         })
       } else {
         const list = data.data
 
         dispatch({
           type: LIST_RESPONSE,
-          list
+          list,
         })
 
         window.localStorage.setItem(NOTE_LIST_CACHE, JSON.stringify(list))
       }
-    } catch(error) {
+    } catch (error) {
       dispatch({
         type: MESSAGE_SHOW,
         success: false,
-        message: error.message
+        message: error.message,
       })
     } finally {
       dispatch({
         type: LIST_DONE,
-        isLoading: false
+        isLoading: false,
       })
     }
   }
@@ -73,10 +73,10 @@ export function list(isLoading = true) {
 
 // Get detail
 export function detail({ noteId }) {
-  return dispatch => {
+  return (dispatch) => {
     return axios.post(API_URL, {
       operation: 'noteDetail',
-      params: { noteId }
+      params: { noteId },
     })
   }
 }

@@ -27,23 +27,40 @@ const Header = ({ classes }) => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position='static'>
         <Toolbar>
-          <Typography variant="h6" color="inherit" className={classes.flex}>
-            <Link href={routes.pagesHome.path}>{ params.site.name.toUpperCase() }</Link>
+          <Typography variant='h6' color='inherit' className={classes.flex}>
+            <Link href={routes.pagesHome.path}>
+              {params.site.name.toUpperCase()}
+            </Link>
           </Typography>
 
           <>
             <Link href={routes.pagesContact.path}>
-              <Button color="inherit" style={activeClass(routes.pagesContact.path)}>Contact</Button>
+              <Button
+                color='inherit'
+                style={activeClass(routes.pagesContact.path)}
+              >
+                Contact
+              </Button>
             </Link>
 
             <Link href={routes.pagesPrivacy.path}>
-              <Button color="inherit" style={activeClass(routes.pagesPrivacy.path)}>Privacy</Button>
+              <Button
+                color='inherit'
+                style={activeClass(routes.pagesPrivacy.path)}
+              >
+                Privacy
+              </Button>
             </Link>
 
             <Link href={routes.pagesTerms.path}>
-              <Button color="inherit" style={activeClass(routes.pagesTerms.path)}>Terms</Button>
+              <Button
+                color='inherit'
+                style={activeClass(routes.pagesTerms.path)}
+              >
+                Terms
+              </Button>
             </Link>
           </>
         </Toolbar>

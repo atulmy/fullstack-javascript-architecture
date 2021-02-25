@@ -18,15 +18,17 @@ import styles from './styles'
 const Item = ({ note: { _id, note, createdAt }, onDelete, classes }) => (
   <Card className={classes.root}>
     <CardContent className={classes.content}>
-      <Typography className={classes.note}>{ note }</Typography>
+      <Typography className={classes.note}>{note}</Typography>
 
-      <Typography color="textSecondary">
-        { moment(createdAt).format('YYYY-MM-DD hh:mm a') }
+      <Typography color='textSecondary'>
+        {moment(createdAt).format('YYYY-MM-DD hh:mm a')}
       </Typography>
     </CardContent>
 
     <CardActions>
-      <Button size="small" onClick={onDelete(_id)}>Delete</Button>
+      <Button size='small' onClick={onDelete(_id)}>
+        Delete
+      </Button>
     </CardActions>
   </Card>
 )
@@ -35,7 +37,7 @@ const Item = ({ note: { _id, note, createdAt }, onDelete, classes }) => (
 Item.propTypes = {
   note: PropTypes.object.isRequired,
   onDelete: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles)(Item)

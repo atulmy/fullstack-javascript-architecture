@@ -8,6 +8,6 @@ export default {
     path: '/admin/dashboard',
     component: Dashboard,
     auth: true,
-    role: params.user.roles.admin.key
+    role: params.user.roles.admin.key,
   },
 }

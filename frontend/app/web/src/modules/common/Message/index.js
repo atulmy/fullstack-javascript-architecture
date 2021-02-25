@@ -12,9 +12,9 @@ import CloseIcon from '@material-ui/icons/Close'
 import { messageHide } from '../api/actions'
 
 // Component
-const Message = ({ }) => {
+const Message = ({}) => {
   // state
-  const { message } = useSelector(state => state.common)
+  const { message } = useSelector((state) => state.common)
   const dispatch = useDispatch()
 
   const onHideMessage = () => {
@@ -26,20 +26,16 @@ const Message = ({ }) => {
     <Snackbar
       anchorOrigin={{
         vertical: 'bottom',
-        horizontal: 'left'
+        horizontal: 'left',
       }}
       open={message.open}
       autoHideDuration={5000}
       onClose={onHideMessage}
       message={message.text}
       action={[
-        <IconButton
-          key={'close'}
-          color={'inherit'}
-          onClick={onHideMessage}
-        >
+        <IconButton key={'close'} color={'inherit'} onClick={onHideMessage}>
           <CloseIcon />
-        </IconButton>
+        </IconButton>,
       ]}
     />
   )

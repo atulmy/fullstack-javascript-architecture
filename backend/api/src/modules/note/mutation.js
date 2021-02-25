@@ -5,30 +5,34 @@ import Note from './model'
 
 // Create
 export async function noteCreate({ params: { note }, auth, translate }) {
-  if(authCheck(auth)) {
+  if (authCheck(auth)) {
     // Validation rules
     const rules = [
       {
         data: { value: note },
         check: 'isNotEmpty',
-        message: translate.t('note.messages.fields.note')
-      }
+        message: translate.t('note.messages.fields.note'),
+      },
     ]
 
     // Validate
     try {
       v.validate(rules)
-    } catch(error) {
+    } catch (error) {
       throw new Error(error.message)
     }
 
     // Create or Update
     try {
-      const data = await Note.create({ userId: auth.user._id, note, isDeleted: false })
+      const data = await Note.create({
+        userId: auth.user._id,
+        note,
+        isDeleted: false,
+      })
 
       return {
         data,
-        message: translate.t('note.messages.create.success')
+        message: translate.t('note.messages.create.success'),
       }
     } catch (error) {
       throw new Error(translate.t('common.messages.error.server'))
@@ -40,29 +44,32 @@ export async function noteCreate({ params: { note }, auth, translate }) {
 
 // Delete
 export async function noteDelete({ params: { noteId }, auth, translate }) {
-  if(authCheck(auth)) {
+  if (authCheck(auth)) {
     // Validation rules
     const rules = [
       {
         data: { value: noteId },
         check: 'isNotEmpty',
-        message: translate.t('note.messages.remove.error')
-      }
+        message: translate.t('note.messages.remove.error'),
+      },
     ]
 
     // Validate
     try {
       v.validate(rules)
-    } catch(error) {
+    } catch (error) {
       throw new Error(error.message)
     }
 
     try {
-      const data = await Note.updateOne({ _id: noteId }, { $set: { isDeleted: true }})
+      const data = await Note.updateOne(
+        { _id: noteId },
+        { $set: { isDeleted: true } },
+      )
 
       return {
         data,
-        message: translate.t('note.messages.remove.success')
+        message: translate.t('note.messages.remove.success'),
       }
     } catch (error) {
       throw new Error(translate.t('common.messages.error.server'))

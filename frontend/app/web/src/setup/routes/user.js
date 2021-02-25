@@ -8,23 +8,23 @@ import Dashboard from '../../modules/user/Dashboard'
 export default {
   userLogin: {
     path: '/user/login',
-    component: Login
+    component: Login,
   },
 
   userSignup: {
     path: '/user/signup',
-    component: Signup
+    component: Signup,
   },
 
   userProfile: {
     path: '/user/profile',
     component: Profile,
-    auth: true
+    auth: true,
   },
 
   userDashboard: {
     path: '/user/dashboard',
     component: Dashboard,
-    auth: true
-  }
+    auth: true,
+  },
 }

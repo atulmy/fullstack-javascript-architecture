@@ -11,7 +11,7 @@ import note from '../modules/note/api/state'
 const rootReducer = combineReducers({
   common,
   ...user,
-  ...note
+  ...note,
 })
 
 // Store

@@ -2,11 +2,22 @@
   "name": "web",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
   "dependencies": {
-    "@material-ui/core": "4.11.2",
+    "@material-ui/core": "4.11.3",
     "@material-ui/icons": "4.11.2",
     "axios": "0.21.1",
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "moment": "^2.29.1",
     "prop-types": "15.7.2",
     "react": "^17.0.1",
@@ -17,13 +28,10 @@
     "redux-thunk": "2.3.0"
   },
   "devDependencies": {
-    "react-scripts": "4.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "husky": "^4.3.8",
+    "prettier": "2.2.1",
+    "pretty-quick": "^3.1.0",
+    "react-scripts": "4.0.3"
   },
   "eslintConfig": {
     "extends": "react-app"

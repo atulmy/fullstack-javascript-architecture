@@ -4,20 +4,20 @@ import React from 'react'
 // Routes
 export const routes = {
   pagesHome: {
-    path: '/'
+    path: '/',
   },
 
   pagesContact: {
-    path: '/contact'
+    path: '/contact',
   },
 
   pagesPrivacy: {
-    path: '/privacy'
+    path: '/privacy',
   },
 
   pagesTerms: {
-    path: '/terms'
-  }
+    path: '/terms',
+  },
 }
 
 export default Object.values(routes)

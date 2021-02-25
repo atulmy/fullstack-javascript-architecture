@@ -1,8 +1,8 @@
 // Component Styles
-const styles = theme => ({
+const styles = (theme) => ({
   button: {
-    marginTop: theme.spacing(2)
-  }
+    marginTop: theme.spacing(2),
+  },
 })
 
 export default styles
