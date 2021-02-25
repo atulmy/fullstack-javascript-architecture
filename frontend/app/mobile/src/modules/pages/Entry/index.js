@@ -1,9 +1,9 @@
 // Imports
-import React, { PureComponent } from 'react'
+import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
-import { connect } from 'react-redux'
-import { View, Linking } from 'react-native'
+import {connect} from 'react-redux'
+import {View, Linking} from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import RNLanguages from 'react-native-languages'
 
@@ -13,13 +13,12 @@ import styles from './styles'
 // App Imports
 import translate from '../../../setup/translate'
 import routeNames from '../../../setup/routes/names'
-import { loginSetUser, logout } from '../../user/api/actions/query'
+import {loginSetUser, logout} from '../../user/api/actions/query'
 import Body from '../../common/Body'
 import Loading from '../../common/Loading'
 
 // Component
 class Entry extends PureComponent {
-
   async componentDidMount() {
     this.#setLanguage()
 
@@ -31,7 +30,7 @@ class Entry extends PureComponent {
   }
 
   #checkLogin = async () => {
-    const { navigation, dispatch } = this.props
+    const {navigation, dispatch} = this.props
 
     try {
       const token = await AsyncStorage.getItem('token')
@@ -55,7 +54,7 @@ class Entry extends PureComponent {
   }
 
   #showLogin = () => {
-    const { navigation, dispatch } = this.props
+    const {navigation, dispatch} = this.props
 
     dispatch(logout())
 
@@ -81,7 +80,7 @@ Entry.propTypes = {
 // Component State
 function entryState(state) {
   return {
-    auth: state.auth
+    auth: state.auth,
   }
 }
 

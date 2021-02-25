@@ -2,22 +2,22 @@
 import axios from 'axios'
 
 // App Imports
-import { API_URL } from '../../../../setup/config/env'
+import {API_URL} from '../../../../setup/config/env'
 
 // Actions
 
 // Create
-export function create({ note }) {
+export function create({note}) {
   return axios.post(API_URL, {
     operation: 'noteCreate',
-    params: { note }
+    params: {note},
   })
 }
 
 // Delete
-export function remove({ noteId }) {
+export function remove({noteId}) {
   return axios.post(API_URL, {
     operation: 'noteDelete',
-    params: { noteId  }
+    params: {noteId},
   })
 }

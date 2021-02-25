@@ -1,23 +1,19 @@
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import {StyleSheet, TouchableOpacity, View} from 'react-native'
 
 // UI Imports
-import { font, navigationTopHeight } from '../common/responsive'
-import { black, white } from '../common/colors'
+import {font, navigationTopHeight} from '../common/responsive'
+import {black, white} from '../common/colors'
 import Icon from '../../ui/icon/Icon'
 
 // Component
-const ActionIcon = ({ onPress, icon, color, size }) => {
-  return(
+const ActionIcon = ({onPress, icon, color, size}) => {
+  return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.container}>
-        <Icon
-          name={icon}
-          size={font(size)}
-          color={color}
-        />
+        <Icon name={icon} size={font(size)} color={color} />
       </View>
     </TouchableOpacity>
   )
@@ -32,7 +28,7 @@ ActionIcon.propTypes = {
 }
 ActionIcon.defaultProps = {
   color: black,
-  size: 22
+  size: 22,
 }
 
 export default ActionIcon
@@ -44,6 +40,6 @@ const styles = StyleSheet.create({
     height: navigationTopHeight,
     width: navigationTopHeight,
     alignItems: 'center',
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+  },
 })

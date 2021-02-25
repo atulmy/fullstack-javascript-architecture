@@ -2,5 +2,5 @@
 import notes from './list'
 
 export default {
-  notes
+  notes,
 }

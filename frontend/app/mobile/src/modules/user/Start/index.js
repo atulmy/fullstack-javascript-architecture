@@ -1,25 +1,25 @@
 // Imports
 import React from 'react'
-import { View, TouchableOpacity } from 'react-native'
-import { web } from 'react-native-communications'
+import {View, TouchableOpacity} from 'react-native'
+import {web} from 'react-native-communications'
 import * as Animatable from 'react-native-animatable'
 
 // UI Imports
 import Typography from '../../../ui/Typography'
 import Button from '../../../ui/button/Button'
-import { grey1 } from "../../../ui/common/colors"
+import {grey1} from '../../../ui/common/colors'
 import styles from './styles'
 
 // App Imports
-import { LANDING_URL } from '../../../setup/config/env'
+import {LANDING_URL} from '../../../setup/config/env'
 import params from '../../../setup/config/params'
 import translate from '../../../setup/translate'
-import { routesPreLogin } from '../../../setup/routes/preLogin'
+import {routesPreLogin} from '../../../setup/routes/preLogin'
 import Logo from '../../common/Logo'
 import Body from '../../common/Body'
 
 // Component
-const Start = ({ navigation }) => {
+const Start = ({navigation}) => {
   // on press email
   const onPressEmail = () => {
     navigation.navigate(routesPreLogin.signup.name)
@@ -27,7 +27,7 @@ const Start = ({ navigation }) => {
 
   // on press terms
   const onPressTerms = () => {
-    web(`${ LANDING_URL }/${ params.site.url.terms }`)
+    web(`${LANDING_URL}/${params.site.url.terms}`)
   }
 
   // render
@@ -39,8 +39,7 @@ const Start = ({ navigation }) => {
           <Animatable.View
             animation='fadeIn'
             useNativeDriver={true}
-            duration={600}
-          >
+            duration={600}>
             <Logo />
           </Animatable.View>
 
@@ -48,14 +47,9 @@ const Start = ({ navigation }) => {
             animation='fadeInUp'
             useNativeDriver={true}
             duration={300}
-            delay={400}
-          >
-            <Typography
-              align='center'
-              size='h1'
-              style={styles.introTitle}
-            >
-              { translate.t('user.start.title') }
+            delay={400}>
+            <Typography align='center' size='h1' style={styles.introTitle}>
+              {translate.t('user.start.title')}
             </Typography>
           </Animatable.View>
         </View>
@@ -66,9 +60,8 @@ const Start = ({ navigation }) => {
           useNativeDriver={true}
           duration={300}
           delay={800}
-          style={styles.buttons}
-        >
-          <View >
+          style={styles.buttons}>
+          <View>
             <Button
               title={translate.t('user.start.button.email')}
               theme='primary'
@@ -81,9 +74,8 @@ const Start = ({ navigation }) => {
                 size={10}
                 align='center'
                 color={grey1}
-                style={styles.terms}
-              >
-                { translate.t('user.start.button.terms') }
+                style={styles.terms}>
+                {translate.t('user.start.button.terms')}
               </Typography>
             </TouchableOpacity>
           </View>

@@ -1,9 +1,13 @@
 // Imports
-import { StyleSheet } from 'react-native'
+import {StyleSheet} from 'react-native'
 
 // UI Imports
-import { navigationTopHeight, font, blockMargin } from '../../../ui/common/responsive'
-import { black, grey1, white } from '../../../ui/common/colors'
+import {
+  navigationTopHeight,
+  font,
+  blockMargin,
+} from '../../../ui/common/responsive'
+import {black, grey1, white} from '../../../ui/common/colors'
 
 export default StyleSheet.create({
   container: {
@@ -11,7 +15,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: white
+    backgroundColor: white,
   },
   left: {
     flexDirection: 'row',
@@ -22,15 +26,15 @@ export default StyleSheet.create({
     height: navigationTopHeight,
   },
   leftIconPlaceholder: {
-    width: blockMargin * 1.5
+    width: blockMargin * 1.5,
   },
   right: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    marginRight: blockMargin * 1.5
+    marginRight: blockMargin * 1.5,
   },
   info: {
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   title: {
     color: black,
@@ -38,6 +42,6 @@ export default StyleSheet.create({
   },
   subTitle: {
     color: grey1,
-    fontSize: font(10)
-  }
+    fontSize: font(10),
+  },
 })

@@ -1,14 +1,14 @@
 // Imports
 import React from 'react'
-import { createBottomTabNavigator } from 'react-navigation-tabs'
+import {createBottomTabNavigator} from 'react-navigation-tabs'
 
 // UI Imports
-import { font, scalable } from '../../../ui/common/responsive'
-import { black, grey2, white } from '../../../ui/common/colors'
+import {font, scalable} from '../../../ui/common/responsive'
+import {black, grey2, white} from '../../../ui/common/colors'
 import Icon from '../../../ui/icon/Icon'
 
 // App Imports
-import { getRoutesForStack } from '../../helpers/utils'
+import {getRoutesForStack} from '../../helpers/utils'
 import NoteStack from './note'
 import UserStack from './user'
 
@@ -23,8 +23,10 @@ export const routesPostLogin = {
     screen: NoteStack,
     navigationOptions: {
       tabBarLabel: 'Notes',
-      tabBarIcon: ({ tintColor }) => <Icon name='clipboard-text' size={iconSize} color={tintColor} />,
-    }
+      tabBarIcon: ({tintColor}) => (
+        <Icon name='clipboard-text' size={iconSize} color={tintColor} />
+      ),
+    },
   },
 
   // User
@@ -34,15 +36,17 @@ export const routesPostLogin = {
     screen: UserStack,
     navigationOptions: {
       tabBarLabel: 'Profile',
-      tabBarIcon: ({ tintColor }) => <Icon name='account-circle' size={iconSize} color={tintColor} />,
-    }
+      tabBarIcon: ({tintColor}) => (
+        <Icon name='account-circle' size={iconSize} color={tintColor} />
+      ),
+    },
   },
 }
 
 export default createBottomTabNavigator(getRoutesForStack(routesPostLogin), {
   initialRouteName: routesPostLogin.note.name,
   navigationOptions: {
-    tabBarVisible: true
+    tabBarVisible: true,
   },
   tabBarOptions: {
     activeTintColor: black,
@@ -50,15 +54,15 @@ export default createBottomTabNavigator(getRoutesForStack(routesPostLogin), {
     style: {
       backgroundColor: white,
       paddingVertical: scalable(5),
-      height: scalable(55)
+      height: scalable(55),
     },
     tabStyle: {
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
     },
     labelStyle: {
-      marginLeft: 0
-    }
-  }
+      marginLeft: 0,
+    },
+  },
 })

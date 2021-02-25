@@ -1,6 +1,6 @@
 // Imports
-import { compose, combineReducers } from 'redux'
-import { createStore, applyMiddleware } from 'redux'
+import {compose, combineReducers} from 'redux'
+import {createStore, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 
 // App Imports
@@ -12,14 +12,12 @@ import note from '../modules/note/api/state'
 const rootReducer = combineReducers({
   common,
   ...user,
-  ...note
+  ...note,
 })
 
 // Store
 export const store = createStore(
   rootReducer,
 
-  compose(
-    applyMiddleware(thunk)
-  )
+  compose(applyMiddleware(thunk)),
 )

@@ -1,18 +1,18 @@
 // Imports
-import React  from 'react'
-import PropTypes  from 'prop-types'
-import { View, Text, ActivityIndicator } from 'react-native'
+import React from 'react'
+import PropTypes from 'prop-types'
+import {View, Text, ActivityIndicator} from 'react-native'
 
 // UI Imports
-import { grey2 } from '../../../ui/common/colors'
+import {grey2} from '../../../ui/common/colors'
 import styles from './styles'
 
 // Component
-const Loading = ({ message, size, color }) => (
+const Loading = ({message, size, color}) => (
   <View style={styles.container}>
     <ActivityIndicator size={size} color={color} />
 
-    <Text style={styles.text}>{ message }</Text>
+    <Text style={styles.text}>{message}</Text>
   </View>
 )
 
@@ -20,7 +20,7 @@ const Loading = ({ message, size, color }) => (
 Loading.propTypes = {
   message: PropTypes.string,
   size: PropTypes.string,
-  color: PropTypes.string
+  color: PropTypes.string,
 }
 Loading.defaultProps = {
   message: '',

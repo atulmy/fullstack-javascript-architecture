@@ -1,15 +1,14 @@
 // Imports
 import React from 'react'
-import { YellowBox } from 'react-native'
-import { Provider } from 'react-redux'
+import {YellowBox} from 'react-native'
+import {Provider} from 'react-redux'
 
 // App Imports
-import { store } from './store'
+import {store} from './store'
 import Routes from './routes'
 
 // App
 export default class App extends React.Component {
-
   constructor(props) {
     super(props)
 

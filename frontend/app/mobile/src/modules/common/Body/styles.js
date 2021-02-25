@@ -1,18 +1,18 @@
 // Imports
-import { StyleSheet } from 'react-native'
+import {StyleSheet} from 'react-native'
 
 // UI Imports
 export default StyleSheet.create({
   gradient: {
-    flex: 1
+    flex: 1,
   },
   container: {
-    flex: 1
+    flex: 1,
   },
 
   wrapper: {
     flex: 1,
-    position: 'relative'
+    position: 'relative',
   },
 
   content: {
@@ -20,6 +20,6 @@ export default StyleSheet.create({
     position: 'relative',
     flexDirection: 'column',
     alignItems: 'stretch',
-    justifyContent: 'space-between'
-  }
+    justifyContent: 'space-between',
+  },
 })

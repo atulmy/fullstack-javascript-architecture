@@ -1,6 +1,6 @@
 // App Imports
 import params from '../config/params'
-import { API_URL } from '../config/env'
+import {API_URL} from '../config/env'
 
 // Utility functions
 

@@ -1,34 +1,30 @@
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import {StyleSheet, TouchableOpacity, View} from 'react-native'
 
 // UI Imports
-import { font, scalable } from '../common/responsive'
-import { grey1, grey3, white } from '../common/colors'
+import {font, scalable} from '../common/responsive'
+import {grey1, grey3, white} from '../common/colors'
 import Icon from '../../ui/icon/Icon'
 import stylesCommon from '../common/styles'
 
 // Component
-const Fab = ({ onPress, icon, color, iconColor, size, disabled }) => {
-  return(
-    disabled
-      ? <View style={[styles.container, { backgroundColor: grey3 }]}>
-          <Icon
-            name={icon}
-            size={font(size)}
-            color={iconColor}
-          />
-        </View>
-      : <TouchableOpacity onPress={onPress}>
-          <View style={[styles.container, { backgroundColor: color, ...stylesCommon.shadowSubtle }]}>
-            <Icon
-              name={icon}
-              size={font(size)}
-              color={iconColor}
-            />
-          </View>
-        </TouchableOpacity>
+const Fab = ({onPress, icon, color, iconColor, size, disabled}) => {
+  return disabled ? (
+    <View style={[styles.container, {backgroundColor: grey3}]}>
+      <Icon name={icon} size={font(size)} color={iconColor} />
+    </View>
+  ) : (
+    <TouchableOpacity onPress={onPress}>
+      <View
+        style={[
+          styles.container,
+          {backgroundColor: color, ...stylesCommon.shadowSubtle},
+        ]}>
+        <Icon name={icon} size={font(size)} color={iconColor} />
+      </View>
+    </TouchableOpacity>
   )
 }
 
@@ -44,7 +40,7 @@ Fab.defaultProps = {
   color: white,
   iconColor: grey1,
   size: 26,
-  disabled: false
+  disabled: false,
 }
 
 export default Fab
@@ -56,6 +52,6 @@ const styles = StyleSheet.create({
     width: scalable(40),
     borderRadius: scalable(20),
     alignItems: 'center',
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+  },
 })

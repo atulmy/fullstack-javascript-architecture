@@ -1,8 +1,8 @@
 // Imports
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { View } from 'react-native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import React, {useState} from 'react'
+import {useDispatch} from 'react-redux'
+import {View} from 'react-native'
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 
 // UI Imports
 import InputTextWithLabel from '../../../ui/input/TextWithLabel'
@@ -12,16 +12,16 @@ import styles from './styles'
 
 // App Imports
 import translate from '../../../setup/translate'
-import { routesNote } from '../../../setup/routes/postLogin/note'
-import { messageShow } from '../../common/api/actions'
-import { list } from '../api/actions/query'
-import { create } from '../api/actions/mutation'
+import {routesNote} from '../../../setup/routes/postLogin/note'
+import {messageShow} from '../../common/api/actions'
+import {list} from '../api/actions/query'
+import {create} from '../api/actions/mutation'
 import NavigationTopInner from '../../common/NavigationTopInner'
 import ActionBack from '../../common/NavigationTop/ActionBack'
 import Body from '../../common/Body'
 
 // Component
-const Create = ({ navigation }) => {
+const Create = ({navigation}) => {
   // state
   const [isSubmitting, isSubmittingToggle] = useState(false)
   const [note, setNote] = useState('')
@@ -32,21 +32,26 @@ const Create = ({ navigation }) => {
     isSubmittingToggle(true)
 
     try {
-      const { data } = await create({ note })
+      const {data} = await create({note})
 
       isSubmittingToggle(false)
 
-      dispatch(messageShow({ success: data.success, message: data.message }))
+      dispatch(messageShow({success: data.success, message: data.message}))
 
-      if(data.success) {
+      if (data.success) {
         dispatch(list(false))
 
         navigation.navigate(routesNote.list.name)
       }
-    } catch(error) {
+    } catch (error) {
       isSubmittingToggle(false)
 
-      dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
+      dispatch(
+        messageShow({
+          success: false,
+          message: translate.t('common.error.default'),
+        }),
+      )
     }
   }
 
@@ -57,9 +62,7 @@ const Create = ({ navigation }) => {
       <NavigationTopInner
         title={translate.t('note.create.title')}
         subTitle={translate.t('note.create.subTitle')}
-        leftIcon={
-          <ActionBack />
-        }
+        leftIcon={<ActionBack />}
         rightContent={
           <Button
             title={translate.t('common.button.save')}
@@ -77,8 +80,7 @@ const Create = ({ navigation }) => {
         contentContainerStyle={stylesCommon.flexGrow}
         enableOnAndroid={true}
         keyboardShouldPersistTaps='handled'
-        style={styles.container}
-      >
+        style={styles.container}>
         <View style={styles.formContainer}>
           <View style={stylesCommon.form}>
             {/* Notes */}
@@ -89,7 +91,7 @@ const Create = ({ navigation }) => {
               autoCapitalize='none'
               autoFocus
               multiline={true}
-              onChangeText={note => setNote(note)}
+              onChangeText={(note) => setNote(note)}
             />
           </View>
 

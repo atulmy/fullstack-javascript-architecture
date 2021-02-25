@@ -6,8 +6,10 @@ import Zocial from 'react-native-vector-icons/Zocial'
 
 // Component
 const Icon = (props) => {
-  return(
-    props.pack === 'social' ? <Zocial {...props} /> : <MaterialCommunityIcons {...props} />
+  return props.pack === 'social' ? (
+    <Zocial {...props} />
+  ) : (
+    <MaterialCommunityIcons {...props} />
   )
 }
 
@@ -19,7 +21,7 @@ Icon.propTypes = {
 }
 
 Icon.defaultProps = {
-  pack: 'material'
+  pack: 'material',
 }
 
 export default Icon

@@ -1,8 +1,8 @@
 // Imports
-import React, { useState, useRef } from 'react'
-import { useDispatch } from 'react-redux'
-import { View } from 'react-native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import React, {useState, useRef} from 'react'
+import {useDispatch} from 'react-redux'
+import {View} from 'react-native'
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 
 // UI Imports
 import Button from '../../../ui/button/Button'
@@ -12,24 +12,24 @@ import styles from './styles'
 
 // App Imports
 import translate from '../../../setup/translate'
-import { routesPreLogin } from '../../../setup/routes/preLogin'
+import {routesPreLogin} from '../../../setup/routes/preLogin'
 import routeNames from '../../../setup/routes/names'
-import { loginSetUser } from '../api/actions/query'
-import { signup } from '../api/actions/mutation'
-import { messageShow } from '../../common/api/actions'
+import {loginSetUser} from '../api/actions/query'
+import {signup} from '../api/actions/mutation'
+import {messageShow} from '../../common/api/actions'
 import Body from '../../common/Body'
 import NavigationTop from '../../common/NavigationTop'
 import ActionBack from '../../common/NavigationTop/ActionBack'
 
 // Component
-const Signup = ({ navigation }) => {
+const Signup = ({navigation}) => {
   // state
   const [isSubmitting, isSubmittingToggle] = useState(false)
   const [user, setUser] = useState({
     name: 'User',
     email: 'user@example.com',
     password: '123456',
-    passwordRepeat: '123456'
+    passwordRepeat: '123456',
   })
   const dispatch = useDispatch()
   const inputEmail = useRef(null)
@@ -41,27 +41,32 @@ const Signup = ({ navigation }) => {
     isSubmittingToggle(true)
 
     try {
-      const { data } = await signup(user)
+      const {data} = await signup(user)
 
       isSubmittingToggle(false)
 
-      dispatch(messageShow({ success: data.success, message: data.message }))
+      dispatch(messageShow({success: data.success, message: data.message}))
 
-      if(data.success) {
+      if (data.success) {
         dispatch(loginSetUser(data.data.token, data.data.user))
 
         navigation.navigate(routeNames.postLoginStack)
       }
-    } catch(error) {
+    } catch (error) {
       isSubmittingToggle(false)
 
-      dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
+      dispatch(
+        messageShow({
+          success: false,
+          message: translate.t('common.error.default'),
+        }),
+      )
     }
   }
 
   // on change
-  const onChange = name => value => {
-    setUser({ ...user, [name]: value})
+  const onChange = (name) => (value) => {
+    setUser({...user, [name]: value})
   }
 
   // on press login
@@ -81,8 +86,7 @@ const Signup = ({ navigation }) => {
       <KeyboardAwareScrollView
         contentContainerStyle={stylesCommon.flexGrow}
         enableOnAndroid={true}
-        keyboardShouldPersistTaps='handled'
-      >
+        keyboardShouldPersistTaps='handled'>
         <View style={styles.container}>
           {/* Form */}
           <View style={styles.formContainer}>
@@ -133,7 +137,9 @@ const Signup = ({ navigation }) => {
               {/* Repeat password */}
               <InputText
                 inputRef={inputPasswordRepeat}
-                placeholder={translate.t('user.fields.passwordRepeat').toUpperCase()}
+                placeholder={translate
+                  .t('user.fields.passwordRepeat')
+                  .toUpperCase()}
                 secureTextEntry={true}
                 autoCapitalize='none'
                 returnKeyType='go'
@@ -156,7 +162,7 @@ const Signup = ({ navigation }) => {
           {/* Bottom CTA */}
           <View style={styles.bottomCta}>
             <Button
-              title={translate.t('user.signup.button.login').toUpperCase() }
+              title={translate.t('user.signup.button.login').toUpperCase()}
               onPress={onPressLogin}
             />
           </View>

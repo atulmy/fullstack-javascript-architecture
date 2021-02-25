@@ -1,14 +1,14 @@
 // Imports
 import React from 'react'
-import { StyleSheet, TextInput } from 'react-native'
+import {StyleSheet, TextInput} from 'react-native'
 
 // UI Imports
-import { blockMarginHalf, blockPadding, font } from '../common/responsive'
-import { grey1, transparent } from '../common/colors'
+import {blockMarginHalf, blockPadding, font} from '../common/responsive'
+import {grey1, transparent} from '../common/colors'
 
 // Component
-const InputText = ({ onSubmitEditing, inputRef, style = {}, ...props}) => {
-  return(
+const InputText = ({onSubmitEditing, inputRef, style = {}, ...props}) => {
+  return (
     <TextInput
       ref={inputRef || null}
       onSubmitEditing={() => {
@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
     padding: blockPadding,
     fontSize: font(16),
     borderWidth: 0,
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 })

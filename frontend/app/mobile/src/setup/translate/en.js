@@ -9,5 +9,5 @@ export default {
   ...common,
   ...pages,
   ...user,
-  ...note
+  ...note,
 }

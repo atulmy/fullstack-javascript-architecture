@@ -1,30 +1,32 @@
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, View, TouchableWithoutFeedback } from 'react-native'
+import {StyleSheet, View, TouchableWithoutFeedback} from 'react-native'
 
 // UI Imports
-import { blockPadding, font, blockMarginHalf } from '../common/responsive'
-import { white, positive, negative, black } from '../common/colors'
+import {blockPadding, font, blockMarginHalf} from '../common/responsive'
+import {white, positive, negative, black} from '../common/colors'
 import Typography from '../Typography'
-import stylesCommon  from '../common/styles'
-import Icon  from '../icon/Icon'
+import stylesCommon from '../common/styles'
+import Icon from '../icon/Icon'
 
 // Component
-const Toast = ({ onPress, message, success }) => (
-    <TouchableWithoutFeedback onPress={onPress}>
-      <View style={styles.container}>
-        <View style={styles.icon}>
-          <Icon
-            name={success ? 'check' : 'alert-circle-outline'}
-            size={font(18)}
-            color={ success ? positive : negative }
-          />
-        </View>
-
-        <Typography size='h5' color={black}>{ message }</Typography>
+const Toast = ({onPress, message, success}) => (
+  <TouchableWithoutFeedback onPress={onPress}>
+    <View style={styles.container}>
+      <View style={styles.icon}>
+        <Icon
+          name={success ? 'check' : 'alert-circle-outline'}
+          size={font(18)}
+          color={success ? positive : negative}
+        />
       </View>
-    </TouchableWithoutFeedback>
+
+      <Typography size='h5' color={black}>
+        {message}
+      </Typography>
+    </View>
+  </TouchableWithoutFeedback>
 )
 
 // Component Properties
@@ -50,13 +52,13 @@ const styles = StyleSheet.create({
     right: 0,
     paddingVertical: blockPadding,
     paddingHorizontal: blockPadding * 2,
-    ...stylesCommon.shadowSubtle
+    ...stylesCommon.shadowSubtle,
   },
   icon: {
-    marginRight: blockMarginHalf
+    marginRight: blockMarginHalf,
   },
   text: {
     fontSize: font(14),
-    color: white
-  }
+    color: white,
+  },
 })

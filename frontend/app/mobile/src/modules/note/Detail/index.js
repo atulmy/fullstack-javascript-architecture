@@ -1,30 +1,30 @@
 // Imports
-import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { View, ScrollView, RefreshControl } from 'react-native'
+import React, {useState, useEffect} from 'react'
+import {useDispatch} from 'react-redux'
+import {View, ScrollView, RefreshControl} from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import moment from 'moment'
 
 // UI Imports
 import Typography from '../../../ui/Typography'
-import { grey5 } from '../../../ui/common/colors'
+import {grey5} from '../../../ui/common/colors'
 import styles from './styles'
 
 // App Imports
 import params from '../../../setup/config/params'
-import { routesNote } from '../../../setup/routes/postLogin/note'
+import {routesNote} from '../../../setup/routes/postLogin/note'
 import translate from '../../../setup/translate'
-import { messageShow } from '../../common/api/actions'
-import { NOTE_DETAIL_CACHE } from '../api/actions/cache-keys'
-import { list, detail } from '../api/actions/query'
-import { remove } from '../api/actions/mutation'
+import {messageShow} from '../../common/api/actions'
+import {NOTE_DETAIL_CACHE} from '../api/actions/cache-keys'
+import {list, detail} from '../api/actions/query'
+import {remove} from '../api/actions/mutation'
 import NavigationTopInner from '../../common/NavigationTopInner'
 import ActionBack from '../../common/NavigationTop/ActionBack'
 import Button from '../../../ui/button/Button'
 import Body from '../../common/Body'
 
 // Component
-const Detail = ({ navigation }) => {
+const Detail = ({navigation}) => {
   // state
   const [isRefreshing, isRefreshingToggle] = useState(false)
   const [isDeleting, isDeletingToggle] = useState(false)
@@ -39,30 +39,35 @@ const Detail = ({ navigation }) => {
   }, [])
 
   // refresh
-  const refresh = async noteId => {
-    if(noteId) {
+  const refresh = async (noteId) => {
+    if (noteId) {
       const CACHE_KEY = NOTE_DETAIL_CACHE + noteId
 
       const note = JSON.parse(await AsyncStorage.getItem(CACHE_KEY))
 
-      if(note) {
+      if (note) {
         setNote(note)
       } else {
         isRefreshingToggle(true)
       }
 
       try {
-        const { data } = await detail({ noteId })
+        const {data} = await detail({noteId})
 
-        if(data.success) {
+        if (data.success) {
           const note = data.data
 
           setNote(note)
 
           await AsyncStorage.setItem(CACHE_KEY, JSON.stringify(note))
         }
-      } catch(error) {
-        dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
+      } catch (error) {
+        dispatch(
+          messageShow({
+            success: false,
+            message: translate.t('common.error.default'),
+          }),
+        )
       } finally {
         isRefreshingToggle(false)
       }
@@ -78,21 +83,26 @@ const Detail = ({ navigation }) => {
     isDeletingToggle(true)
 
     try {
-      const { data } = await remove({ noteId })
+      const {data} = await remove({noteId})
 
       isDeletingToggle(false)
 
-      dispatch(messageShow({ success: data.success, message: data.message }))
+      dispatch(messageShow({success: data.success, message: data.message}))
 
-      if(data.success) {
+      if (data.success) {
         dispatch(list(false))
 
         navigation.navigate(routesNote.list.name)
       }
-    } catch(error) {
+    } catch (error) {
       isDeletingToggle(false)
 
-      dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
+      dispatch(
+        messageShow({
+          success: false,
+          message: translate.t('common.error.default'),
+        }),
+      )
     }
   }
 
@@ -103,10 +113,15 @@ const Detail = ({ navigation }) => {
         {/* Navigation */}
         <NavigationTopInner
           title={translate.t('note.detail.title')}
-          subTitle={translate.t('note.detail.subTitle', { date: detail && detail._id ? moment(detail.createdAt).format(params.common.formats.dateTime) : '' })}
-          leftIcon={
-            <ActionBack />
-          }
+          subTitle={translate.t('note.detail.subTitle', {
+            date:
+              detail && detail._id
+                ? moment(detail.createdAt).format(
+                    params.common.formats.dateTime,
+                  )
+                : '',
+          })}
+          leftIcon={<ActionBack />}
           rightContent={
             <Button
               title={translate.t('common.button.delete')}
@@ -127,13 +142,9 @@ const Detail = ({ navigation }) => {
               tintColor={grey5}
             />
           }
-          style={styles.container}
-        >
+          style={styles.container}>
           <View style={styles.content}>
-            {
-              note && note._id &&
-              <Typography size='h4'>{ note.note }</Typography>
-            }
+            {note && note._id && <Typography size='h4'>{note.note}</Typography>}
           </View>
         </ScrollView>
       </View>

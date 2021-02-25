@@ -1,8 +1,8 @@
 // Imports
-import { createStackNavigator } from 'react-navigation-stack'
+import {createStackNavigator} from 'react-navigation-stack'
 
 // App Imports
-import { getRoutesForStack } from '../../helpers/utils'
+import {getRoutesForStack} from '../../helpers/utils'
 import Profile from '../../../modules/user/Profile'
 import Help from '../../../modules/pages/Help'
 
@@ -12,21 +12,21 @@ export const routesUser = {
   user: {
     name: 'user',
     path: 'user',
-    screen: Profile
+    screen: Profile,
   },
 
   // Help
   help: {
     name: 'help',
     path: 'help',
-    screen: Help
-  }
+    screen: Help,
+  },
 }
 
 export default createStackNavigator(getRoutesForStack(routesUser), {
   initialRouteName: routesUser.user.name, // Initial route name
   headerMode: 'none',
   navigationOptions: {
-    headerVisible: false
-  }
+    headerVisible: false,
+  },
 })

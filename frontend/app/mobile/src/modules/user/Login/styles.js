@@ -1,26 +1,26 @@
 // Imports
-import { StyleSheet } from 'react-native'
+import {StyleSheet} from 'react-native'
 
 // UI Imports
-import { blockMargin, blockPadding } from '../../../ui/common/responsive'
+import {blockMargin, blockPadding} from '../../../ui/common/responsive'
 
 // Styles
 export default StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
 
   formContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: blockMargin * 3
+    marginHorizontal: blockMargin * 3,
   },
   form: {
-    marginBottom: blockMargin * 3
+    marginBottom: blockMargin * 3,
   },
 
   bottomCta: {
-    paddingVertical: blockPadding * 2
-  }
+    paddingVertical: blockPadding * 2,
+  },
 })

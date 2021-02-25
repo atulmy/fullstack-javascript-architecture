@@ -1,6 +1,6 @@
 // Imports
 import React from 'react'
-import { View, Image } from 'react-native'
+import {View, Image} from 'react-native'
 
 // Assets
 import imageLogo from '../../../../assets/logo.png'
@@ -17,18 +17,11 @@ const Logo = () => (
   <View>
     {/* Logo */}
     <View style={styles.imageWrapper}>
-      <Image
-        resizeMode='contain'
-        source={imageLogo}
-        style={styles.image}
-      />
+      <Image resizeMode='contain' source={imageLogo} style={styles.image} />
     </View>
 
-    <Typography
-      align='center'
-      spacing={3}
-    >
-      { params.site.name.toUpperCase() }
+    <Typography align='center' spacing={3}>
+      {params.site.name.toUpperCase()}
     </Typography>
   </View>
 )

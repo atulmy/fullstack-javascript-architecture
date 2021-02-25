@@ -1,8 +1,8 @@
 // Imports
-import { createStackNavigator } from 'react-navigation-stack'
+import {createStackNavigator} from 'react-navigation-stack'
 
 // App Imports
-import { getRoutesForStack } from '../../helpers/utils'
+import {getRoutesForStack} from '../../helpers/utils'
 import List from '../../../modules/note/List'
 import Detail from '../../../modules/note/Detail'
 import Create from '../../../modules/note/Create'
@@ -13,28 +13,28 @@ export const routesNote = {
   list: {
     name: 'note',
     path: 'note',
-    screen: List
+    screen: List,
   },
 
   // Create
   create: {
     name: 'noteCreate',
     path: 'note/create',
-    screen: Create
+    screen: Create,
   },
 
   // Detail
   detail: {
     name: 'noteDetail',
     path: 'note/detail',
-    screen: Detail
-  }
+    screen: Detail,
+  },
 }
 
 export default createStackNavigator(getRoutesForStack(routesNote), {
   initialRouteName: routesNote.list.name, // Initial route name
   headerMode: 'none',
   navigationOptions: {
-    headerVisible: false
-  }
+    headerVisible: false,
+  },
 })

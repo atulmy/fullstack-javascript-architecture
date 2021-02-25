@@ -1,6 +1,6 @@
 // Imports
 import React from 'react'
-import { createAppContainer, createSwitchNavigator } from 'react-navigation'
+import {createAppContainer, createSwitchNavigator} from 'react-navigation'
 
 // App Imports
 import names from './names'
@@ -30,9 +30,9 @@ const AppNavigator = createSwitchNavigator(
   {
     [names.entry]: Entry,
     [names.preLoginStack]: PreLoginStack,
-    [names.postLoginStack]: PostLoginStack
+    [names.postLoginStack]: PostLoginStack,
   },
-  { initialRouteName: 'entry' }
+  {initialRouteName: 'entry'},
 )
 
 export default createAppContainer(AppNavigator)

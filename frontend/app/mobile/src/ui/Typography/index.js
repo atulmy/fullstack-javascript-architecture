@@ -1,11 +1,11 @@
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Text } from 'react-native'
+import {Text} from 'react-native'
 
 // UI Imports
-import { black } from '../common/colors'
-import { font } from '../common/responsive'
+import {black} from '../common/colors'
+import {font} from '../common/responsive'
 
 const sizes = (s = 12) => {
   const sizePredefined = {
@@ -22,9 +22,29 @@ const sizes = (s = 12) => {
 }
 
 // Component
-const Typography = ({ size, color, spacing, align, weight, style = {}, children, ...props }) => (
-  <Text style={[{ fontSize: sizes(size), color, letterSpacing: spacing, textAlign: align, fontWeight: weight }, style]} {...props}>
-    { children }
+const Typography = ({
+  size,
+  color,
+  spacing,
+  align,
+  weight,
+  style = {},
+  children,
+  ...props
+}) => (
+  <Text
+    style={[
+      {
+        fontSize: sizes(size),
+        color,
+        letterSpacing: spacing,
+        textAlign: align,
+        fontWeight: weight,
+      },
+      style,
+    ]}
+    {...props}>
+    {children}
   </Text>
 )
 
@@ -42,7 +62,7 @@ Typography.defaultProps = {
   color: black,
   spacing: 0,
   align: 'left',
-  weight: 'normal'
+  weight: 'normal',
 }
 
 export default Typography

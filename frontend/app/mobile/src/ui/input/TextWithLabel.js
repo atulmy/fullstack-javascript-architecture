@@ -1,23 +1,39 @@
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'
-import { View, StyleSheet, TextInput } from 'react-native'
+import {View, StyleSheet, TextInput} from 'react-native'
 
 // UI Imports
-import { blockMarginHalf, blockPadding, blockMargin, blockPaddingHalf, font } from '../common/responsive'
-import { grey1, grey3, transparent } from '../common/colors'
+import {
+  blockMarginHalf,
+  blockPadding,
+  blockMargin,
+  blockPaddingHalf,
+  font,
+} from '../common/responsive'
+import {grey1, grey3, transparent} from '../common/colors'
 import Typography from '../Typography'
 import ActionIcon from '../icon/ActionIcon'
 
 // Component
-const InputTextWithLabel = ({ label, onSubmitEditing, inputRef, icon, onPressIcon, style = {}, ...props}) => {
-  return(
+const InputTextWithLabel = ({
+  label,
+  onSubmitEditing,
+  inputRef,
+  icon,
+  onPressIcon,
+  style = {},
+  ...props
+}) => {
+  return (
     <View style={styles.container}>
       <View style={styles.inputWrapper}>
-        <Typography color={grey1} size='h5' style={{ marginTop: blockMargin }}>{ label.toUpperCase() }</Typography>
+        <Typography color={grey1} size='h5' style={{marginTop: blockMargin}}>
+          {label.toUpperCase()}
+        </Typography>
 
         <TextInput
-          ref={inputRef ? ref => inputRef(ref) : null}
+          ref={inputRef ? (ref) => inputRef(ref) : null}
           onSubmitEditing={() => {
             if (onSubmitEditing) onSubmitEditing()
           }}
@@ -29,12 +45,14 @@ const InputTextWithLabel = ({ label, onSubmitEditing, inputRef, icon, onPressIco
         />
       </View>
 
-      { icon && <ActionIcon
-        icon={icon}
-        size={font(26)}
-        color={grey1}
-        onPress={onPressIcon}
-      /> }
+      {icon && (
+        <ActionIcon
+          icon={icon}
+          size={font(26)}
+          color={grey1}
+          onPress={onPressIcon}
+        />
+      )}
     </View>
   )
 }
@@ -44,7 +62,7 @@ InputTextWithLabel.propTypes = {
   label: PropTypes.string.isRequired,
   onSubmitEditing: PropTypes.func,
   icon: PropTypes.string,
-  onPressIcon: PropTypes.func
+  onPressIcon: PropTypes.func,
 }
 
 export default InputTextWithLabel
@@ -56,13 +74,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: blockPadding * 2,
   },
   inputWrapper: {
-    flex: 1
+    flex: 1,
   },
   input: {
     marginBottom: blockMarginHalf,
     paddingVertical: blockPaddingHalf,
     paddingHorizontal: 0,
     fontSize: font(16),
-    borderWidth: 0
-  }
+    borderWidth: 0,
+  },
 })

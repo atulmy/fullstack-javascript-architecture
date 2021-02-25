@@ -1,8 +1,8 @@
 // Imports
-import React, { useState, useRef } from 'react'
-import { useDispatch } from 'react-redux'
-import { View } from 'react-native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import React, {useState, useRef} from 'react'
+import {useDispatch} from 'react-redux'
+import {View} from 'react-native'
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 
 // UI Imports
 import Button from '../../../ui/button/Button'
@@ -12,21 +12,21 @@ import styles from './styles'
 
 // App Imports
 import translate from '../../../setup/translate'
-import { routesPreLogin } from '../../../setup/routes/preLogin'
+import {routesPreLogin} from '../../../setup/routes/preLogin'
 import routeNames from '../../../setup/routes/names'
-import { login, loginSetUser } from '../api/actions/query'
-import { messageShow } from '../../common/api/actions'
+import {login, loginSetUser} from '../api/actions/query'
+import {messageShow} from '../../common/api/actions'
 import Body from '../../common/Body'
 import NavigationTop from '../../common/NavigationTop'
 import ActionBack from '../../common/NavigationTop/ActionBack'
 
 // Component
-const Login = ({ navigation }) => {
+const Login = ({navigation}) => {
   // state
   const [isSubmitting, isSubmittingToggle] = useState(false)
   const [user, setUser] = useState({
     email: 'user@example.com',
-    password: '123456'
+    password: '123456',
   })
   const dispatch = useDispatch()
   const inputPassword = useRef(null)
@@ -36,30 +36,35 @@ const Login = ({ navigation }) => {
     isSubmittingToggle(true)
 
     try {
-      const { data } = await dispatch(login(user))
+      const {data} = await dispatch(login(user))
 
       isSubmittingToggle(false)
 
-      if(data.success) {
+      if (data.success) {
         dispatch(loginSetUser(data.data.token, data.data.user))
 
-        dispatch(messageShow({ success: data.success, message: data.message }))
+        dispatch(messageShow({success: data.success, message: data.message}))
 
         // User profile is complete, redirect to post login route
         navigation.navigate(routeNames.postLoginStack)
       } else {
-        dispatch(messageShow({ success: data.success, message: data.message }))
+        dispatch(messageShow({success: data.success, message: data.message}))
       }
-    } catch(error) {
+    } catch (error) {
       isSubmittingToggle(false)
 
-      dispatch(messageShow({ success: false, message: translate.t('common.error.default') }))
+      dispatch(
+        messageShow({
+          success: false,
+          message: translate.t('common.error.default'),
+        }),
+      )
     }
   }
 
   // on change
-  const onChange = name => value => {
-    setUser({ ...user, [name]: value})
+  const onChange = (name) => (value) => {
+    setUser({...user, [name]: value})
   }
 
   // on press signup
@@ -79,8 +84,7 @@ const Login = ({ navigation }) => {
       <KeyboardAwareScrollView
         contentContainerStyle={stylesCommon.flexGrow}
         enableOnAndroid={true}
-        keyboardShouldPersistTaps='handled'
-      >
+        keyboardShouldPersistTaps='handled'>
         <View style={styles.container}>
           {/* Form */}
           <View style={styles.formContainer}>
@@ -116,7 +120,7 @@ const Login = ({ navigation }) => {
             {/* Submit */}
             <Button
               onPress={onSubmit}
-              title={ translate.t('common.button.submit').toUpperCase() }
+              title={translate.t('common.button.submit').toUpperCase()}
               theme='primary'
               disabled={isSubmitting}
             />

@@ -2,30 +2,30 @@
 import axios from 'axios'
 
 // App Imports
-import { API_URL } from '../../../../setup/config/env'
+import {API_URL} from '../../../../setup/config/env'
 
 // Actions
 
 // Signup
-export function signup({ name, email, password, passwordRepeat }) {
+export function signup({name, email, password, passwordRepeat}) {
   return axios.post(API_URL, {
     operation: 'userSignup',
-    params: { name, email, password, passwordRepeat }
+    params: {name, email, password, passwordRepeat},
   })
 }
 
 // Update
-export function profileUpdate({ name }) {
+export function profileUpdate({name}) {
   return axios.post(API_URL, {
     operation: 'userProfileUpdate',
-    params: { name }
+    params: {name},
   })
 }
 
 // Change image
-export function changeImage({ image }) {
+export function changeImage({image}) {
   return axios.post(API_URL, {
     operation: 'userChangeImage',
-    params: { image }
+    params: {image},
   })
 }
