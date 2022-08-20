@@ -130,7 +130,7 @@ A typical product (SaaS, etc.) usually consists of following services:
     - Modify `.env.local` for
       - `PORT` (`8000`)
       - `NODE_ENV` (`development` | `production`)
-      - `SECURITY_SECRET` (Use [passwordsgenerator](https://passwordsgenerator.net))
+      - `SECURITY_SECRET` (Use [PasswordsGenerators](https://passwordsgenerators.net))
       - `SECURITY_SALT_ROUNDS` (`10`)
       - `MONGO_URL` (`mongodb://localhost:27017/example`)
       - `LANDING_URL` (`http://localhost:3000`)
