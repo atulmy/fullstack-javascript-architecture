@@ -1,3 +1,8 @@
+# 🆕 Upgraded version is available!
+
+An upgraded and more modern version with full-stack monorepo, featuring an event-driven, highly scalable architecture using Node.js, React, Redis, MongoDB, and Docker is now available,
+ check out [github.com/atulmy/fullstack-event-driven-architecture](https://github.com/atulmy/fullstack-event-driven-architecture)
+
 <a href="https://docs.google.com/drawings/d/1zROz5TgqlxTYyUZmYpfboMwyyuLxX3HV0jR6tkByKzw/edit?usp=sharing"><img src="https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/fullstack-javascript-architecture/architecture.png?v=1.0" alt="Full-Stack JavaScript Architecture" /></a>
 
 # Full-Stack JavaScript Architecture
